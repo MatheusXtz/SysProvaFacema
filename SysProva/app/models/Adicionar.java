@@ -7,7 +7,7 @@ import javax.persistence.Persistence;
 
 public class Adicionar {
 public static void main(String[] args) {
-	
+	//testando aqui
 	EntityManagerFactory factory= Persistence.createEntityManagerFactory("teste");
 	EntityManager manager= factory.createEntityManager();
 	
