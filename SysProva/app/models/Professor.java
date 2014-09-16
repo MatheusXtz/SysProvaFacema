@@ -1,12 +1,25 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+
+import play.db.ebean.Model;
 
 @Entity
-public class Professor {
+public class Professor extends Model {
 
 	@Id
 	@GeneratedValue
@@ -16,6 +29,17 @@ public class Professor {
 	private Integer cpf;
 	private String email;
 	
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="professor")	
+	private List<Disciplina>disciplinas;
+	
+	
+	
+	public List<Disciplina> getDisciplinas() {
+		return disciplinas;
+	}
+	public void setDisciplinas(List<Disciplina> disciplinas) {
+		this.disciplinas = disciplinas;
+	}
 	public long getIdProf() {
 		return idProf;
 	}
@@ -41,4 +65,7 @@ public class Professor {
 		this.email = email;
 	}
 	
+	public Professor() {
+		this.disciplinas = new ArrayList<Disciplina>();
+	}
 }

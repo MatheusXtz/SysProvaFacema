@@ -1,11 +1,19 @@
 package models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+
+import play.db.ebean.Model;
 
 @Entity
-public class Disciplina {
+public class Disciplina extends Model{
 	
 	@Id
 	@GeneratedValue
@@ -13,6 +21,13 @@ public class Disciplina {
 	private String descicaoDisciplina;
 	private Integer qtdQuestaoDisciplina;
 	private int cargaHoraria;
+	
+	@ManyToOne
+	private Professor professor;	
+	@ManyToOne
+	private Prova prova;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="disciplina")
+	private List<Questao> questoes;
 	
 	public long getIdDisciplina() {
 		return idDisciplina;
@@ -39,5 +54,8 @@ public class Disciplina {
 		this.cargaHoraria = cargaHoraria;
 	}
 	
+	public Disciplina() {
+		this.questoes = new ArrayList<Questao>();
+	}
 
 }
