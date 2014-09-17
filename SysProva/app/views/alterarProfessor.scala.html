@@ -1,0 +1,30 @@
+@(id:Long,professorForm:Form[Professor]) 
+@import helper._
+
+@main("Alterar Professor"){
+<div class="container">
+<div class="header">
+	<ul class="nav nav-pills pull-right">
+			<li class="active"><a href="/">Home</a></li>
+		</ul>
+		<h1>Alterar Professor</h1>
+		@form(routes.ProfessorCrud.alterarProfessor(id)){
+		<fieldset>
+			@inputText(professorForm("Nome"), '_label -> "Nome do Professor")
+			@inputText(professorForm("Cpf"), '_label -> "CPF")
+			@inputText(professorForm("E-mail"), '_label -> "E-mail")
+		</fieldset>
+        <div class="control-group">
+			<div class="actions">
+				<input type="submit" value="Gravar" class="btn btn-primary">
+				<a href="@routes.ProfessorCrud.listaProfessor()" class="btn btn-primary">
+					Cancelar
+				</a>
+	}
+	@form(routes.ProfessorCrud.removerProfessor(id)){
+	<input type="submit" value="Remover esse Curso" class="btn danger">
+}
+</div>
+</div>	
+</div>
+}
