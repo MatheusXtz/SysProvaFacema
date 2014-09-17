@@ -1,0 +1,45 @@
+@(professores: List[Professor])
+
+@main("Professor"){
+<div class="container">
+<div class="header">
+<ul class="nav nav-pills pull-right">
+<li class="active">
+<a href="@routes.CursoCrud.novoCurso()">
+Novo Professor
+</a>
+</li>
+<li class="active"><a href="/">Home</a></li>
+</ul>
+<h3 class="text-muted">Curso</h3>
+</div>
+
+<table class="table table-striped table-bordered" id="example"
+cellpadding="0" cellspacing="0" border="0" width="100%">
+<thead>
+	<tr>
+		<td>Nome</td>
+		<td>CPF</td>
+		<td>E-mail</td>
+	</tr>
+</thead>
+<tbody>
+@for(prof <- professores){
+<tr>
+
+<td>
+<a href="#">
+@prof.getNome()
+</a>
+</td>
+<td>@prof.getCpf()</td>
+<td>@prof.getEmail()</td>
+</tr>
+}
+</tbody>
+<tfoot>
+	<tr>Lista de Professores</tr>
+</tfoot>
+</table>
+</div>
+}

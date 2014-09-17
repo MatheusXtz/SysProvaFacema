@@ -12,5 +12,9 @@ POST  /curso					    controllers.CursoCrud.gravar()
 GET   /curso/:id                    controllers.CursoCrud.detalhar(id:Long)
 POST  /curso/:id                     controllers.CursoCrud.alterar(id:Long)
 POST  /curso/:id/remover             controllers.CursoCrud.remover(id:Long)
+GET   /professor/:id                controllers.ProfessorCrud.detalhar(id:Long)
+POST  /professor/:id                controllers.ProfessorCrud.alterarProfessor(id:Long)
+POST  /professor/:id/remover        controllers.ProfessorCrud.removerProfessor(id:Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
