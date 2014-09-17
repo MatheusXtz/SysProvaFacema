@@ -17,17 +17,20 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 
 @Entity
 public class Professor extends Model {
 
 	@Id
 	@GeneratedValue
-	private long idProf;
+	private Long idProf;
 	private String nome;
 	@Column(unique = false)
 	private Integer cpf;
 	private String email;
+	
+	public static Model.Finder<Long, Professor>find= new Model.Finder<Long, Professor>(Long.class,Professor.class);
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="professor")	
 	private List<Disciplina>disciplinas;

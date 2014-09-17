@@ -1,0 +1,28 @@
+@(id:Long,cursoForm:Form[Curso]) 
+@import helper._
+
+@main("Alterar Curso"){
+<div class="container">
+<div class="header">
+	<ul class="nav nav-pills pull-right">
+			<li class="active"><a href="/">Home</a></li>
+		</ul>
+		<h1>Alterar Curso</h1>
+		@form(routes.CursoCrud.alterar(id)){
+		<fieldset>
+			@inputText(cursoForm("Nome"), '_label -> "Nome do Curso")
+		</fieldset>
+        <div class="control-group">
+			<div class="actions">
+				<input type="submit" value="Gravar" class="btn btn-primary">
+				<a href="@routes.CursoCrud.listaCurso()" class="btn btn-primary">
+					Cancelar
+				</a>
+	}
+	@form(routes.CursoCrud.remover(id)){
+	<input type="submit" value="Remover esse Curso" class="btn danger">
+}
+</div>
+</div>	
+</div>
+}

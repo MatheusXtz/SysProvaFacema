@@ -28,9 +28,13 @@ public class Curso extends Model{
 
 	@Id
 	@GeneratedValue
-	private long idCurso;
+	private Long idCurso;
 
+    @Constraints.Required	
 	private String nome;
+	
+	//Model.finder pra auxiliar nas consultas
+	public static Model.Finder<Long, Curso>find=new Model.Finder<Long,Curso>(Long.class, Curso.class);
 	
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="curso")  
 	private List<Turma> turmas;

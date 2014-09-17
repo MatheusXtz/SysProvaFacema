@@ -6,14 +6,18 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 @Entity
 public class Alternativa extends Model {
 
 	@Id
 	@GeneratedValue
-	private long idAlternativa;
+	private Long idAlternativa;
 	private String alternativa;
 	private boolean alterCorreta;
+	
+	public static Model.Finder<Long, Alternativa>find= new Model.Finder<Long, Alternativa>(Long.class,Alternativa.class);
+	
 	@ManyToOne
 	private Questao questao;
 	

@@ -13,14 +13,17 @@ import javax.persistence.OneToMany;
 import org.h2.engine.Mode;
 
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 
 @Entity
 public class Questao extends Model{
 
 	@Id
 	@GeneratedValue
-	private long idQuestao;
+	private Long idQuestao;
 	private String enunciado;
+	
+	public static Model.Finder<Long, Questao>find= new Model.Finder<Long, Questao>(Long.class,Questao.class);
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="questao")
 	private List<Alternativa> alternativas;
 	@ManyToOne

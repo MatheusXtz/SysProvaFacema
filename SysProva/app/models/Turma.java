@@ -13,19 +13,24 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 
 @Entity
 public class Turma extends Model{
 
 	@Id
 	@GeneratedValue
-	private long idTurma;
+	private Long idTurma;
 	private String descricaoTurma;
 	private int qtdQuestaoTurma;
 	
+	public static Model.Finder<Long, Turma>find= new Model.Finder<Long, Turma>(Long.class,Turma.class);
+	
 	@ManyToOne
 	private Curso curso;
-	
+//	Adicionado por que turma tem uma lista de disciplinas
+//	@OneToMany(cascade=CascadeType.ALL, mappedBy="turma")	
+//	private List<Disciplina>disciplinas;
 	
 	public long getIdTurma() {
 		return idTurma;

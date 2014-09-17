@@ -11,12 +11,15 @@ import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 @Entity
 public class Prova extends Model{
 
 	@Id
 	@GeneratedValue
-	private long idProva;
+	private Long idProva;
+	
+	public static Model.Finder<Long, Prova>find= new Model.Finder<Long, Prova>(Long.class,Prova.class);
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="prova")
 	private List<Disciplina> disciplinas;
 	@OneToOne

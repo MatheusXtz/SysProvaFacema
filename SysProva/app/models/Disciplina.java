@@ -11,16 +11,19 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 
 @Entity
 public class Disciplina extends Model{
 	
 	@Id
 	@GeneratedValue
-	private long idDisciplina;
+	private Long idDisciplina;
 	private String descicaoDisciplina;
 	private Integer qtdQuestaoDisciplina;
 	private int cargaHoraria;
+	
+	public static Model.Finder<Long, Disciplina> find= new Model.Finder<Long, Disciplina>(Long.class,Disciplina.class);
 	
 	@ManyToOne
 	private Professor professor;	
