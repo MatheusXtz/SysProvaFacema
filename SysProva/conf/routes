@@ -6,6 +6,7 @@
 GET     /                           controllers.Application.index()
 GET    /bemvindo                    controllers.Application.bemVindo()
 GET    /curso                       controllers.CursoCrud.listaCurso()
+GET    /professor                   controllers.ProfessorCrud.listarProfessor()
 GET    /curso/novo                  controllers.CursoCrud.novoCurso()
 POST  /curso					    controllers.CursoCrud.gravar()
 GET   /curso/:id                    controllers.CursoCrud.detalhar(id:Long)

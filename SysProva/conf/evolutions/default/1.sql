@@ -30,7 +30,7 @@ create table disciplina (
 create table professor (
   id_prof                   bigint auto_increment not null,
   nome                      varchar(255),
-  cpf                       integer,
+  cpf                       bigint,
   email                     varchar(255),
   constraint pk_professor primary key (id_prof))
 ;

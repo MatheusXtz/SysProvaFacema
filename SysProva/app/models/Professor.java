@@ -27,7 +27,7 @@ public class Professor extends Model {
 	private Long idProf;
 	private String nome;
 	@Column(unique = false)
-	private Integer cpf;
+	private Long cpf;
 	private String email;
 	
 	public static Model.Finder<Long, Professor>find= new Model.Finder<Long, Professor>(Long.class,Professor.class);
@@ -55,10 +55,10 @@ public class Professor extends Model {
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	public Integer getCpf() {
+	public Long getCpf() {
 		return cpf;
 	}
-	public void setCpf(Integer cpf) {
+	public void setCpf(Long cpf) {
 		this.cpf = cpf;
 	}
 	public String getEmail() {

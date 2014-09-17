@@ -11,7 +11,7 @@ public class CursoCrud extends Controller {
 
 	private static final Form<Curso>cursoForm=Form.form(Curso.class);
 	
-	//Listar oc cursos
+	//Listar os cursos
 	public static Result listaCurso(){
 		List<Curso>cursos= Curso.find.findList();
 		return ok(views.html.curso.render(cursos));
