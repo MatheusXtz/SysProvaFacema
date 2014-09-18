@@ -1,0 +1,45 @@
+@(turmas: List[Turma]) 
+
+@main("Turmas"){
+<div class="container">
+<div class="header">
+<ul class="nav nav-pills pull-right">
+<li class="active">
+<a href="@routes.TurmaCrud.novaTurma()">
+Novo Curso
+</a>
+</li>
+<li class="active"><a href="/">Home</a></li>
+</ul>
+<h3 class="text-muted">Curso</h3>
+</div>
+
+<table class="table table-striped table-bordered" id="example"
+cellpadding="0" cellspacing="0" border="0" width="100%">
+<thead>
+	<tr>
+		<td>Descrição</td>
+		<td>Questões</td>
+		<td>Curso</td>
+	</tr>
+</thead>
+<tbody>
+@for(turma <- turmas){
+<tr>
+
+<td>
+<a href="#">
+@turma.getDescricaoTurma()
+</a>
+</td>
+<td>@turma.getQtdQuestaoTurma()</td>
+<td>@turma.getCurso().getNome()</td>
+</tr>
+}
+</tbody>
+<tfoot>
+	<tr>Lista de Turmas</tr>
+</tfoot>
+</table>
+</div>
+}
