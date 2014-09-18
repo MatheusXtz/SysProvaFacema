@@ -31,6 +31,7 @@ public class ProfessorCrud extends Controller {
 		}
 		Professor professor=form.get();
 		professor.save();
+		System.out.println(professor.getNome());
 		flash("sucesso","Professor Inserido com sucesso!");
 		return redirect(routes.ProfessorCrud.listarProfessor());
 
