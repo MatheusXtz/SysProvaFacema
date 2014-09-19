@@ -29,14 +29,17 @@ public class Turma extends Model{
 	
 	@ManyToOne
 	private Curso curso;
-//	Adicionado por que turma tem uma lista de disciplinas
-//	@OneToMany(cascade=CascadeType.ALL, mappedBy="turma")	
-//	private List<Disciplina>disciplinas;
 	
 	public Long getIdTurma() {
 		return idTurma;
 	}
+
 	public void setIdTurma(Long idTurma) {
+		this.idTurma = idTurma;
+	}
+	
+	public void setIdTurma(long idTurma) {
+
 		this.idTurma = idTurma;
 	}
 	public int getCargaHoaria() {
@@ -64,10 +67,6 @@ public class Turma extends Model{
 	}
 	public void setQtdQuestaoTurma(int qtdQuestaoTurma) {
 		this.qtdQuestaoTurma = qtdQuestaoTurma;
-	}
-	
-	public Turma() {
-		
 	}
 	
 }
