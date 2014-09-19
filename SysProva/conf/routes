@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Routes
 # This file defines all application routes (Higher priority routes first)
 # ~~~~
@@ -22,30 +21,4 @@ GET 	/turma						controllers.TurmaCrud.listarCursor()
 POST 	/turma						controllers.TurmaCrud.pegarTurma()
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
-=======
-# Routes
-# This file defines all application routes (Higher priority routes first)
-# ~~~~
 
-# Home page
-GET     /                           controllers.Application.index()
-GET    /bemvindo                    controllers.Application.bemVindo()
-GET    /curso                       controllers.CursoCrud.listaCurso()
-GET    /professor                   controllers.ProfessorCrud.listarProfessor()
-GET    /turma                       controllers.TurmaCrud.listarTurma()
-GET    /turma/novo                  controllers.TurmaCrud.novaTurma
-GET    /curso/novo                  controllers.CursoCrud.novoCurso()
-GET    /professor/novo              controllers.ProfessorCrud.novoProfessor()
-POST  /curso					    controllers.CursoCrud.gravar()
-POST  /turma					    controllers.TurmaCrud.gravarTurma()
-POST  /Professor				    controllers.ProfessorCrud.gravarProfessor()
-GET   /curso/:id                    controllers.CursoCrud.detalhar(id:Long)
-POST  /curso/:id                     controllers.CursoCrud.alterar(id:Long)
-POST  /curso/:id/remover             controllers.CursoCrud.remover(id:Long)
-GET   /professor/:id                controllers.ProfessorCrud.detalhar(id:Long)
-POST  /professor/:id                controllers.ProfessorCrud.alterarProfessor(id:Long)
-POST  /professor/:id/remover        controllers.ProfessorCrud.removerProfessor(id:Long)
-
-# Map static resources from the /public folder to the /assets URL path
-GET     /assets/*file               controllers.Assets.at(path="/public", file)
->>>>>>> origin/master
