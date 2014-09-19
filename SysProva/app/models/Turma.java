@@ -23,6 +23,7 @@ public class Turma extends Model{
 	private Long idTurma;
 	private String descricaoTurma;
 	private int qtdQuestaoTurma;
+	private int cargaHoaria;
 	
 	public static Model.Finder<Long, Turma>find= new Model.Finder<Long, Turma>(Long.class,Turma.class);
 	
@@ -32,11 +33,23 @@ public class Turma extends Model{
 //	@OneToMany(cascade=CascadeType.ALL, mappedBy="turma")	
 //	private List<Disciplina>disciplinas;
 	
-	public long getIdTurma() {
+	public Long getIdTurma() {
 		return idTurma;
 	}
-	public void setIdTurma(long idTurma) {
+	public void setIdTurma(Long idTurma) {
 		this.idTurma = idTurma;
+	}
+	public int getCargaHoaria() {
+		return cargaHoaria;
+	}
+	public void setCargaHoaria(int cargaHoaria) {
+		this.cargaHoaria = cargaHoaria;
+	}
+	public Curso getCurso() {
+		return curso;
+	}
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
 	
 	public String getDescricaoTurma() {

@@ -43,10 +43,10 @@ public class Professor extends Model {
 	public void setDisciplinas(List<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
 	}
-	public long getIdProf() {
+	public Long getIdProf() {
 		return idProf;
 	}
-	public void setIdProf(long idProf) {
+	public void setIdProf(Long idProf) {
 		this.idProf = idProf;
 	}
 	public String getNome() {

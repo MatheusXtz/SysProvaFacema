@@ -32,10 +32,10 @@ public class Disciplina extends Model{
 	@OneToMany(cascade=CascadeType.ALL, mappedBy="disciplina")
 	private List<Questao> questoes;
 	
-	public long getIdDisciplina() {
+	public Long getIdDisciplina() {
 		return idDisciplina;
 	}
-	public void setIdDisciplina(long idDisciplina) {
+	public void setIdDisciplina(Long idDisciplina) {
 		this.idDisciplina = idDisciplina;
 	}
 	public String getDescicaoDisciplina() {

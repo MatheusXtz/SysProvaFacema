@@ -21,10 +21,10 @@ public class Alternativa extends Model {
 	@ManyToOne
 	private Questao questao;
 	
-	public long getIdAlternativa() {
+	public Long getIdAlternativa() {
 		return idAlternativa;
 	}
-	public void setIdAlternativa(long idAlternativa) {
+	public void setIdAlternativa(Long idAlternativa) {
 		this.idAlternativa = idAlternativa;
 	}
 	public String getAlternativa() {

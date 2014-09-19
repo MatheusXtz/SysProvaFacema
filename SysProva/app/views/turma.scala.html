@@ -1,0 +1,22 @@
+@(cursos: List[Curso], forme: Form[Turma])
+
+@main("Lista de Curso"){
+@helper.form(action=routes.TurmaCrud.pegarTurma()) {
+<form action="">
+<h4><label for="">Nome da Disciplina:</label></h4>
+@helper.inputText(forme("descricaoTurma"))
+<h4><label for="">Quantide de Quastões:</label></h4>
+@helper.inputText(forme("qtdQuestaoTurma"))
+<h4><label for="">Carga Horaria:</label></h4>
+@helper.inputText(forme("cargaHoraria"))
+<h4><label for="">Cursos</label></h4>
+<select name="" >	
+@for(curso <- cursos){
+<option value="@curso">@curso.getNome()</option>
+}
+</select>
+
+<input type="submit" value="Envair">
+</form>
+}
+}

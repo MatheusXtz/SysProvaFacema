@@ -29,10 +29,10 @@ public class Questao extends Model{
 	@ManyToOne
 	private Disciplina disciplina;
 	
-	public long getIdQuestao() {
+	public Long getIdQuestao() {
 		return idQuestao;
 	}
-	public void setIdQuestao(long idQuestao) {
+	public void setIdQuestao(Long idQuestao) {
 		this.idQuestao = idQuestao;
 	}
 	

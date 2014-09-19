@@ -34,25 +34,17 @@ public class Curso extends Model{
 	private String nome;
 	
 	//Model.finder pra auxiliar nas consultas
-	public static Model.Finder<Long, Curso>find=new Model.Finder<Long,Curso>(Long.class, Curso.class);
+	public static Model.Finder<Long, Curso> find = new Model.Finder<Long,Curso>(Long.class, Curso.class);
 	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="curso")  
-	private List<Turma> turmas;
+//	@OneToMany(cascade=CascadeType.ALL, mappedBy="curso")  
+//	private List<Turma> turmas;
     
-	public List<Turma> getTurmas() {
-		return turmas;
-	}
-
-	public void setTurmas(List<Turma> turmas) {
-		this.turmas = turmas;
-	}
 	
-
-	public long getIdCurso() {
+	public Long getIdCurso() {
 		return idCurso;
 	}
 
-	public void setIdCurso(long idCurso) {
+	public void setIdCurso(Long idCurso) {
 		this.idCurso = idCurso;
 	}
 
@@ -63,9 +55,13 @@ public class Curso extends Model{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-	
+	@Override
+	public String toString() {
+		// TODO Auto-generated method stub
+		return idCurso+ ", " + nome;
+	}
 	public Curso() {
-		this.turmas = new ArrayList<Turma>();
+		
 	}
 
 }

@@ -52,6 +52,7 @@ create table turma (
   id_turma                  bigint auto_increment not null,
   descricao_turma           varchar(255),
   qtd_questao_turma         integer,
+  carga_hoaria              integer,
   curso_id_curso            bigint,
   constraint pk_turma primary key (id_turma))
 ;

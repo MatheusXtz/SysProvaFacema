@@ -26,11 +26,11 @@ public class Prova extends Model{
 	private Turma turma;
 	
 
-	public long getIdProva() {
+	public Long getIdProva() {
 		return idProva;
 	}
 
-	public void setIdProva(long idProva) {
+	public void setIdProva(Long idProva) {
 		this.idProva = idProva;
 	}
 

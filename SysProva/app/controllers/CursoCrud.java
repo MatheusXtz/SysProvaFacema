@@ -9,7 +9,7 @@ import play.mvc.Result;
 
 public class CursoCrud extends Controller {
 
-	private static final Form<Curso>cursoForm=Form.form(Curso.class);
+	private static final Form<Curso> cursoForm = Form.form(Curso.class);
 	
 	//Listar os cursos
 	public static Result listaCurso(){
