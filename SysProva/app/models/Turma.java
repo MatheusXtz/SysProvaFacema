@@ -23,12 +23,14 @@ public class Turma extends Model{
 	private Long idTurma;
 	private String descricaoTurma;
 	private int qtdQuestaoTurma;
-	private int cargaHoaria;
+	private int cargaHoraria;
+	private long idCurso;
 	
 	public static Model.Finder<Long, Turma>find= new Model.Finder<Long, Turma>(Long.class,Turma.class);
 	
 	@ManyToOne
 	private Curso curso;
+	
 	
 	public Long getIdTurma() {
 		return idTurma;
@@ -42,17 +44,11 @@ public class Turma extends Model{
 
 		this.idTurma = idTurma;
 	}
-	public int getCargaHoaria() {
-		return cargaHoaria;
+	public int getCargaHoraria() {
+		return cargaHoraria;
 	}
-	public void setCargaHoaria(int cargaHoaria) {
-		this.cargaHoaria = cargaHoaria;
-	}
-	public Curso getCurso() {
-		return curso;
-	}
-	public void setCurso(Curso curso) {
-		this.curso = curso;
+	public void setCargaHoraria(int cargaHoaria) {
+		this.cargaHoraria = cargaHoaria;
 	}
 	
 	public String getDescricaoTurma() {
@@ -68,5 +64,14 @@ public class Turma extends Model{
 	public void setQtdQuestaoTurma(int qtdQuestaoTurma) {
 		this.qtdQuestaoTurma = qtdQuestaoTurma;
 	}
+
+	public long getIdCurso() {
+		return idCurso;
+	}
+
+	public void setIdCurso(long idCurso) {
+		this.idCurso = idCurso;
+	}
+	
 	
 }
