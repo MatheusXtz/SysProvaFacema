@@ -16,7 +16,7 @@ import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
 
 @Entity
-public class Turma extends Model{
+public class Turma extends Model {
 
 	@Id
 	@GeneratedValue
@@ -24,14 +24,13 @@ public class Turma extends Model{
 	private String descricaoTurma;
 	private int qtdQuestaoTurma;
 	private int cargaHoraria;
-	private long idCurso;
-	
-	public static Model.Finder<Long, Turma>find= new Model.Finder<Long, Turma>(Long.class,Turma.class);
-	
+
+	public static Model.Finder<Long, Turma> find = new Model.Finder<Long, Turma>(
+			Long.class, Turma.class);
+
 	@ManyToOne
-	private Curso curso;
-	
-	
+	private Curso curso = new Curso();
+
 	public Long getIdTurma() {
 		return idTurma;
 	}
@@ -39,39 +38,42 @@ public class Turma extends Model{
 	public void setIdTurma(Long idTurma) {
 		this.idTurma = idTurma;
 	}
-	
+
 	public void setIdTurma(long idTurma) {
 
 		this.idTurma = idTurma;
 	}
+
 	public int getCargaHoraria() {
 		return cargaHoraria;
 	}
+
 	public void setCargaHoraria(int cargaHoaria) {
 		this.cargaHoraria = cargaHoaria;
 	}
-	
+
 	public String getDescricaoTurma() {
 		return descricaoTurma;
 	}
+
 	public void setDescricaoTurma(String descricaoTurma) {
 		this.descricaoTurma = descricaoTurma;
 	}
-	
+
 	public int getQtdQuestaoTurma() {
 		return qtdQuestaoTurma;
 	}
+
 	public void setQtdQuestaoTurma(int qtdQuestaoTurma) {
 		this.qtdQuestaoTurma = qtdQuestaoTurma;
 	}
 
 	public long getIdCurso() {
-		return idCurso;
+		return curso.getIdCurso();
 	}
 
-	public void setIdCurso(long idCurso) {
-		this.idCurso = idCurso;
+	public void setIdCurso(Long idCurso) {
+		this.curso.setIdCurso(idCurso);
 	}
-	
-	
+
 }

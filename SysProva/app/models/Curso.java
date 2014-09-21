@@ -24,22 +24,22 @@ import javax.persistence.OneToOne;
 import play.db.ebean.Model;
 
 @Entity
-public class Curso extends Model{
+public class Curso extends Model {
 
 	@Id
 	@GeneratedValue
 	private Long idCurso;
 
-    @Constraints.Required	
+	@Constraints.Required
 	private String nome;
-	
-	//Model.finder pra auxiliar nas consultas
-	public static Model.Finder<Long, Curso> find = new Model.Finder<Long,Curso>(Long.class, Curso.class);
-	
-//	@OneToMany(cascade=CascadeType.ALL, mappedBy="curso")  
-//	private List<Turma> turmas;
-    
-	
+
+	// Model.finder pra auxiliar nas consultas
+	public static Model.Finder<Long, Curso> find = new Model.Finder<Long, Curso>(
+			Long.class, Curso.class);
+
+	// @OneToMany(cascade=CascadeType.ALL, mappedBy="curso")
+	// private List<Turma> turmas;
+
 	public Long getIdCurso() {
 		return idCurso;
 	}
@@ -55,13 +55,15 @@ public class Curso extends Model{
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		return idCurso+ ", " + nome;
+		return idCurso + ", " + nome;
 	}
+
 	public Curso() {
-		
+
 	}
 
 }

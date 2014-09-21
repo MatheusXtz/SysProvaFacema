@@ -11,23 +11,22 @@ import play.mvc.Result;
 
 public class TurmaCrud extends Controller {
 
-	private static final Form<Turma> pForm = Form.form(Turma.class);
+	private static final Form<Turma> turmaForm = Form.form(Turma.class);
 
 	public static Result listarCursor() {
 		List<Curso> curso = Curso.find.findList();
 
-		return ok(views.html.turma.render(curso, pForm));
+		return ok(views.html.turma.render(curso, turmaForm));
 
 	}
 
 	public static Result pegarTurma() {
 
-		Form<Turma> form = pForm.bindFromRequest();
-		String idCurso = Form.form().bindFromRequest().get("curso");
+		Form<Turma> form = turmaForm.bindFromRequest();
+		String idCurso = Form.form().bindFromRequest().get("idCurso");
 
 		Turma turma = form.get();
-		
-		turma.setIdCurso(Long.parseLong(idCurso));;
+		turma.setIdCurso(Long.parseLong(idCurso));
 		turma.save();
 		
 		return redirect(routes.TurmaCrud.listarCursor());

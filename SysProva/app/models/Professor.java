@@ -25,49 +25,60 @@ public class Professor extends Model {
 	@Id
 	@GeneratedValue
 	private Long idProf;
+
 	private String nome;
+
 	@Column(unique = false)
 	private Long cpf;
+
 	private String email;
-	
-	public static Model.Finder<Long, Professor>find= new Model.Finder<Long, Professor>(Long.class,Professor.class);
-	
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="professor")	
-	private List<Disciplina>disciplinas;
-	
-	
-	
+
+	public static Model.Finder<Long, Professor> find = new Model.Finder<Long, Professor>(
+			Long.class, Professor.class);
+
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor")
+	private List<Disciplina> disciplinas;
+
 	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
+
 	public void setDisciplinas(List<Disciplina> disciplinas) {
 		this.disciplinas = disciplinas;
 	}
+
 	public Long getIdProf() {
 		return idProf;
 	}
+
 	public void setIdProf(Long idProf) {
 		this.idProf = idProf;
 	}
+
 	public String getNome() {
 		return nome;
 	}
+
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
+
 	public Long getCpf() {
 		return cpf;
 	}
+
 	public void setCpf(Long cpf) {
 		this.cpf = cpf;
 	}
+
 	public String getEmail() {
 		return email;
 	}
+
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
+
 	public Professor() {
 		this.disciplinas = new ArrayList<Disciplina>();
 	}
