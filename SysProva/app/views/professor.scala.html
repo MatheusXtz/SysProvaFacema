@@ -1,17 +1,43 @@
-@(professores: List[Professor])
+@(professores: List[Professor],professorForm : Form[Professor])
 
 @main("Professor"){
+  <div class="container">
+    <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="/">Home</a></li>
+        </ul>
+      </div>
+      <div>
+      @helper.form(action=routes.ProfessorCrud.gravarProfessor()) {
+      <form class="form-horizontal">
+		<fieldset>
+
+		<legend>Novo Professor</legend>
+
+		<div class="control-group">
+		  <div class="controls">
+		    <p class="help-block">Informe os dados do Professor</p>
+		    @helper.inputText(professorForm("Nome"))
+		     @helper.inputText(professorForm("cpf"))
+		     @helper.inputText(professorForm("Email"))
+		  </div>
+		</div>
+		}
+
+		<div class="control-group">
+		  <label class="control-label" for="singlebutton"></label>
+		  <div class="controls">
+		    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Gravar</button>
+		  </div>
+		</div>
+
+      </div>
+  </div>
+
 <div class="container">
 <div class="header">
 <ul class="nav nav-pills pull-right">
-<li class="active">
-<a href="@routes.ProfessorCrud.novoProfessor()">
-Novo Professor
-</a>
-</li>
-<li class="active"><a href="/">Home</a></li>
 </ul>
-<h3 class="text-muted">Curso</h3>
 </div>
 
 <table class="table table-striped table-bordered" id="example"
@@ -21,6 +47,7 @@ cellpadding="0" cellspacing="0" border="0" width="100%">
 		<td>Nome</td>
 		<td>CPF</td>
 		<td>E-mail</td>
+		<td>Remoção</td>
 	</tr>
 </thead>
 <tbody>
@@ -34,6 +61,11 @@ cellpadding="0" cellspacing="0" border="0" width="100%">
 </td>
 <td>@prof.getCpf()</td>
 <td>@prof.getEmail()</td>
+<td>
+	@helper.form(routes.ProfessorCrud.removerProfessor(prof.getIdProf())){
+	<input type="submit" value="Remover" class="btn danger">
+}
+</td>
 </tr>
 }
 </tbody>

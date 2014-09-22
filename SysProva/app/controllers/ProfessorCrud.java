@@ -15,7 +15,7 @@ public class ProfessorCrud extends Controller {
 	public static Result listarProfessor() {
 		List<Professor> professores = Professor.find.findList();
 		
-		return ok(views.html.professor.render(professores));
+		return ok(views.html.professor.render(professores,pForm));
 
 	}
 

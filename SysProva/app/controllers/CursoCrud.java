@@ -14,7 +14,7 @@ public class CursoCrud extends Controller {
 	// Listar os cursos
 	public static Result listaCurso() {
 		List<Curso> cursos = Curso.find.findList();
-		return ok(views.html.curso.render(cursos));
+		return ok(views.html.curso.render(cursos,cursoForm));
 	}
 
 	// Chamar a página de cadastro
