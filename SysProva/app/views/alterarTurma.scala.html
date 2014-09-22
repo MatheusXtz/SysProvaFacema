@@ -1,0 +1,19 @@
+  @(id: Long, form: Form[Turma], cursos: List[Curso])
+
+@main("Alterar Turma") {
+
+   
+     @helper.form(routes.TurmaCrud.alterarTurma(id)) {
+      
+		    @helper.inputText(form("descricaoTurma"), '_label -> "Nome:")		    
+		    @helper.inputText(form("qtdQuestaoTurma"), '_label -> "Quantidade de Questoes")
+
+		    <select name="idCurso">
+		    	@for(curso <- cursos){
+		    	<option value="@curso.getIdCurso()">@curso.getNome()</option>
+		    	}
+		    </select>
+
+		  	<input type="submit" value="Guardar">
+		  	}
+}  

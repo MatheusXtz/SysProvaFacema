@@ -23,7 +23,6 @@ create table disciplina (
   qtd_questao_disciplina    integer,
   carga_horaria             integer,
   professor_id_prof         bigint,
-  prova_id_prova            bigint,
   constraint pk_disciplina primary key (id_disciplina))
 ;
 
@@ -52,7 +51,6 @@ create table turma (
   id_turma                  bigint auto_increment not null,
   descricao_turma           varchar(255),
   qtd_questao_turma         integer,
-  carga_horaria             integer,
   curso_id_curso            bigint,
   constraint pk_turma primary key (id_turma))
 ;
@@ -61,14 +59,12 @@ alter table alternativa add constraint fk_alternativa_questao_1 foreign key (que
 create index ix_alternativa_questao_1 on alternativa (questao_id_questao);
 alter table disciplina add constraint fk_disciplina_professor_2 foreign key (professor_id_prof) references professor (id_prof) on delete restrict on update restrict;
 create index ix_disciplina_professor_2 on disciplina (professor_id_prof);
-alter table disciplina add constraint fk_disciplina_prova_3 foreign key (prova_id_prova) references prova (id_prova) on delete restrict on update restrict;
-create index ix_disciplina_prova_3 on disciplina (prova_id_prova);
-alter table prova add constraint fk_prova_turma_4 foreign key (turma_id_turma) references turma (id_turma) on delete restrict on update restrict;
-create index ix_prova_turma_4 on prova (turma_id_turma);
-alter table questao add constraint fk_questao_disciplina_5 foreign key (disciplina_id_disciplina) references disciplina (id_disciplina) on delete restrict on update restrict;
-create index ix_questao_disciplina_5 on questao (disciplina_id_disciplina);
-alter table turma add constraint fk_turma_curso_6 foreign key (curso_id_curso) references curso (id_curso) on delete restrict on update restrict;
-create index ix_turma_curso_6 on turma (curso_id_curso);
+alter table prova add constraint fk_prova_turma_3 foreign key (turma_id_turma) references turma (id_turma) on delete restrict on update restrict;
+create index ix_prova_turma_3 on prova (turma_id_turma);
+alter table questao add constraint fk_questao_disciplina_4 foreign key (disciplina_id_disciplina) references disciplina (id_disciplina) on delete restrict on update restrict;
+create index ix_questao_disciplina_4 on questao (disciplina_id_disciplina);
+alter table turma add constraint fk_turma_curso_5 foreign key (curso_id_curso) references curso (id_curso) on delete restrict on update restrict;
+create index ix_turma_curso_5 on turma (curso_id_curso);
 
 
 

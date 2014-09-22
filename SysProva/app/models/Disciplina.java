@@ -29,8 +29,8 @@ public class Disciplina extends Model {
 	@ManyToOne
 	private Professor professor;
 	
-	@ManyToOne
-	private Prova prova;
+//	@ManyToOne(cascade=CascadeType.ALL)
+//	private Prova prova;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "disciplina")
 	private List<Questao> questoes;

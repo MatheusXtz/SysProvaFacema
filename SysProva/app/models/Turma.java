@@ -23,7 +23,7 @@ public class Turma extends Model {
 	private Long idTurma;
 	private String descricaoTurma;
 	private int qtdQuestaoTurma;
-	private int cargaHoraria;
+	
 
 	public static Model.Finder<Long, Turma> find = new Model.Finder<Long, Turma>(
 			Long.class, Turma.class);
@@ -44,14 +44,7 @@ public class Turma extends Model {
 		this.idTurma = idTurma;
 	}
 
-	public int getCargaHoraria() {
-		return cargaHoraria;
-	}
-
-	public void setCargaHoraria(int cargaHoaria) {
-		this.cargaHoraria = cargaHoaria;
-	}
-
+	
 	public String getDescricaoTurma() {
 		return descricaoTurma;
 	}

@@ -23,8 +23,8 @@ public class Prova extends Model {
 	public static Model.Finder<Long, Prova> find = new Model.Finder<Long, Prova>(
 			Long.class, Prova.class);
 	
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "prova")
-	private List<Disciplina> disciplinas;
+//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "prova")
+//	private List<Disciplina> disciplinas;
 	
 	@OneToOne
 	private Turma turma;
@@ -36,14 +36,14 @@ public class Prova extends Model {
 	public void setIdProva(Long idProva) {
 		this.idProva = idProva;
 	}
-
-	public List<Disciplina> getDisciplinas() {
-		return disciplinas;
-	}
-
-	public void setDisciplinas(List<Disciplina> disciplinas) {
-		this.disciplinas = disciplinas;
-	}
+//
+//	public List<Disciplina> getDisciplinas() {
+//		return disciplinas;
+//	}
+//
+//	public void setDisciplinas(List<Disciplina> disciplinas) {
+//		this.disciplinas = disciplinas;
+//	}
 
 	public Turma getTurma() {
 		return turma;
@@ -54,7 +54,7 @@ public class Prova extends Model {
 	}
 
 	public Prova() {
-		this.disciplinas = new ArrayList<Disciplina>();
+		
 	}
 
 }

@@ -1,13 +1,12 @@
 
-@(cursos: List[Curso], form: Form[Turma])
+@(cursos: List[Curso], form: Form[Turma], turmas: List[Turma])
 
-@main("Lista de Curso"){
+@main("Lista de Turma"){
  
-      @helper.form(action=routes.TurmaCrud.pegarTurma()) {
+      @helper.form(action=routes.TurmaCrud.gravarTurma()) {
 
 		
-		    @helper.inputText(form("descricaoTurma"), '_label -> "Nome:")
-		    @helper.inputText(form("cargaHoraria"), '_label -> "Carga Horaria")
+		    @helper.inputText(form("descricaoTurma"), '_label -> "Nome:")		    
 		    @helper.inputText(form("qtdQuestaoTurma"), '_label -> "Quantidade de Questoes")
 
 		    <select name="idCurso">
@@ -17,6 +16,38 @@
 		    </select>
 
 		  	<input type="submit" value="Guardar">
+		  	}
+		  	<hr>
 
-}
+		  	<h1>Lista de Turma</h1>
+
+		  	<table class="table table-striped table-bordered" id="example"
+cellpadding="0" cellspacing="0" border="0" width="100%">
+		  		<thead>
+		  			<tr>
+		  				<td>Codigo</td>
+		  				<td>Descrição</td>
+		  				<td>Quant. Questões</td>
+		  				<td>Curso</td>
+		  				<td>Ação Remover</td>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+		  		@for(turma <- turmas){
+		  			<tr>
+		  				<td><a href="@routes.TurmaCrud.detalharTurma(turma.getIdTurma())">@turma.getIdTurma()</a></td>
+		  				<td>@turma.getDescricaoTurma()</td>
+		  				<td>@turma.getQtdQuestaoTurma()</td>
+		  				<td>@Curso.find.byId(turma.getIdCurso()).getNome()</td>
+		  				<td>
+		  				@helper.form(routes.TurmaCrud.removerTurma(turma.getIdTurma())){
+		  				<input type="submit" value="Remover" class="btn danger">
+		  				}
+		  				</td>
+		  			</tr>
+		  			}
+		  		</tbody>
+		  	</table>
+
+
 }
