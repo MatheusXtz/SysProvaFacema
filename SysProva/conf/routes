@@ -21,7 +21,14 @@ GET 	/turma						controllers.TurmaCrud.listarTurma()
 POST 	/turma						controllers.TurmaCrud.gravarTurma()
 GET		/turma/:id					controllers.TurmaCrud.detalharTurma(id:Long)
 POST	/turma/:id					controllers.TurmaCrud.alterarTurma(id:Long)
-POST 	/turma/:id/remover					controllers.TurmaCrud.removerTurma(id:Long)
+POST 	/turma/:id/remover			controllers.TurmaCrud.removerTurma(id:Long)
+GET 	/disciplina					controllers.DisciplinaCrud.listarDisciplina()
+POST	/disciplina					controllers.DisciplinaCrud.gravarDisciplina()
+GET		/disciplina/:id				controllers.DisciplinaCrud.detalharDisciplina(id:Long)
+POST	/disciplina/:id				controllers.DisciplinaCrud.alterarDisciplina(id:Long)
+POST	/disciplina/:id/remover		controllers.DisciplinaCrud.removerDisciplina(id:Long)
+
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 

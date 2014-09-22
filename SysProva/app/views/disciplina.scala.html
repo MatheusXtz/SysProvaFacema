@@ -1,0 +1,54 @@
+@(professor: List[Professor], form: Form[Disciplina], disciplinas: List[Disciplina])
+
+@main("Lista de Disciplinas"){
+
+	@helper.form(action=routes.DisciplinaCrud.gravarDisciplina()){
+
+	@helper.inputText(form("descricaoDisciplina"), '_label -> "Nome da Disciplina:")
+	
+	@helper.inputText(form("qtdQuestaoDisciplina"), '_label -> "Quandidade de Questão:")
+
+	@helper.inputText(form("cargaHoraria"), '_label -> "Carga Horaria:")
+
+	<label for="">Professor:</label><br>
+	<select name="idProf" >
+		@for(prof <- professor){
+		<option value="@prof.getIdProf()">@prof.getNome()</option>
+		}
+	</select><br>
+	<input type="submit" value="Guardar">
+	}
+	<hr>
+
+		  	<h1>Lista de Disciplinas</h1>
+
+		  	<table class="table table-striped table-bordered" id="example"
+cellpadding="0" cellspacing="0" border="0" width="100%">
+		  		<thead>
+		  			<tr>
+		  				<td>Codigo</td>
+		  				<td>Descrição</td>
+		  				<td>Quant. Questões</td>
+		  				<td>Carga Horaria</td>
+		  				<td>Prodessor</td>
+		  				<td>Ação Remover</td>
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+		  		@for(discip <- disciplinas){
+		  			<tr>
+		  				<td><a href="@routes.DisciplinaCrud.detalharDisciplina(discip.getIdDisciplina)">@discip.getIdDisciplina()</a></td>
+		  				<td>@discip.getDescricaoDisciplina()</td>
+		  				<td>@discip.getQtdQuestaoDisciplina()</td>
+		  				<td>@discip.getCargaHoraria()</td>
+		  				<td>@Professor.find.byId(discip.getIdDisciplina()).getNome()</td>
+		  				<td>
+		  				@helper.form(routes.DisciplinaCrud.removerDisciplina(discip.getIdDisciplina())){
+		  				<input type="submit" value="Remover" class="btn danger">
+		  				}
+		  				</td>
+		  			</tr>
+		  			}
+		  		</tbody>
+		  	</table>
+}

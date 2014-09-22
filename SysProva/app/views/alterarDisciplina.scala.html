@@ -1,0 +1,20 @@
+@(id: Long, form: Form[Disciplina], professor: List[Professor])
+
+@main("Alterar Disciplina"){
+	@helper.form(routes.DisciplinaCrud.alterarDisciplina(id)){
+
+	@helper.inputText(form("descricaoDisciplina"), '_label -> "Nome da Disciplina:")
+	
+	@helper.inputText(form("qtdQuestaoDisciplina"), '_label -> "Quandidade de Questão:")
+
+	@helper.inputText(form("cargaHoraria"), '_label -> "Carga Horaria:")
+
+	<label for="">Professor:</label><br>
+	<select name="idProf" >
+		@for(prof <- professor){
+		<option value="@prof.getIdProf()">@prof.getNome()</option>
+		}
+	</select><br>
+	<input type="submit" value="Guardar">
+	}
+	}

@@ -19,7 +19,7 @@ public class Disciplina extends Model {
 	@Id
 	@GeneratedValue
 	private Long idDisciplina;
-	private String descicaoDisciplina;
+	private String descricaoDisciplina;
 	private Integer qtdQuestaoDisciplina;
 	private int cargaHoraria;
 
@@ -27,7 +27,7 @@ public class Disciplina extends Model {
 			Long.class, Disciplina.class);
 
 	@ManyToOne
-	private Professor professor;
+	private Professor professor = new Professor();
 	
 //	@ManyToOne(cascade=CascadeType.ALL)
 //	private Prova prova;
@@ -43,12 +43,12 @@ public class Disciplina extends Model {
 		this.idDisciplina = idDisciplina;
 	}
 
-	public String getDescicaoDisciplina() {
-		return descicaoDisciplina;
+	public String getDescricaoDisciplina() {
+		return descricaoDisciplina;
 	}
 
-	public void setDescicaoDisciplina(String descicaoDisciplina) {
-		this.descicaoDisciplina = descicaoDisciplina;
+	public void setDescricaoDisciplina(String descricaoDisciplina) {
+		this.descricaoDisciplina = descricaoDisciplina;
 	}
 
 	public Integer getQtdQuestaoDisciplina() {
@@ -65,6 +65,14 @@ public class Disciplina extends Model {
 
 	public void setCargaHoraria(int cargaHoraria) {
 		this.cargaHoraria = cargaHoraria;
+	}
+	
+	public long getIdProfessor(){
+		return professor.getIdProf();
+	}
+	
+	public void setIdProfessor(long idProf){
+		this.professor.setIdProf(idProf);
 	}
 
 	public Disciplina() {

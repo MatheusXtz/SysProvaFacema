@@ -19,7 +19,7 @@ create table curso (
 
 create table disciplina (
   id_disciplina             bigint auto_increment not null,
-  descicao_disciplina       varchar(255),
+  descricao_disciplina      varchar(255),
   qtd_questao_disciplina    integer,
   carga_horaria             integer,
   professor_id_prof         bigint,

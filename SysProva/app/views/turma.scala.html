@@ -9,6 +9,7 @@
 		    @helper.inputText(form("descricaoTurma"), '_label -> "Nome:")		    
 		    @helper.inputText(form("qtdQuestaoTurma"), '_label -> "Quantidade de Questoes")
 
+		    <label for="">Curso:</label><br>
 		    <select name="idCurso">
 		    	@for(curso <- cursos){
 		    	<option value="@curso.getIdCurso()">@curso.getNome()</option>
