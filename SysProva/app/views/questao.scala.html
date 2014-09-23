@@ -1,0 +1,16 @@
+@(formQuest: Form[Questao], formAlter: Form[Alternativa])
+
+@main("Elaboração das Questões"){
+	
+	@helper.textarea(formQuest("enunciado"), '_label -> "Enunciado:",'rows -> 5,  'cols -> 50)
+
+	@helper.inputText(formAlter("alternativa"), '_label -> "Alternativa 01")
+
+	@helper.inputText(formAlter("alternativa"), '_label -> "Alternativa 02")
+
+	@helper.inputText(formAlter("alternativa"), '_label -> "Alternativa 03")
+
+	@helper.inputText(formAlter("alternativa"), '_label -> "Alternativa 04")
+
+	@helper.inputText(formAlter("alternativa"), '_label -> "Alternativa 05")
+}
