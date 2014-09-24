@@ -29,12 +29,13 @@ public class Disciplina extends Model {
 	@ManyToOne
 	private Professor professor = new Professor();
 	
-//	@ManyToOne(cascade=CascadeType.ALL)
-//	private Prova prova;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "disciplina")
 	private List<Questao> questoes;
 
+	/**
+	 * Gets e Sets
+	 */
 	public Long getIdDisciplina() {
 		return idDisciplina;
 	}

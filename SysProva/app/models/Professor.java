@@ -28,17 +28,23 @@ public class Professor extends Model {
 
 	private String nome;
 
-	@Column(unique = false)
-	private Long cpf;
+	@Column(unique = false, nullable = false)
+	private Integer cpf;
 
 	private String email;
+	@Column(nullable = false)
+	private Integer matricula;
 
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor")
+	private List<Disciplina> disciplinas;	
+	
 	public static Model.Finder<Long, Professor> find = new Model.Finder<Long, Professor>(
 			Long.class, Professor.class);
 
-	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor")
-	private List<Disciplina> disciplinas;
 
+	/**
+	 * Gets e Sets
+	 */
 	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
@@ -63,11 +69,11 @@ public class Professor extends Model {
 		this.nome = nome;
 	}
 
-	public Long getCpf() {
+	public Integer getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(Long cpf) {
+	public void setCpf(Integer cpf) {
 		this.cpf = cpf;
 	}
 
@@ -77,6 +83,15 @@ public class Professor extends Model {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+	
+
+	public Integer getMatricula() {
+		return matricula;
+	}
+
+	public void setMatricula(Integer matricula) {
+		this.matricula = matricula;
 	}
 
 	public Professor() {

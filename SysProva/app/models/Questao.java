@@ -23,16 +23,21 @@ public class Questao extends Model {
 	private Long idQuestao;
 	
 	private String enunciado;
-
-	public static Model.Finder<Long, Questao> find = new Model.Finder<Long, Questao>(
-			Long.class, Questao.class);
+	
+	private String alterCorreta;
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "questao")
 	private List<Alternativa> alternativas;
 	
 	@ManyToOne
 	private Disciplina disciplina;
+	
+	public static Model.Finder<Long, Questao> find = new Model.Finder<Long, Questao>(
+			Long.class, Questao.class);
 
+	/**
+	 * Gets e Sets
+	 */
 	public Long getIdQuestao() {
 		return idQuestao;
 	}
@@ -55,6 +60,14 @@ public class Questao extends Model {
 
 	public void setAlternativas(List<Alternativa> alternativas) {
 		this.alternativas = alternativas;
+	}
+	
+	public String getAlterCorreta() {
+		return alterCorreta;
+	}
+
+	public void setAlterCorreta(String alterCorreta) {
+		this.alterCorreta = alterCorreta;
 	}
 
 	public Questao() {

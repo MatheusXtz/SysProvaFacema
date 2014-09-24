@@ -1,6 +1,7 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -9,6 +10,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
@@ -23,12 +26,16 @@ public class Prova extends Model {
 	public static Model.Finder<Long, Prova> find = new Model.Finder<Long, Prova>(
 			Long.class, Prova.class);
 	
-//	@OneToMany(cascade = CascadeType.ALL, mappedBy = "prova")
-//	private List<Disciplina> disciplinas;
-	
 	@OneToOne
 	private Turma turma;
-
+	
+	@Temporal(TemporalType.DATE)
+	private Calendar dataProva;
+	
+	
+	/**
+	 * Gets e Sets
+	 */
 	public Long getIdProva() {
 		return idProva;
 	}
@@ -36,14 +43,6 @@ public class Prova extends Model {
 	public void setIdProva(Long idProva) {
 		this.idProva = idProva;
 	}
-//
-//	public List<Disciplina> getDisciplinas() {
-//		return disciplinas;
-//	}
-//
-//	public void setDisciplinas(List<Disciplina> disciplinas) {
-//		this.disciplinas = disciplinas;
-//	}
 
 	public Turma getTurma() {
 		return turma;
@@ -53,8 +52,16 @@ public class Prova extends Model {
 		this.turma = turma;
 	}
 
-	public Prova() {
-		
+	public Calendar getDataProva() {
+		return dataProva;
 	}
+
+	public void setDataProva(Calendar dataProva) {
+		this.dataProva = dataProva;
+	}
+
+	
+
+	
 
 }
