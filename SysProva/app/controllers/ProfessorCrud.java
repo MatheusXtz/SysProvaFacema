@@ -34,6 +34,7 @@ public class ProfessorCrud extends Controller {
 		}
 		
 		Professor professor = form.get();
+		System.out.println(professor.getSenha());
 		professor.save();
 		System.out.println(professor.getNome());
 		flash("sucesso", "Professor Inserido com sucesso!");
@@ -41,6 +42,7 @@ public class ProfessorCrud extends Controller {
 		return redirect(routes.ProfessorCrud.listarProfessor());
 
 	}
+	
 
 	public static Result detalhar(Long id) {
 		Form<Professor> proForm = Form.form(Professor.class).fill(
@@ -52,6 +54,7 @@ public class ProfessorCrud extends Controller {
 	public static Result alterarProfessor(Long id) {
 		Form<Professor> form = pForm.bindFromRequest();
 		Form.form(Professor.class).fill(Professor.find.byId(id));
+		
 
 		Form<Professor> alterarProfe = Form.form(Professor.class)
 				.bindFromRequest();

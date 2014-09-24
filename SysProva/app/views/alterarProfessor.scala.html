@@ -10,9 +10,11 @@
 		<h1>Alterar Professor</h1>
 		@form(routes.ProfessorCrud.alterarProfessor(id)){
 		<fieldset>
-			@inputText(professorForm("Nome"), '_label -> "Nome do Professor")
-			@inputText(professorForm("Cpf"), '_label -> "CPF")
-			@inputText(professorForm("Email"), '_label -> "Email")
+			@inputText(professorForm("nome"), '_label -> "Nome do Professor")
+			@inputText(professorForm("matricula"), '_label -> "Matricula:")
+			@inputText(professorForm("cpf"), '_label -> "CPF")
+			@inputText(professorForm("email"), '_label -> "Email")
+			@inputPassword(professorForm("senha"), '_label -> "Senha:")
 		</fieldset>
         <div class="control-group">
 			<div class="actions">
@@ -21,9 +23,7 @@
 					Cancelar
 				</a>
 	}
-	@form(routes.ProfessorCrud.removerProfessor(id)){
-	<input type="submit" value="Remover esse Curso" class="btn danger">
-}
+	
 </div>
 </div>	
 </div>

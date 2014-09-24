@@ -35,6 +35,7 @@ create table professor (
   cpf                       integer not null,
   email                     varchar(255),
   matricula                 integer not null,
+  senha                     varchar(255) not null,
   constraint pk_professor primary key (id_prof))
 ;
 

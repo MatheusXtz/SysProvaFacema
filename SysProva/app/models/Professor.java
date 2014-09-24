@@ -34,6 +34,16 @@ public class Professor extends Model {
 	private String email;
 	@Column(nullable = false)
 	private Integer matricula;
+	@Column(nullable = false)
+	private String senha;
+
+	public String getSenha() {
+		return senha;
+	}
+
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor")
 	private List<Disciplina> disciplinas;	
