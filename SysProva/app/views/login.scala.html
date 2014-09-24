@@ -1,0 +1,11 @@
+@(form: Form[Usuario])
+
+@main("Login"){
+	
+	@helper.inputText(form("matricula"), '_label -> "Usuário:")
+
+	@helper.inputPassword(form("senha"), '_label -> "Senha")
+
+	<input type="submit" value="Entrar">
+
+}

@@ -17,9 +17,12 @@
 		<div class="control-group">
 		  <div class="controls">
 		    <p class="help-block">Informe os dados do Professor</p>
-		    @helper.inputText(professorForm("Nome"))
-		     @helper.inputText(professorForm("cpf"))
-		     @helper.inputText(professorForm("Email"))
+		    @helper.inputText(professorForm("nome"), '_label -> "Nome:")
+		    @helper.inputText(professorForm("matricula"), '_label -> "Matricula:")
+		     @helper.inputText(professorForm("cpf"), '_label -> "CPF:")
+		     @helper.inputText(professorForm("email"), '_label -> "E-mail:")
+		     @helper.inputPassword(professorForm("senha"), '_label -> "Senha:")
+
 		  </div>
 		</div>
 		}

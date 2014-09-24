@@ -32,9 +32,9 @@ create table disciplina (
 create table professor (
   id_prof                   bigint auto_increment not null,
   nome                      varchar(255),
-  cpf                       integer,
+  cpf                       integer not null,
   email                     varchar(255),
-  matricula                 integer,
+  matricula                 integer not null,
   constraint pk_professor primary key (id_prof))
 ;
 
