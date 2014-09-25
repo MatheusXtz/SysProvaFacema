@@ -37,13 +37,6 @@ public class Professor extends Model {
 	@Column(nullable = false)
 	private String senha;
 
-	public String getSenha() {
-		return senha;
-	}
-
-	public void setSenha(String senha) {
-		this.senha = senha;
-	}
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor")
 	private List<Disciplina> disciplinas;	
@@ -104,6 +97,14 @@ public class Professor extends Model {
 		this.matricula = matricula;
 	}
 
+	public String getSenha() {
+		return senha;
+	}
+	
+	public void setSenha(String senha) {
+		this.senha = senha;
+	}
+	
 	public Professor() {
 		this.disciplinas = new ArrayList<Disciplina>();
 	}

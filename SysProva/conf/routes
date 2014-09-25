@@ -3,8 +3,8 @@
 # ~~~~
 
 # Home page
-GET     /                           controllers.Application.index()
-GET    /bemvindo                    controllers.Application.bemVindo()
+GET     /test	                     controllers.Application.index()
+GET    /                   			controllers.Application.inicio()
 GET    /curso                       controllers.CursoCrud.listaCurso()
 GET    /professor                   controllers.ProfessorCrud.listarProfessor()
 GET    /curso/novo                  controllers.CursoCrud.novoCurso()
