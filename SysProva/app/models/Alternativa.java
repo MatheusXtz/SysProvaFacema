@@ -34,7 +34,7 @@ public class Alternativa extends Model {
 
 	@ManyToOne
 	@Column(nullable = false)
-	private Questao questao;
+	private Questao questao = new Questao();
 
 	/**
 	 * Gets e Sets
@@ -90,9 +90,17 @@ public class Alternativa extends Model {
 	public Questao getQuestao() {
 		return questao;
 	}
+	
 
 	public void setQuestao(Questao questao) {
 		this.questao = questao;
+	}
+	public Long getIdQuestao(){
+		return this.questao.getIdQuestao();
+	}
+	
+	public void setIdQuestao(Long idQuestao){
+		this.questao.setIdQuestao(idQuestao);
 	}
 
 	

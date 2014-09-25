@@ -26,7 +26,13 @@ public class TurmaCrud extends Controller {
 
 		Form<Turma> form = turmaForm.bindFromRequest();
 		String idCurso = Form.form().bindFromRequest().get("idCurso");
+		List<Curso> curso = Curso.find.findList();
+		List<Turma> listTurma = Turma.find.findList();		
 
+		if(form.hasErrors()){
+			flash("erro", "Erro ao gravar os dados");
+			return ok(views.html.turma.render(curso, turmaForm, listTurma));
+		}
 		Turma turma = form.get();
 		turma.setIdCurso(Long.parseLong(idCurso));	
 		turma.save();

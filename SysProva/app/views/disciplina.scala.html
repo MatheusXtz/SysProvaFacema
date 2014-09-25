@@ -1,7 +1,15 @@
 @(professor: List[Professor], form: Form[Disciplina], disciplinas: List[Disciplina])
 
 @main("Lista de Disciplinas"){
-
+<div class="container">
+	<div class="header">
+        <ul class="nav nav-pills pull-right">
+	          <li class="active">
+	          <a href="/">Home</a>
+	          </li>
+	    </ul>
+     </div>
+</div>
 	@helper.form(action=routes.DisciplinaCrud.gravarDisciplina()){
 
 	@helper.inputText(form("descricaoDisciplina"), '_label -> "Nome da Disciplina:")

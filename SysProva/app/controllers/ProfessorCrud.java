@@ -26,15 +26,15 @@ public class ProfessorCrud extends Controller {
 	public static Result gravarProfessor() {
 
 		Form<Professor> form = pForm.bindFromRequest();
+		List<Professor> prof = Professor.find.findList();
 		
 		if (form.hasErrors()) {
 			flash("erro", "Erro ao tentar salvar professor");
 			
-			return ok(views.html.novoProfessor.render(pForm));
+			return ok(views.html.professor.render(prof, pForm));
 		}
 		
-		Professor professor = form.get();
-		System.out.println(professor.getSenha());
+		Professor professor = form.get();		
 		professor.save();
 		System.out.println(professor.getNome());
 		flash("sucesso", "Professor Inserido com sucesso!");

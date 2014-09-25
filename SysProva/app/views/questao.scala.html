@@ -1,16 +1,33 @@
-@(formQuest: Form[Questao], formAlter: Form[Alternativa])
+@(id: Long, formQuest: Form[Questao], formAlter: Form[Alternativa])
 
 @main("Elaboração das Questões"){
+	<div class="container">
+	<div class="header">
+        <ul class="nav nav-pills pull-right">
+	          <li class="active">
+	          <a href="/">Home</a>
+	          </li>
+	    </ul>
+     </div>
+</div>
 	
+@helper.form(action=routes.QuestaoCrud.gravarQuestao()){
 	@helper.textarea(formQuest("enunciado"), '_label -> "Enunciado:",'rows -> 5,  'cols -> 50)
 
-	@helper.inputText(formAlter("alternativa"), '_label -> "Alternativa 01")
+	
+	<label for="">Alternativa 01 - Correta</label><br>
+	<input type="text"  name="alterCorreta" ><br><br> 	
+	
+	@helper.inputText(formAlter("alter02"), '_label -> "Alternativa 02")
 
-	@helper.inputText(formAlter("alternativa"), '_label -> "Alternativa 02")
+	@helper.inputText(formAlter("alter03"), '_label -> "Alternativa 03")
 
-	@helper.inputText(formAlter("alternativa"), '_label -> "Alternativa 03")
+	@helper.inputText(formAlter("alter04"), '_label -> "Alternativa 04")
 
-	@helper.inputText(formAlter("alternativa"), '_label -> "Alternativa 04")
+	@helper.inputText(formAlter("alter05"), '_label -> "Alternativa 05")
 
-	@helper.inputText(formAlter("alternativa"), '_label -> "Alternativa 05")
+	
+	<input type="text"  name="idDiscip" value="@id" hidden> 
+	<input type="submit" value="Guardar">
+	}
 }

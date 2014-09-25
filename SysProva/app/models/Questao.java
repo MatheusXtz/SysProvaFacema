@@ -30,7 +30,7 @@ public class Questao extends Model {
 	private List<Alternativa> alternativas;
 	
 	@ManyToOne
-	private Disciplina disciplina;
+	private Disciplina disciplina = new Disciplina();
 	
 	public static Model.Finder<Long, Questao> find = new Model.Finder<Long, Questao>(
 			Long.class, Questao.class);
@@ -68,6 +68,14 @@ public class Questao extends Model {
 
 	public void setAlterCorreta(String alterCorreta) {
 		this.alterCorreta = alterCorreta;
+	}
+	
+	public Long getIdDisciplina(){
+		return this.disciplina.getIdDisciplina();
+	}
+	
+	public void setIdDisciplina(Long idDisciplina){
+		this.disciplina.setIdDisciplina(idDisciplina);
 	}
 
 	public Questao() {
