@@ -5,6 +5,7 @@
 # Home page
 GET     /test	                     controllers.Application.index()
 GET    /                   			controllers.Application.inicio()
+GET		/login						controllers.Application.login()
 GET    /curso                       controllers.CursoCrud.listaCurso()
 GET    /professor                   controllers.ProfessorCrud.listarProfessor()
 GET    /curso/novo                  controllers.CursoCrud.novoCurso()

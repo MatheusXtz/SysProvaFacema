@@ -2,11 +2,31 @@
 
 @main("Login"){
 	
-	
-	@helper.inputText(form("matricula"), '_label -> "Usuário:")
+<div class="navbar navbar-inverse navbar-static-top">
+	<div class="container">
+		<div class="navbar-header">
+		<button type="button" class="navbar-toggle"
+		data-toggle="collapse" data-target=".navbar-collapse">
+		</button>
+		<a class="navbar-brand" href="/">Home</a>
+		</div>
+	<div class="collapse navbar-collapse">
+		<ul class="nav navbar-nav">			
+			<li><a href="/listagem">Elaborar Prova</a></li>
+
+		</ul>
+	</div>
+	</div>
+</div>
+
+<div class="container">
+	<form action="" class="form-signin" role="form">
+	<h2 class="form-singnin-heading">Faça o login</h2>
+	@helper.inputText(form("matricula"), '_label -> "Usuário:", 'value -> 12341)
 
 	@helper.inputPassword(form("senha"), '_label -> "Senha")
 
-	<input type="submit" value="Entrar">
-	
+	<button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>
+	</form>
+</div>
 }
