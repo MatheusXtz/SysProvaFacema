@@ -18,7 +18,7 @@ public class Usuario extends Model {
 	@Column(nullable = false)
 	private String senha;
 
-	private static Model.Finder<Long, Usuario> find = new Model.Finder<Long, Usuario>(
+	public static Model.Finder<Long, Usuario> find = new Model.Finder<Long, Usuario>(
 			Long.class, Usuario.class);
 
 	/**

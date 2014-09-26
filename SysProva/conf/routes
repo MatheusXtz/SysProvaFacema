@@ -32,6 +32,12 @@ GET		/listagem					controllers.QuestaoCrud.listagem()
 POST	/listagem		        	controllers.QuestaoCrud.gravarQuestao()
 GET		/listagem/:id				controllers.QuestaoCrud.parseId(id:Long)
 
+GET		/usuario					controllers.UsuarioCrud.listarUsuario()
+POST    /usuario					controllers.UsuarioCrud.gravarUsuario()
+GET		/usuario/:id			    controllers.UsuarioCrud.detalhar(id:Long)
+POST	/usuario/:id				controllers.UsuarioCrud.alterarUsuario(id:Long)
+POST 	/usuario/:id/remover		controllers.UsuarioCrud.remover(id:Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 
