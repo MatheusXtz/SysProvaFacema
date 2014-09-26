@@ -37,6 +37,8 @@ POST    /usuario					controllers.UsuarioCrud.gravarUsuario()
 GET		/usuario/:id			    controllers.UsuarioCrud.detalhar(id:Long)
 POST	/usuario/:id				controllers.UsuarioCrud.alterarUsuario(id:Long)
 POST 	/usuario/:id/remover		controllers.UsuarioCrud.remover(id:Long)
+GET		/login					    controllers.UsuarioCrud.login()
+GET		/autenticar				 controllers.UsuarioCrud.autenticar()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
