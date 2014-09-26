@@ -10,6 +10,7 @@ import play.mvc.Result;
 import views.html.usuario;
 
 public class UsuarioCrud extends Controller {
+	
 	private static Form<Usuario> userForm = Form.form(Usuario.class);
 
 	public static Result listarUsuario() {
@@ -70,8 +71,8 @@ public class UsuarioCrud extends Controller {
 		for (Usuario usuario : user) {
 			if (usuario.getMatricula().equals(matri)
 					&& usuario.getSenha().equals(senha)) {
-				flash("sucesso", "Login efetuado com sucesso");
-				return redirect(routes.UsuarioCrud.listarUsuario());
+//				flash("sucesso", "Login efetuado com sucesso");
+				return redirect(routes.Application.inicio());
 			}
 		}
 
@@ -83,7 +84,7 @@ public class UsuarioCrud extends Controller {
 	// Chama a pagina de autenticação
 	public static Result autenticar() {
 		Form<Usuario> form = userForm.bindFromRequest();
-		return ok(views.html.autenticar.render(form));
+		return ok(views.html.login.render(form));
 
 	}
 

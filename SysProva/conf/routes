@@ -5,24 +5,27 @@
 # Home page
 GET     /test	                     controllers.Application.index()
 GET    /                   			controllers.Application.inicio()
-GET		/login						controllers.Application.login()
+
 GET    /curso                       controllers.CursoCrud.listaCurso()
-GET    /professor                   controllers.ProfessorCrud.listarProfessor()
 GET    /curso/novo                  controllers.CursoCrud.novoCurso()
-GET    /professor/novo              controllers.ProfessorCrud.novoProfessor()
 POST  /curso					    controllers.CursoCrud.gravar()
-POST  /professor				    controllers.ProfessorCrud.gravarProfessor()
 GET   /curso/:id                    controllers.CursoCrud.detalhar(id:Long)
 POST  /curso/:id                     controllers.CursoCrud.alterar(id:Long)
 POST  /curso/:id/remover             controllers.CursoCrud.remover(id:Long)
+
+GET    /professor                   controllers.ProfessorCrud.listarProfessor()
+GET    /professor/novo              controllers.ProfessorCrud.novoProfessor()
+POST  /professor				    controllers.ProfessorCrud.gravarProfessor()
 GET   /professor/:id                controllers.ProfessorCrud.detalhar(id:Long)
 POST  /professor/:id                controllers.ProfessorCrud.alterarProfessor(id:Long)
 POST  /professor/:id/remover        controllers.ProfessorCrud.removerProfessor(id:Long)
+
 GET 	/turma						controllers.TurmaCrud.listarTurma()
 POST 	/turma						controllers.TurmaCrud.gravarTurma()
 GET		/turma/:id					controllers.TurmaCrud.detalharTurma(id:Long)
 POST	/turma/:id					controllers.TurmaCrud.alterarTurma(id:Long)
 POST 	/turma/:id/remover			controllers.TurmaCrud.removerTurma(id:Long)
+
 GET 	/disciplina					controllers.DisciplinaCrud.listarDisciplina()
 POST	/disciplina					controllers.DisciplinaCrud.gravarDisciplina()
 GET		/disciplina/:id				controllers.DisciplinaCrud.detalharDisciplina(id:Long)
@@ -39,7 +42,7 @@ GET		/usuario/:id			    controllers.UsuarioCrud.detalhar(id:Long)
 POST	/usuario/:id				controllers.UsuarioCrud.alterarUsuario(id:Long)
 POST 	/usuario/:id/remover		controllers.UsuarioCrud.remover(id:Long)
 GET		/login					    controllers.UsuarioCrud.login()
-GET		/autenticar				 controllers.UsuarioCrud.autenticar()
+GET		/autenticar				 	controllers.UsuarioCrud.autenticar()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

@@ -20,13 +20,26 @@
 </div>
 
 <div class="container">
-	<form action="" class="form-signin" role="form">
-	<h2 class="form-singnin-heading">Faça o login</h2>
-	@helper.inputText(form("matricula"), '_label -> "Usuário:", 'value -> 12341)
+@helper.form(action=routes.UsuarioCrud.login()){
+	<form  class="form-signin" role="form">
+	<h2 class="form-singnin-heading">Login de Usuário</h2>
+	
+	<dl>
+		<dt>Matricula:</dt>
+		<dd><input type="text" name="matricula" id="matricula" class="form-control" placeholder="Matricula"></dd>
+	</dl>
 
-	@helper.inputPassword(form("senha"), '_label -> "Senha")
+	<dl>
+	    <dt><label for="senha">Senha</label></dt>
+	    <dd><input type="password" id="senha" name="senha" class="form-control" placeholder="Senha"></dd>
+	</dl>
+
+	<label class="checkbox">
+          <input type="checkbox" value="Mantenha-me conectado"> Mantenha-me conectado
+    </label>
 
 	<button type="submit" class="btn btn-lg btn-primary btn-block">Entrar</button>
 	</form>
 </div>
+}
 }

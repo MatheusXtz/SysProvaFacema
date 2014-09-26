@@ -1,6 +1,6 @@
 @(usuarios: List[Usuario],userForm : Form[Usuario]) 
 
-@main("Cursos"){
+@main("Usuário"){
 
 <div class="container">
     <div class="header">
@@ -19,8 +19,12 @@
 		  <div class="controls">
 		  	<p class="help-block">Informe os dados do usuário</p>
 		    
-		    @helper.inputText(userForm("matricula"), '_label -> "Matricula:")
-		    @helper.inputPassword(userForm("senha"), '_label -> "Senha:")
+		    
+		    <label for="">Matricula:</label><br>
+		    <input type="text" name="matricula" id="matricula"><br><br>
+
+		    <label for="">Senha:</label><br>
+		    <input type="password" name="senha" id="senha">
 
 		  </div>
 		</div>
