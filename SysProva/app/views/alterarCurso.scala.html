@@ -1,5 +1,5 @@
 @(id:Long,cursoForm:Form[Curso]) 
-@import helper._
+
 
 @main("Alterar Curso"){
 <div class="container">
@@ -7,22 +7,47 @@
 	<ul class="nav nav-pills pull-right">
 			<li class="active"><a href="/">Home</a></li>
 		</ul>
-		<h1>Alterar Curso</h1>
-		@form(routes.CursoCrud.alterar(id)){
-		<fieldset>
-			@inputText(cursoForm("Nome"), '_label -> "Nome do Curso")
-		</fieldset>
-        <div class="control-group">
-			<div class="actions">
-				<input type="submit" value="Gravar" class="btn btn-primary">
-				<a href="@routes.CursoCrud.listaCurso()" class="btn btn-primary">
-					Cancelar
-				</a>
-	}
-	@form(routes.CursoCrud.remover(id)){
-	<input type="submit" value="Remover esse Curso" class="btn danger">
+		</div>
+		
+		@helper.form(routes.CursoCrud.alterar(id)) {
+      <form class="form-horizontal">
+		
+		<legend>Alterar Curso</legend>
+
+		<div class="control-group">
+		  <div class="controls">
+
+		 @helper.inputText(cursoForm("nome"), '_label -> "Nome do Curso:")
+
+		 
+		  <h3>Turnos:</h3>
+
+		 	 <label class="checkbox">
+         		 <input type="checkbox" name="matutino" value="1"> Matutino
+    		</label>
+
+    		<label class="checkbox">
+         		 <input type="checkbox" name="vespertino" value="1">Vespertino
+    		</label>
+
+    		<label class="checkbox">
+         		 <input type="checkbox" name="noturno" value="1"> Noturno
+    		</label>
+
+		  
+		  </div>
+		</div>
+		
+
+		<div class="control-group">
+		  <label class="control-label" for="singlebutton"></label>
+		  <div class="controls">
+		    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Gravar</button>
+		  </div>
+		</div>
 }
-</div>
+	
+
 </div>	
-</div>
+
 }

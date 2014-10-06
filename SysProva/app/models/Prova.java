@@ -2,6 +2,7 @@ package models;
 
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -27,10 +28,11 @@ public class Prova extends Model {
 			Long.class, Prova.class);
 	
 	@OneToOne
-	private Turma turma;
+	private Turma turma = new Turma();
 	
-	@Temporal(TemporalType.DATE)
-	private Calendar dataProva;
+	
+	private String dataInicial;
+	private String dataFinal;
 	
 	
 	/**
@@ -52,16 +54,30 @@ public class Prova extends Model {
 		this.turma = turma;
 	}
 
-	public Calendar getDataProva() {
-		return dataProva;
+	public String getDataInicial() {
+		return dataInicial;
 	}
 
-	public void setDataProva(Calendar dataProva) {
-		this.dataProva = dataProva;
+	public void setDataInicial(String dataInicial) {
+		this.dataInicial = dataInicial;
 	}
 
-	
+	public String getDataFinal() {
+		return dataFinal;
+	}
 
-	
-
+	public void setDataFinal(String dataFinal) {
+		this.dataFinal = dataFinal;
+	}
+	/**
+	 * 
+	 * Metodos para manipulção dos IDs da entidade Turma
+	 * 
+	 */
+	public Long getIdTurma(){
+		return this.turma.getIdTurma();
+	}
+	public void setIdTurma(Long idTurma){
+		this.turma.setIdTurma(idTurma);
+	}
 }

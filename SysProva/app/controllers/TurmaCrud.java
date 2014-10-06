@@ -57,7 +57,7 @@ public class TurmaCrud extends Controller {
 		String idCurso = Form.form().bindFromRequest().get("idCurso");
 		alterarForm.get().setIdCurso(Long.parseLong(idCurso));
 		alterarForm.get().update(id);
-		flash("sucesso", "Turma " + alterarForm.get().getDescricaoTurma()
+		flash("sucesso", "Turma " + alterarForm.get().getNome()
 				+ " alterado com sucesso");
 
 		return redirect(routes.TurmaCrud.listarTurma());

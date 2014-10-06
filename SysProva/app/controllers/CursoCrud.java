@@ -14,12 +14,7 @@ public class CursoCrud extends Controller {
 	// Listar os cursos
 	public static Result listaCurso() {
 		List<Curso> cursos = Curso.find.findList();
-		return ok(views.html.curso.render(cursos,cursoForm));
-	}
-
-	// Chamar a página de cadastro
-	public static Result novoCurso() {
-		return ok(views.html.novoCurso.render(cursoForm));
+		return ok(views.html.curso.render(cursos));
 	}
 
 	// Salvar o Curso
@@ -28,10 +23,11 @@ public class CursoCrud extends Controller {
 
 		if (form.hasErrors()) {
 			flash("erro", "Foram identificados erros no cadastro!");
-			return ok(views.html.novoCurso.render(cursoForm));
+			return redirect(routes.CursoCrud.listaCurso());
 		}
 		Curso curso = form.get();
 		curso.save();
+
 		flash("sucesso", "Dados Gravados com sucesso");
 		return redirect(routes.CursoCrud.listaCurso());
 	}

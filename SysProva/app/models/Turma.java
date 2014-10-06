@@ -21,16 +21,20 @@ public class Turma extends Model {
 	@Id
 	@GeneratedValue
 	private Long idTurma;
-	private String descricaoTurma;
-	private int qtdQuestaoTurma;
+	private String nome;
+	private int qtdQuestao;
 	
 
 	public static Model.Finder<Long, Turma> find = new Model.Finder<Long, Turma>(
 			Long.class, Turma.class);
+	
 
 	@ManyToOne
 	private Curso curso = new Curso();
-
+	
+	/**
+	 * Gets e Sets
+	 */
 	public Long getIdTurma() {
 		return idTurma;
 	}
@@ -39,28 +43,28 @@ public class Turma extends Model {
 		this.idTurma = idTurma;
 	}
 
-	public void setIdTurma(long idTurma) {
-
-		this.idTurma = idTurma;
+		
+	public String getNome() {
+		return nome;
 	}
 
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+	public int getQtdQuestao() {
+		return qtdQuestao;
+	}
+
+	public void setQtdQuestao(int qtdQuestao) {
+		this.qtdQuestao = qtdQuestao;
+	}
 	
-	public String getDescricaoTurma() {
-		return descricaoTurma;
-	}
-
-	public void setDescricaoTurma(String descricaoTurma) {
-		this.descricaoTurma = descricaoTurma;
-	}
-
-	public int getQtdQuestaoTurma() {
-		return qtdQuestaoTurma;
-	}
-
-	public void setQtdQuestaoTurma(int qtdQuestaoTurma) {
-		this.qtdQuestaoTurma = qtdQuestaoTurma;
-	}
-
+	/**
+	 * 
+	 * Metodos para manipulção dos IDs da entidade Curso
+	 * 
+	 */
 	public long getIdCurso() {
 		return curso.getIdCurso();
 	}
@@ -68,5 +72,7 @@ public class Turma extends Model {
 	public void setIdCurso(Long idCurso) {
 		this.curso.setIdCurso(idCurso);
 	}
+	
+	
 
 }

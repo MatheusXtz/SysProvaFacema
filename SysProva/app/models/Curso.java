@@ -18,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -32,14 +33,20 @@ public class Curso extends Model {
 
 	@Constraints.Required
 	private String nome;
-
+	
+	private byte matutino;
+	private byte vespertino;
+	private byte noturno;
+	
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "curso")
+	private List<Professor> professor;
 	// Model.finder pra auxiliar nas consultas
 	public static Model.Finder<Long, Curso> find = new Model.Finder<Long, Curso>(
 			Long.class, Curso.class);
-
-	// @OneToMany(cascade=CascadeType.ALL, mappedBy="curso")
-	// private List<Turma> turmas;
-
+	
+	/**
+	 * Gets e Sets
+	 */
 	public Long getIdCurso() {
 		return idCurso;
 	}
@@ -54,6 +61,31 @@ public class Curso extends Model {
 
 	public void setNome(String nome) {
 		this.nome = nome;
+	}
+	
+
+	public byte getMatutino() {
+		return matutino;
+	}
+
+	public void setMatutino(byte matutino) {
+		this.matutino = matutino;
+	}
+
+	public byte getVespertino() {
+		return vespertino;
+	}
+
+	public void setVespertino(byte vespertino) {
+		this.vespertino = vespertino;
+	}
+
+	public byte getNoturno() {
+		return noturno;
+	}
+
+	public void setNoturno(byte noturno) {
+		this.noturno = noturno;
 	}
 
 	@Override

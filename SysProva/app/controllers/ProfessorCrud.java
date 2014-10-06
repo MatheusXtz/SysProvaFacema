@@ -14,56 +14,52 @@ public class ProfessorCrud extends Controller {
 
 	public static Result listarProfessor() {
 		List<Professor> professores = Professor.find.findList();
-		
-		return ok(views.html.professor.render(professores,pForm));
+		List<Curso> cursos = Curso.find.findList();
+		return ok(views.html.professor.render(professores, cursos));
 
-	}
-
-	public static Result novoProfessor() {
-		return ok(views.html.novoProfessor.render(pForm));
 	}
 
 	public static Result gravarProfessor() {
 
 		Form<Professor> form = pForm.bindFromRequest();
 		List<Professor> prof = Professor.find.findList();
-		
+		List<Curso> cursos = Curso.find.findList();
 		if (form.hasErrors()) {
 			flash("erro", "Erro ao tentar salvar professor");
-			
-			return ok(views.html.professor.render(prof, pForm));
+
+			return ok(views.html.professor.render(prof, cursos));
 		}
-		
-		Professor professor = form.get();		
+		String idCurso = Form.form().bindFromRequest().get("idCurso");
+		Professor professor = form.get();
+		professor.setIdCurso(Long.parseLong(idCurso));
 		professor.save();
-		System.out.println(professor.getNome());
 		flash("sucesso", "Professor Inserido com sucesso!");
-		
 		return redirect(routes.ProfessorCrud.listarProfessor());
 
 	}
-	
 
 	public static Result detalhar(Long id) {
 		Form<Professor> proForm = Form.form(Professor.class).fill(
 				Professor.find.byId(id));
-		
-		return ok(views.html.alterarProfessor.render(id, proForm));
+		List<Curso> cursos = Curso.find.findList();
+		return ok(views.html.alterarProfessor.render(id, cursos, proForm));
 	}
 
 	public static Result alterarProfessor(Long id) {
 		Form<Professor> form = pForm.bindFromRequest();
 		Form.form(Professor.class).fill(Professor.find.byId(id));
-		
+		List<Curso> cursos = Curso.find.findList();
 
 		Form<Professor> alterarProfe = Form.form(Professor.class)
 				.bindFromRequest();
-		
+
 		if (alterarProfe.hasErrors()) {
-			return badRequest(views.html.alterarProfessor.render(id,
+			return badRequest(views.html.alterarProfessor.render(id, cursos,
 					alterarProfe));
 		}
 		
+		String idCurso = Form.form().bindFromRequest().get("idCurso");
+		alterarProfe.get().setIdCurso(Long.parseLong(idCurso));
 		alterarProfe.get().update(id);
 		flash("sucesso", "Professor " + alterarProfe.get().getNome()
 				+ " alterado com sucesso");
@@ -74,7 +70,7 @@ public class ProfessorCrud extends Controller {
 	public static Result removerProfessor(Long id) {
 		Professor.find.ref(id).delete();
 		flash("sucesso", "Professor removido com sucesso");
-		
+
 		return listarProfessor();
 	}
 }

@@ -1,4 +1,4 @@
-@(professor: List[Professor], form: Form[Disciplina], disciplinas: List[Disciplina])
+@(professor: List[Professor], turmas: List[Turma], disciplinas: List[Disciplina])
 
 @main("Lista de Disciplinas"){
 <div class="container">
@@ -9,23 +9,52 @@
 	          </li>
 	    </ul>
      </div>
-</div>
+
 	@helper.form(action=routes.DisciplinaCrud.gravarDisciplina()){
+	<legend>Nova Disciplina</legend>
 
-	@helper.inputText(form("descricaoDisciplina"), '_label -> "Nome da Disciplina:")
+	<dl>
+		<dt><label for="nome">Nome da Disciplina:</label></dt>
+		<dd><input type="text" name="nome" id="nome"></dd>
+	</dl>
+
+	<dl>
+		<dt><label for="qtdQuestao">Quantidade de Questões:</label></dt>
+		<dd><input type="text" name="qtdQuestao" id="qtdQuestao"></dd>
+	</dl>
+
+	<dl>
+		<dt><label for="cargaHoraria">Carga Horária:</label></dt>
+		<dd><input type="text" name="cargaHoraria" id="cargaHoraria"></dd>
+	</dl>
+
 	
-	@helper.inputText(form("qtdQuestaoDisciplina"), '_label -> "Quandidade de Questão:")
-
-	@helper.inputText(form("cargaHoraria"), '_label -> "Carga Horaria:")
-
-	<label for="">Professor:</label><br>
+	<dl>
+	<dt><label for="">Professor:</label></dt>
 	<select name="idProf" >
 		@for(prof <- professor){
 		<option value="@prof.getIdProf()">@prof.getNome()</option>
 		}
-	</select><br>
-	<input type="submit" value="Guardar">
+	</select>
+	</dl>
+
+	<dl>
+	<dt><label for="">Turma:</label></dt>
+	<select name="idTurma" >
+		@for(turma <- turmas){
+		<option value="@turma.getIdTurma()">@turma.getNome()</option>
+		}
+	</select>
+	</dl>
+	
+	<div class="control-group">
+		  <label class="control-label" for="singlebutton"></label>
+		  <div class="controls">
+		    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Gravar</button>
+		  </div>
+		</div>
 	}
+	</div>
 	<hr>
 
 		  	<h1>Lista de Disciplinas</h1>
@@ -38,7 +67,8 @@ cellpadding="0" cellspacing="0" border="0" width="100%">
 		  				<td>Descrição</td>
 		  				<td>Quant. Questões</td>
 		  				<td>Carga Horaria</td>
-		  				<td>Prodessor</td>
+		  				<td>Professor</td>
+		  				<td>Turma</td>
 		  				<td>Ação Remover</td>
 		  			</tr>
 		  		</thead>
@@ -46,10 +76,11 @@ cellpadding="0" cellspacing="0" border="0" width="100%">
 		  		@for(discip <- disciplinas){
 		  			<tr>
 		  				<td><a href="@routes.DisciplinaCrud.detalharDisciplina(discip.getIdDisciplina)">@discip.getIdDisciplina()</a></td>
-		  				<td>@discip.getDescricaoDisciplina()</td>
-		  				<td>@discip.getQtdQuestaoDisciplina()</td>
+		  				<td>@discip.getNome()</td>
+		  				<td>@discip.getQtdQuestao()</td>
 		  				<td>@discip.getCargaHoraria()</td>
-		  				<td>@Professor.find.byId(discip.getIdDisciplina()).getNome()</td>
+		  				<td>@Professor.find.byId(discip.getIdProfessor()).getNome()</td>
+		  				<td>@Turma.find.byId(discip.getIdTurma()).getNome()</td>
 		  				<td>
 		  				@helper.form(routes.DisciplinaCrud.removerDisciplina(discip.getIdDisciplina())){
 		  				<input type="submit" value="Remover" class="btn danger">

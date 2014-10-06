@@ -11,12 +11,23 @@
 	          </li>
 	    </ul>
      </div>
-</div>
+
       @helper.form(action=routes.TurmaCrud.gravarTurma()) {
 
-		
-		    @helper.inputText(form("descricaoTurma"), '_label -> "Nome:")		    
-		    @helper.inputText(form("qtdQuestaoTurma"), '_label -> "Quantidade de Questoes")
+		<legend>Nova Turma</legend>
+		    
+		 <div class="control-group">
+		  <div class="controls">
+		  
+		    <dl>
+		  	<dt><label for="nome">Nome do Turma:</label></dt>
+		  	<dd><input type="text" id="nome" name="nome" placeholder=""></dd>
+		  </dl>
+
+		  <dl>
+		  	<dt><label for="nome">Quantidade de questão:</label></dt>
+		  	<dd><input type="text" id="nome" name="qtdQuestao" placeholder=""></dd>
+		  </dl>
 
 		    <label for="">Curso:</label><br>
 		    <select name="idCurso">
@@ -24,9 +35,19 @@
 		    	<option value="@curso.getIdCurso()">@curso.getNome()</option>
 		    	}
 		    </select>
+		</div>
+		  </div>
 
-		  	<input type="submit" value="Guardar">
+		  	 <div class="control-group">
+		  	 <label class="control-label" for="singlebutton"></label>
+		  	 <div class="controls">
+		    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Gravar</button>
+		    </div>
+		  </div>
+
+
 		  	}
+</div>
 		  	<hr>
 
 		  	<h1>Lista de Turma</h1>
@@ -46,8 +67,8 @@ cellpadding="0" cellspacing="0" border="0" width="100%">
 		  		@for(turma <- turmas){
 		  			<tr>
 		  				<td><a href="@routes.TurmaCrud.detalharTurma(turma.getIdTurma())">@turma.getIdTurma()</a></td>
-		  				<td>@turma.getDescricaoTurma()</td>
-		  				<td>@turma.getQtdQuestaoTurma()</td>
+		  				<td>@turma.getNome()</td>
+		  				<td>@turma.getQtdQuestao()</td>
 		  				<td>@Curso.find.byId(turma.getIdCurso()).getNome()</td>
 		  				<td>
 		  				@helper.form(routes.TurmaCrud.removerTurma(turma.getIdTurma())){

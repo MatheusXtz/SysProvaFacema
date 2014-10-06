@@ -1,33 +1,61 @@
-@(id: Long, formQuest: Form[Questao], formAlter: Form[Alternativa])
-
+@(idDiscip: Long)
 @main("Elaboração das Questões"){
-	<div class="container">
-	<div class="header">
-        <ul class="nav nav-pills pull-right">
-	          <li class="active">
-	          <a href="/">Home</a>
-	          </li>
-	    </ul>
-     </div>
-</div>
+	
 	
 @helper.form(action=routes.QuestaoCrud.gravarQuestao()){
-	@helper.textarea(formQuest("enunciado"), '_label -> "Enunciado:",'rows -> 5,  'cols -> 50)
+
+	<div class="container">
+    <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="/">Home</a></li>
+        </ul>
+      </div>
+	<legend>Nova Questão</legend>
 
 	
-	<label for="">Alternativa 01 - Correta</label><br>
-	<input type="text"  name="alterCorreta" ><br><br> 	
+	<dl>
+	<dt><label for="enunciado">Enunciado da Questão:</label></dt>
+	<dd><textarea name="enunciado" id="enunciado" cols="50" rows="5"></textarea></dd>
+	</dl>	
+
+	<dl>
+	<dt><label for="alter01">Alternativa 01 - Correta</label></dt>
+	<dd><input type="text"  name="alter01" id="alter01"></dd>
+	</dl>
+
+
+	<dl>
+	<dt><label for="alter02">Alternativa 02</label></dt>
+	<dd><input type="text"  name="alter02" id="alter02"></dd>
+	</dl>
+
+
+	<dl>
+	<dt><label for="alter03">Alternativa 03</label></dt>
+	<dd><input type="text"  name="alter03" id="alter03"></dd>
+	</dl>
+
+
+	<dl>
+	<dt><label for="alter04">Alternativa 04</label></dt>
+	<dd><input type="text"  name="alter04" id="alter04"></dd>
+	</dl>
+
+
+	<dl>
+	<dt><label for="alter05">Alternativa 05</label></dt>
+	<dd><input type="text"  name="alter05" id="alter05"></dd>
+	</dl>
+
+	<input type="text"  name="idDiscip" value="@idDiscip" hidden> 
+	<input type="text" name="idProva" value=""hidden>
 	
-	@helper.inputText(formAlter("alter02"), '_label -> "Alternativa 02")
-
-	@helper.inputText(formAlter("alter03"), '_label -> "Alternativa 03")
-
-	@helper.inputText(formAlter("alter04"), '_label -> "Alternativa 04")
-
-	@helper.inputText(formAlter("alter05"), '_label -> "Alternativa 05")
-
-	
-	<input type="text"  name="idDiscip" value="@id" hidden> 
-	<input type="submit" value="Guardar">
+	<div class="control-group">
+		  <label class="control-label" for="singlebutton"></label>
+		  <div class="controls">
+		    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Gravar</button>
+		  </div>
+		</div>
 	}
+	</div>
 }

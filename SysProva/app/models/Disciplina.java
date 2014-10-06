@@ -19,8 +19,8 @@ public class Disciplina extends Model {
 	@Id
 	@GeneratedValue
 	private Long idDisciplina;
-	private String descricaoDisciplina;
-	private Integer qtdQuestaoDisciplina;
+	private String nome;
+	private Integer qtdQuestao;
 	private int cargaHoraria;
 
 	public static Model.Finder<Long, Disciplina> find = new Model.Finder<Long, Disciplina>(
@@ -28,8 +28,8 @@ public class Disciplina extends Model {
 
 	@ManyToOne
 	private Professor professor = new Professor();
-	
-	
+	@ManyToOne
+	private Turma turma = new Turma();
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "disciplina")
 	private List<Questao> questoes;
 
@@ -44,20 +44,20 @@ public class Disciplina extends Model {
 		this.idDisciplina = idDisciplina;
 	}
 
-	public String getDescricaoDisciplina() {
-		return descricaoDisciplina;
+	public String getNome() {
+		return nome;
 	}
 
-	public void setDescricaoDisciplina(String descricaoDisciplina) {
-		this.descricaoDisciplina = descricaoDisciplina;
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
-	public Integer getQtdQuestaoDisciplina() {
-		return qtdQuestaoDisciplina;
+	public Integer getQtdQuestao() {
+		return qtdQuestao;
 	}
 
-	public void setQtdQuestaoDisciplina(Integer qtdQuestaoDisciplina) {
-		this.qtdQuestaoDisciplina = qtdQuestaoDisciplina;
+	public void setQtdQuestao(Integer qtdQuestao) {
+		this.qtdQuestao = qtdQuestao;
 	}
 
 	public int getCargaHoraria() {
@@ -68,12 +68,29 @@ public class Disciplina extends Model {
 		this.cargaHoraria = cargaHoraria;
 	}
 	
+	/**
+	 * 
+	 * Metodos para manipulção dos IDs da entidade Professor
+	 * 
+	 */
 	public long getIdProfessor(){
 		return professor.getIdProf();
 	}
 	
 	public void setIdProfessor(long idProf){
 		this.professor.setIdProf(idProf);
+	}
+	/**
+	 * 
+	 * Metodos para manipulção dos IDs da entidade Turma
+	 * 
+	 */
+	public Long getIdTurma() {
+		return turma.getIdTurma();
+	}
+
+	public void setIdTurma(Long idTurma) {
+		this.turma.setIdTurma(idTurma);;
 	}
 
 	public Disciplina() {

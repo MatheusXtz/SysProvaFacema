@@ -1,0 +1,59 @@
+@(provas: List[Prova])
+@main("Prova"){
+
+<div class="container">
+	<div class="header">
+        <ul class="nav nav-pills pull-right">
+	          <li class="active">
+	          <a href="/">Home</a>
+	          </li>
+	    </ul>
+     </div>
+     <legend>Nova Prova</legend>
+	@helper.form(action=routes.ProvaCrud.gravarProva()){
+	<dl>
+		<dt><label for="dataInicial">Data Inicial:</label></dt>
+		<dd><input type="date" name="dataInicial" id="dataInicial"></dd>
+	</dl>
+
+	<dl>
+		<dt><label for="dataFinal">Data Final:</label></dt>
+		<dd><input type="date" name="dataFinal" id="dataFinal"></dd>
+	</dl>
+
+	<div class="control-group">
+		  <label class="control-label" for="singlebutton"></label>
+		  <div class="controls">
+		    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Gravar</button>
+		  </div>
+		</div>
+
+</div>
+	}
+
+	<hr>
+	<h1>Lista de Provas</h1>
+	<table class="table table-striped table-bordered" id="example"
+cellpadding="0" cellspacing="0" border="0" width="100%">
+		  		<thead>
+		  			<tr>
+		  				<td>Código</td>
+		  				<td>Turma</td>
+		  				<td>Data de Inicio</td>
+		  				<td>Data de Encerramento</td>
+		  				
+		  			</tr>
+		  		</thead>
+		  		<tbody>
+		  		@for(prova <- provas){
+		  			<tr>
+		  				<td>@prova.getIdProva()</td>
+		  				<td>@Turma.find.byId(prova.getIdTurma()).getNome()</td>
+		  				<td>@prova.getDataInicial()</td>
+		  				<td>@prova.getDataFinal()</td>
+		  				
+		  			</tr>
+		  			}
+		  		</tbody>
+		  	</table>
+}

@@ -13,6 +13,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
@@ -39,7 +41,10 @@ public class Professor extends Model {
 
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor")
-	private List<Disciplina> disciplinas;	
+	private List<Disciplina> disciplinas;
+	
+	@ManyToOne 
+	private Curso curso = new Curso();
 	
 	public static Model.Finder<Long, Professor> find = new Model.Finder<Long, Professor>(
 			Long.class, Professor.class);
@@ -105,6 +110,17 @@ public class Professor extends Model {
 		this.senha = senha;
 	}
 	
+	/**
+	 * 
+	 * Metodos para manipulção dos IDs da entidade Curso
+	 * 
+	 */
+	public Long getIdCurso(){
+		return this.curso.getIdCurso();
+	}
+	public void setIdCurso(Long idCurso){
+		this.curso.setIdCurso(idCurso);
+	}
 	public Professor() {
 		this.disciplinas = new ArrayList<Disciplina>();
 	}
