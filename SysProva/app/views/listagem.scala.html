@@ -1,4 +1,4 @@
-@(list: List[Disciplina])
+
 
 @main("Listagem"){
 
@@ -16,31 +16,28 @@
 <!-- ================================================-->
 
 <div class="btn-group btn-group-justified">
+	@for(curso <- Curso.find.findList()){		
 	  <div class="btn-group">
-	    	<select name="" class="form-control">
-	    		<option value=""></option>	    		
-	    	</select>
+	  <dl>
+	  	<dt>@curso.getNome()</dt>
+	  	<dd>
+	  	
+	  		@for(turma <- Turma.find.where().eq("curso_id_curso", curso.getIdCurso).findList()){
+			
+			@if(Prova.findByIdProva(turma.getIdTurma()) != null){
+			<a href="@routes.QuestaoCrud.parseId(Prova.findByIdProva(turma.getIdTurma()))">
+			@turma.getNome()			
+			</a><br>
+	    	}
+	    	}
+	    
+	    </dd>
+	  </dl>
+	    	
 	  </div>
-	  <div class="btn-group">
-	    	 <select name="" class="form-control">
-	    		<option value=""></option>	    		
-	    	</select>
-	  </div>
-	  <div class="btn-group">
-	   		<select name="" class="form-control">
-	    		<option value=""></option>	    		
-	    	</select>
-	  </div>
-	   <div class="btn-group">
-	    	<select name="" class="form-control">
-	    		<option value=""></option>	    		
-	    	</select>
-	  </div>
-	   <div class="btn-group">
-	    	<select name="" class="form-control">
-	    		<option value=""></option>	    		
-	    	</select>
-	  </div>  
+	  }
+	  
+	  
 
 </div>
 

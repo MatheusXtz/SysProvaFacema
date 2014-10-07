@@ -80,4 +80,21 @@ public class Prova extends Model {
 	public void setIdTurma(Long idTurma){
 		this.turma.setIdTurma(idTurma);
 	}
+	
+	/**
+	 * 
+	 * Metodo para recuperar o ID da ultima Prova de uma determinada
+	 * prova de uma Turma 
+	 * 
+	 */
+	public static Long findByIdProva(Long idProva){
+		List<Prova> lProva = Prova.find.where().eq("turma_id_turma", idProva).findList();
+		
+		if(lProva.size() > 0 ){
+		Long id = lProva.get(lProva.size() - 1).getIdProva();
+		return id;
+		}
+	
+		return null;
+	}
 }
