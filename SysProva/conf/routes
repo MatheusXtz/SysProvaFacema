@@ -32,8 +32,8 @@ POST	/disciplina/:id/remover		controllers.DisciplinaCrud.removerDisciplina(id:Lo
 
 GET		/listagem					controllers.QuestaoCrud.listagem()
 POST	/listagem		        	controllers.QuestaoCrud.gravarQuestao()
-GET		/listagem/:id				controllers.QuestaoCrud.parseId(id:Long)
-GET		/listagem/:id				controllers.QuestaoCrud.teste(id:Long)
+GET		/listagem/:idD/:idP				controllers.QuestaoCrud.parseId(idD:Long, idP: Long)
+
 
 GET		/usuario					controllers.UsuarioCrud.listarUsuario()
 POST    /usuario					controllers.UsuarioCrud.gravarUsuario()

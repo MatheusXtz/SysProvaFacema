@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Curso;
+import models.Disciplina;
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;

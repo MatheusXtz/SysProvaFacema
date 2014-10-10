@@ -1,4 +1,4 @@
-@(idDiscip: Long)
+@(idDiscip: Long,idProva: Long)
 @main("Elaboração das Questões"){
 	
 	
@@ -47,8 +47,10 @@
 	<dd><input type="text"  name="alter05" id="alter05"></dd>
 	</dl>
 
-	<input type="text"  name="idDiscip" value="@idDiscip" hidden> 
-	<input type="text" name="idProva" value=""hidden>
+
+	<input type="text" name="idDiscip" value="@idDiscip"hidden>
+
+	<input type="text" name="idProva" value="@idProva"hidden>
 	
 	<div class="control-group">
 		  <label class="control-label" for="singlebutton"></label>

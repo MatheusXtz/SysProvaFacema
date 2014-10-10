@@ -21,7 +21,7 @@ public class DisciplinaCrud extends Controller {
 		List<Professor> professor = Professor.find.findList();
 		List<Disciplina> disciplina = Disciplina.find.findList();
 		List<Turma> turmas = Turma.find.findList();
-		
+
 		return ok(views.html.disciplina.render(professor, turmas, disciplina));
 
 	}
@@ -39,11 +39,10 @@ public class DisciplinaCrud extends Controller {
 		disciplina.setIdProfessor(Long.parseLong(idProf));
 		disciplina.setIdTurma(Long.parseLong(idTurma));
 		disciplina.save();
-		
+
 		List<Object> d = Disciplina.find.findIds();
-		Long idDisciplina = (Long)d.get(d.size()-1);
-		System.out.println(idDisciplina);
-		
+		Long idDisciplina = (Long) d.get(d.size() - 1);
+
 		SearchDiscProf auxDiscProf = new SearchDiscProf();
 
 		auxDiscProf.setIdDisciplina(idDisciplina);
@@ -57,7 +56,7 @@ public class DisciplinaCrud extends Controller {
 			auxDiscProf.setPeriodo(LocalDate.now().getYear() + ".1");
 		} else {
 			auxDiscProf.setPeriodo(LocalDate.now().getYear() + ".2");
-		}		
+		}
 		auxDiscProf.save();
 
 		flash("sucesso", "Dados Gravados com Sucesso");
@@ -72,7 +71,8 @@ public class DisciplinaCrud extends Controller {
 		List<Professor> professor = Professor.find.findList();
 		List<Turma> turmas = Turma.find.findList();
 
-		return ok(views.html.alterarDisciplina.render(id, formD, professor, turmas));
+		return ok(views.html.alterarDisciplina.render(id, formD, professor,
+				turmas));
 	}
 
 	public static Result alterarDisciplina(Long id) {
@@ -82,12 +82,12 @@ public class DisciplinaCrud extends Controller {
 		List<Turma> turmas = Turma.find.findList();
 		Form<Disciplina> alterForm = Form.form(Disciplina.class)
 				.bindFromRequest();
-		
+
 		if (alterForm.hasErrors()) {
 			return badRequest(views.html.alterarDisciplina.render(id,
 					alterForm, professor, turmas));
 		}
-		
+
 		String idProf = Form.form().bindFromRequest().get("idProf");
 		alterForm.get().setIdProfessor(Long.parseLong(idProf));
 		alterForm.get().update(id);

@@ -67,19 +67,20 @@ public class Disciplina extends Model {
 	public void setCargaHoraria(int cargaHoraria) {
 		this.cargaHoraria = cargaHoraria;
 	}
-	
+
 	/**
 	 * 
 	 * Metodos para manipulção dos IDs da entidade Professor
 	 * 
 	 */
-	public long getIdProfessor(){
+	public long getIdProfessor() {
 		return professor.getIdProf();
 	}
-	
-	public void setIdProfessor(long idProf){
+
+	public void setIdProfessor(long idProf) {
 		this.professor.setIdProf(idProf);
 	}
+
 	/**
 	 * 
 	 * Metodos para manipulção dos IDs da entidade Turma
@@ -90,7 +91,33 @@ public class Disciplina extends Model {
 	}
 
 	public void setIdTurma(Long idTurma) {
-		this.turma.setIdTurma(idTurma);;
+		this.turma.setIdTurma(idTurma);
+		;
+	}
+
+	/**
+	 * 
+	 * Metodo respnsavel por recuperar um objeto do tipo Disciplina.
+	 * 
+	 */
+	public static Disciplina byIdDisciplina(Long idProva, Long idProf) {
+		Prova prova = Prova.find.byId(idProva);// o ID é o que estará na questão
+		
+		Turma turma = Turma.find.byId(prova.getIdTurma());// o ID é o que estará na prova;
+		
+		Professor prof = Professor.find.byId(idProf);
+
+		List<Disciplina> disciplinas = Disciplina.find.where()
+				.eq("turma_id_turma", turma.getIdTurma()).findList();
+		
+		for (Disciplina d : disciplinas) {			
+			if (prof.getIdProf().compareTo(d.getIdProfessor()) == 0) {
+				
+				 return d;
+			}
+		}
+		return null;
+
 	}
 
 	public Disciplina() {

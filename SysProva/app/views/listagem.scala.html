@@ -3,42 +3,94 @@
 @main("Listagem"){
 
 <div class="container">
-	<div class="header">
+    <div class="header">
         <ul class="nav nav-pills pull-right">
-	          <li class="active">
-	          <a href="/">Home</a>
-	          </li>
-	    </ul>
-     </div>
-</div>
-      
-
+          <li class="active"><a href="/">Home</a></li>
+        </ul>
+      </div>
 <!-- ================================================-->
 
-<div class="btn-group btn-group-justified">
-	@for(curso <- Curso.find.findList()){		
-	  <div class="btn-group">
-	  <dl>
-	  	<dt>@curso.getNome()</dt>
-	  	<dd>
+<legend>Turmas</legend>
+  
+  
+
+	@for(curso <- Curso.find.findList()){
+	
+	  <div class="panel panel-default">
+	  
+	  	<div class="panel-heading"><h4>@curso.getNome()</h4></div>
+	  	<div class="panel-body">
+	  	
 	  	
 	  		@for(turma <- Turma.find.where().eq("curso_id_curso", curso.getIdCurso).findList()){
-			
+		
 			@if(Prova.findByIdProva(turma.getIdTurma()) != null){
-			<a href="@routes.QuestaoCrud.parseId(Prova.findByIdProva(turma.getIdTurma()))">
-			@turma.getNome()			
-			</a><br>
-	    	}
-	    	}
-	    
-	    </dd>
-	  </dl>
-	    	
-	  </div>
-	  }
-	  
-	  
+			
+			<div class="btn-group">
+			  <button type="button" class="btn btn-danger"> @turma.getNome()</button>
+			<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+				</button>
+				<ul class="dropdown-menu" role="menu">
+				@for(d <- Disciplina.find.where().eq("turma_id_turma", turma.getIdTurma()).findList()){
+					<li ><a href="@routes.QuestaoCrud.parseId(d.getIdDisciplina(),Prova.findByIdProva(turma.getIdTurma()))">@d.getNome()
+					</a></li>
+    
 
+					}
+				</ul>
+			
+			 </div>
+	    	}
+
+	    	}
+	   
+	    
+	    </div>
+	  
+	    	
+	  </div>  
+	  
+	  }
+
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+
+
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
+</div>
+
+
+<div class="btn-group">
+  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+    Action <span class="caret"></span>
+  </button>
+  <ul class="dropdown-menu" role="menu">
+    <li><a href="#">Action</a></li>
+    <li><a href="#">Another action</a></li>
+    <li><a href="#">Something else here</a></li>
+    <li class="divider"></li>
+    <li><a href="#">Separated link</a></li>
+  </ul>
 </div>
 
 

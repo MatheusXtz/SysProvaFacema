@@ -87,8 +87,8 @@ public class Prova extends Model {
 	 * prova de uma Turma 
 	 * 
 	 */
-	public static Long findByIdProva(Long idProva){
-		List<Prova> lProva = Prova.find.where().eq("turma_id_turma", idProva).findList();
+	public static Long findByIdProva(Long idTurma){
+		List<Prova> lProva = Prova.find.where().eq("turma_id_turma", idTurma).findList();
 		
 		if(lProva.size() > 0 ){
 		Long id = lProva.get(lProva.size() - 1).getIdProva();
