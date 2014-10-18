@@ -14,6 +14,7 @@ public class CursoCrud extends Controller {
 
 	// Listar os cursos
 	public static Result listaCurso() {
+       ProvaCrud.gerarProva();
 		List<Curso> cursos = Curso.find.findList();
 		return ok(views.html.curso.render(cursos));
 	}
