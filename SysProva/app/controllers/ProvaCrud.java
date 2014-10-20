@@ -35,11 +35,13 @@ public class ProvaCrud extends Controller{
 		
 		
 		for (Turma turma : turmas) {
+			if(turma != null){
 			Prova prova = new Prova();			
 			prova.setDataInicial(dInicio);
 			prova.setDataFinal(dFinal);
 			prova.setIdTurma(turma.getIdTurma());
 			prova.save();
+			}
 			
 		}	
 

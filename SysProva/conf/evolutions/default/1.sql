@@ -59,6 +59,8 @@ create table questao (
   disciplina_id_disciplina  bigint,
   prova_id_prova            bigint,
   periodo                   varchar(255),
+  aval_coord                tinyint(1) default 0,
+  aval_nucleo               tinyint(1) default 0,
   constraint pk_questao primary key (id_questao))
 ;
 
@@ -74,7 +76,7 @@ create table status_prova (
   id_status_prova           bigint auto_increment not null,
   descricao                 varchar(255),
   data                      datetime,
-  prova_id_prova            bigint,
+  questao_id_questao        bigint,
   usuario_id_usuario        bigint,
   constraint pk_status_prova primary key (id_status_prova))
 ;
@@ -112,8 +114,8 @@ alter table search_disc_prof add constraint fk_search_disc_prof_disciplina_8 for
 create index ix_search_disc_prof_disciplina_8 on search_disc_prof (disciplina_id_disciplina);
 alter table search_disc_prof add constraint fk_search_disc_prof_professor_9 foreign key (professor_id_prof) references professor (id_prof) on delete restrict on update restrict;
 create index ix_search_disc_prof_professor_9 on search_disc_prof (professor_id_prof);
-alter table status_prova add constraint fk_status_prova_prova_10 foreign key (prova_id_prova) references prova (id_prova) on delete restrict on update restrict;
-create index ix_status_prova_prova_10 on status_prova (prova_id_prova);
+alter table status_prova add constraint fk_status_prova_questao_10 foreign key (questao_id_questao) references questao (id_questao) on delete restrict on update restrict;
+create index ix_status_prova_questao_10 on status_prova (questao_id_questao);
 alter table status_prova add constraint fk_status_prova_usuario_11 foreign key (usuario_id_usuario) references usuario (id_usuario) on delete restrict on update restrict;
 create index ix_status_prova_usuario_11 on status_prova (usuario_id_usuario);
 alter table turma add constraint fk_turma_curso_12 foreign key (curso_id_curso) references curso (id_curso) on delete restrict on update restrict;
