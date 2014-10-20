@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,13 +21,14 @@ public class StatusProva extends Model {
 	
 	private String descricao;
 	
-	private String local;
-	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar data;
 	
 	@ManyToOne
-	private Prova prova;
+	private Questao questao;
+	
+    @OneToOne
+	private Usuario usuario;
 	
 
 	private static Model.Finder<Long, StatusProva> find = new Model.Finder<Long, StatusProva>(
@@ -51,14 +53,6 @@ public class StatusProva extends Model {
 		this.descricao = descricao;
 	}
 
-	public String getLocal() {
-		return local;
-	}
-
-	public void setLocal(String local) {
-		this.local = local;
-	}
-
 	public Calendar getData() {
 		return data;
 	}
@@ -67,12 +61,12 @@ public class StatusProva extends Model {
 		this.data = data;
 	}
 
-	public Prova getProva() {
-		return prova;
+	public Questao getProva() {
+		return questao;
 	}
 
-	public void setProva(Prova prova) {
-		this.prova = prova;
+	public void setProva(Questao questao) {
+		this.questao = questao;
 	}
 	
 	

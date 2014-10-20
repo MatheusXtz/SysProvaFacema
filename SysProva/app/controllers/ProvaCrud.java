@@ -78,12 +78,21 @@ public class ProvaCrud extends Controller{
 				}
 			}
 		}
-		
-		
 		int cont=0;
 		ArrayList<QuestAlterAux> prova = new ArrayList<QuestAlterAux>();
 		for (int i = 0; i < lista.size(); i++) {
-			if (lista.get(i).getNomeTurma().equals("Bloco 3-ADS")) {
+			 if (lista.get(i).getNomeTurma().equals("Bloco 1-ADS")) {
+				System.out.println(lista.get(i).getNomeTurma());
+				System.out.println(lista.get(i).getNomeDisci());
+				System.out.println(lista.get(i).getEnunciado());
+				System.out.println(lista.get(i).getAlter01());
+				System.out.println(lista.get(i).getAlter02());
+				System.out.println(lista.get(i).getAlter03());
+				System.out.println(lista.get(i).getAlter04());
+				System.out.println(lista.get(i).getAlter05());
+				System.out.println("_________________________________");
+			}
+		else if (lista.get(i).getNomeTurma().equals("Bloco 3-ADS")) {
 				QuestAlterAux q = new QuestAlterAux();
 				q.setEnunciado(lista.get(i).getEnunciado());
 				q.setAlter01(lista.get(i).getAlter01());
@@ -93,8 +102,6 @@ public class ProvaCrud extends Controller{
 				q.setAlter05(lista.get(i).getAlter05());
 				prova.add(q);
 			
-				
-
 				System.out.println(lista.get(i).getNomeTurma());
 				System.out.println(lista.get(i).getNomeDisci());
 				System.out.println(lista.get(i).getEnunciado());
@@ -115,9 +122,7 @@ public class ProvaCrud extends Controller{
 				q.setAlter05(lista.get(i).getAlter05());
 			
 				prova.add(q);
-			
 				
-
 				System.out.println(lista.get(i).getNomeTurma());
 				System.out.println(lista.get(i).getNomeDisci());
 				System.out.println(lista.get(i).getEnunciado());
@@ -127,6 +132,17 @@ public class ProvaCrud extends Controller{
 				System.out.println(lista.get(i).getAlter04());
 				 System.out.println(lista.get(i).getAlter05());
 				 System.out.println("_________________________________");
+			}
+			else if (lista.get(i).getNomeTurma().equals("Bloco 4-ADS")) {
+				System.out.println(lista.get(i).getNomeTurma());
+				System.out.println(lista.get(i).getNomeDisci());
+				System.out.println(lista.get(i).getEnunciado());
+				System.out.println(lista.get(i).getAlter01());
+				System.out.println(lista.get(i).getAlter02());
+				System.out.println(lista.get(i).getAlter03());
+				System.out.println(lista.get(i).getAlter04());
+				System.out.println(lista.get(i).getAlter05());
+				System.out.println("_________________________________");
 			}
 			else if (lista.get(i).getNomeTurma().equals("Bloco 1-Fisioterapia")) {
 				System.out.println(lista.get(i).getNomeTurma());

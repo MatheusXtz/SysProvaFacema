@@ -23,6 +23,22 @@ public class Questao extends Model {
 	@GeneratedValue
 	private Long idQuestao;
 	
+	public boolean isAvalCoord() {
+		return avalCoord;
+	}
+
+	public void setAvalCoord(boolean avalCoord) {
+		this.avalCoord = avalCoord;
+	}
+
+	public boolean isAvalNucleo() {
+		return avalNucleo;
+	}
+
+	public void setAvalNucleo(boolean avalNucleo) {
+		this.avalNucleo = avalNucleo;
+	}
+
 	private String enunciado;	
 	
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "questao")
@@ -34,6 +50,9 @@ public class Questao extends Model {
 	private Prova prova = new Prova();
 	
 	private String periodo;
+	
+	private boolean avalCoord;
+	private boolean avalNucleo;
 	
 	public static Model.Finder<Long, Questao> find = new Model.Finder<Long, Questao>(
 			Long.class, Questao.class);
