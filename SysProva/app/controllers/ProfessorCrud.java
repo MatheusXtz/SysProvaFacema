@@ -30,8 +30,10 @@ public class ProfessorCrud extends Controller {
 			return ok(views.html.professor.render(prof, cursos));
 		}
 		String idCurso = Form.form().bindFromRequest().get("idCurso");
+		String tipo = Form.form().bindFromRequest().get("tipo");
 		Professor professor = form.get();
 		professor.setIdCurso(Long.parseLong(idCurso));
+		professor.setTipoProfe(tipo);
 		professor.save();
 		flash("sucesso", "Professor Inserido com sucesso!");
 		return redirect(routes.ProfessorCrud.listarProfessor());

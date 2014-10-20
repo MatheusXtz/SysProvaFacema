@@ -32,12 +32,14 @@ public class Professor extends Model {
 
 	@Column(unique = false, nullable = false)
 	private Integer cpf;
-
+    private String tipoProfe;
+	
 	private String email;
 	@Column(nullable = false)
 	private Integer matricula;
 	@Column(nullable = false)
 	private String senha;
+	
 
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor")
@@ -53,6 +55,14 @@ public class Professor extends Model {
 	/**
 	 * Gets e Sets
 	 */
+	public String getTipoProfe() {
+		return tipoProfe;
+	}
+
+	public void setTipoProfe(String tipoProfe) {
+		this.tipoProfe = tipoProfe;
+	}
+	
 	public List<Disciplina> getDisciplinas() {
 		return disciplinas;
 	}
