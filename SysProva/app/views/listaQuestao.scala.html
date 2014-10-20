@@ -1,0 +1,82 @@
+@(idDiscip: Long)
+@main("Avaliação das Questões"){
+
+<div class="container">
+    <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="/">Home</a></li>
+        </ul>
+     </div>
+
+     <legend>Avaliação das Questões</legend>
+
+     <div class="row">
+     	<div class="col-md-5">
+     		<dl>
+	
+	<dt><label for="enunciado">Enunciado da Questão:</label></dt>
+	<dd><textarea name="enunciado" id="enunciado" cols="50" rows="5"  disabled="true"></textarea></dd>
+	</dl>	
+
+	<dl>
+	<dt><label for="alter01">Alternativa 01 - Correta</label></dt>
+	<dd><input type="text"  name="alter01" id="alter01" value="" disabled="true"></dd>
+	</dl>
+
+
+	<dl>
+	<dt><label for="alter02">Alternativa 02</label></dt>
+	<dd><input type="text"  name="alter02" id="alter02" value="" disabled="true"></dd>
+	</dl>
+
+
+	<dl>
+	<dt><label for="alter03">Alternativa 03</label></dt>
+	<dd><input type="text"  name="alter03" id="alter03" value="" disabled="true"></dd>
+	</dl>
+
+
+	<dl>
+	<dt><label for="alter04">Alternativa 04</label></dt>
+	<dd><input type="text"  name="alter04" id="alter04" value="" disabled="true"></dd>
+	</dl>
+
+
+	<dl>
+	<dt><label for="alter05">Alternativa 05</label></dt>
+	<dd><input type="text"  name="alter05" id="alter05" value="" disabled="true"></dd>
+	</dl>
+
+	<dl>
+	<dt><label for="">Observações:</label></dt>
+	<dd><textarea name="" id="" cols="50" rows="5"></textarea></dd>
+	</dl>
+
+
+		
+	<div class="control-group">
+		  <label class="control-label" for="singlebutton"></label>
+		  <div class="controls">
+		    <button  id="singlebutton" name="singlebutton" class="btn btn-primary">Gravar</button>
+		    <button  id="singlebutton" name="singlebutton" class="btn btn-primary">Proxima</button>
+		  </div>
+		</div>
+		
+     	</div>
+     	<div class="col-md-7">
+     	<legend>Detalhes</legend>
+			<dl>
+				<dt>Disciplina:</dt>
+				@Disciplina.find.byId(idDiscip).getNome()
+				<dt>Quantidade de Questões:</dt>
+				@Disciplina.find.byId(idDiscip).getQtdQuestao()
+				<dt>Professor:</dt>
+				@Professor.find.byId(Disciplina.find.byId(idDiscip).getIdProfessor()).getNome()
+				<dt>Questões Cadastradas:</dt>
+				@Questao.returnQtdQuestCadastrada(idDiscip)
+
+			</dl>
+     </div>
+</div>
+</div>
+}

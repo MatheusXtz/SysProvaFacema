@@ -100,6 +100,21 @@ public class Questao extends Model {
 	public void setPeriodo(String periodo) {
 		this.periodo = periodo;
 	}
+	
+	/**
+	 * 
+	 * Retorna a quantidade de questões já cadastradas por disciplinas
+	 * 
+	 */
+		public static int returnQtdQuestCadastrada(Long idDiscip) {
+			
+			int qtdQuestCadastrada = Questao.find.where()
+					.eq("disciplina_id_disciplina", idDiscip)
+					.findList().size();
+			
+					
+			return qtdQuestCadastrada;
+		}
 
 	public Questao() {
 		this.alternativas = new ArrayList<Alternativa>();

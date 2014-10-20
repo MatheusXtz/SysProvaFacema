@@ -13,7 +13,11 @@
 	<legend>Nova Questão</legend>
 
 	
+
+	<div class="row">
+		<div class="col-md-5">
 	<dl>
+	
 	<dt><label for="enunciado">Enunciado da Questão:</label></dt>
 	<dd><textarea name="enunciado" id="enunciado" cols="50" rows="5"></textarea></dd>
 	</dl>	
@@ -51,13 +55,41 @@
 	<input type="text" name="idDiscip" value="@idDiscip"hidden>
 
 	<input type="text" name="idProva" value="@idProva"hidden>
-	
+	@if(Questao.returnQtdQuestCadastrada(idDiscip) >= Disciplina.find.byId(idDiscip).getQtdQuestao()){
 	<div class="control-group">
 		  <label class="control-label" for="singlebutton"></label>
 		  <div class="controls">
-		    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Gravar</button>
+		    <button  id="singlebutton" name="singlebutton" class="btn btn-primary disabled">Gravar</button>
+		    <button  id="singlebutton" name="singlebutton" class="btn btn-primary">Enviar</button>
 		  </div>
 		</div>
+		}else{
+		<div class="control-group">
+		  <label class="control-label" for="singlebutton"></label>
+		  <div class="controls">
+		    <button  id="singlebutton" name="singlebutton" class="btn btn-primary">Gravar</button>
+		    <button  id="singlebutton" name="singlebutton" class="btn btn-primary disabled">Enviar</button>
+		  </div>
+		</div>
+		}
+		</div>
+
+		<div class="col-md-7">
+		<legend>Detalhes</legend>
+			<dl>
+				<dt>Disciplina:</dt>
+				@Disciplina.find.byId(idDiscip).getNome()
+				<dt>Quantidade de Questões:</dt>
+				@Disciplina.find.byId(idDiscip).getQtdQuestao()
+				<dt>Professor:</dt>
+				@Professor.find.byId(Disciplina.find.byId(idDiscip).getIdProfessor()).getNome()
+				<dt>Questões Cadastradas:</dt>
+				@Questao.returnQtdQuestCadastrada(idDiscip)
+
+			</dl>
+		</div>
+	</div>
 	}
+	
 	</div>
 }

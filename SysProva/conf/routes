@@ -46,6 +46,10 @@ GET		/autenticar				 	controllers.UsuarioCrud.autenticar()
 GET		/prova						controllers.ProvaCrud.prova()
 POST	/prova						controllers.ProvaCrud.gravarProva()
 
+GET		/avCoord					controllers.Avaliacao.avaliacaoCoord()
+GET		/avNucleo					controllers.Avaliacao.avaliacaoNU()
+GET		/avCoord/:idD				controllers.Avaliacao.avaliarQuestao(idD:Long)
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 

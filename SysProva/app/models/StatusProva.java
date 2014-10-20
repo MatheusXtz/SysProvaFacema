@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
@@ -20,7 +21,8 @@ public class StatusProva extends Model {
 	
 	private String descricao;
 	
-	private String local;
+	@OneToOne
+	private Usuario usuario;
 	
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar data;
@@ -51,13 +53,6 @@ public class StatusProva extends Model {
 		this.descricao = descricao;
 	}
 
-	public String getLocal() {
-		return local;
-	}
-
-	public void setLocal(String local) {
-		this.local = local;
-	}
 
 	public Calendar getData() {
 		return data;

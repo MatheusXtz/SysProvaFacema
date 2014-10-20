@@ -15,7 +15,7 @@
   
 
 	@for(curso <- Curso.find.findList()){
-	
+	<div class="row">
 	  <div class="panel panel-default">
 	  
 	  	<div class="panel-heading"><h4>@curso.getNome()</h4></div>
@@ -32,8 +32,12 @@
 				</button>
 				<ul class="dropdown-menu" role="menu">
 				@for(d <- Disciplina.find.where().eq("turma_id_turma", turma.getIdTurma()).findList()){
+				
+				
+					
 					<li ><a href="@routes.QuestaoCrud.parseId(d.getIdDisciplina(),Prova.findByIdProva(turma.getIdTurma()))">@d.getNome()
 					</a></li>
+					
     
 
 					}
@@ -49,49 +53,10 @@
 	  
 	    	
 	  </div>  
-	  
+	</div>
 	  }
 
-<div class="btn-group">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-    Action <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
-</div>
 
-
-<div class="btn-group">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-    Action <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
-</div>
-
-
-<div class="btn-group">
-  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-    Action <span class="caret"></span>
-  </button>
-  <ul class="dropdown-menu" role="menu">
-    <li><a href="#">Action</a></li>
-    <li><a href="#">Another action</a></li>
-    <li><a href="#">Something else here</a></li>
-    <li class="divider"></li>
-    <li><a href="#">Separated link</a></li>
-  </ul>
-</div>
 
 
 }
