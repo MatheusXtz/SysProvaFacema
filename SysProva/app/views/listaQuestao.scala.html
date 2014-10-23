@@ -1,4 +1,6 @@
-@(idDiscip: Long)
+@(idDiscip: Long, lista: List[Questao])
+
+
 @main("Avaliação das Questões"){
 
 <div class="container">
@@ -8,62 +10,78 @@
         </ul>
      </div>
 
-     <legend>Avaliação das Questões</legend>
+     <legend class="text-center">Avaliação das Questões</legend>
 
      <div class="row">
-     	<div class="col-md-5">
-     		<dl>
+     	
+	<div class="col-md-7">
+     	<legend>Questões</legend>
+     	@for(q <- 0 until lista.size()){
+			<button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>
+     	
+     
+
+     	<div class="modal fade" id="myModal@q" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <h4 class="modal-title" id="myModalLabel">QUESTÃO - @q</h4>
+      </div>
+      <div class="modal-body">
 	
-	<dt><label for="enunciado">Enunciado da Questão:</label></dt>
-	<dd><textarea name="enunciado" id="enunciado" cols="50" rows="5"  disabled="true"></textarea></dd>
-	</dl>	
+        <div class="form-group" draggable="true">
+              <label class="control-label" for="enunciado">Enunciado da Questão:</label>              
+              <textarea class="form-control" name="enunciado" id="enunciado" cols="50" rows="5"  disabled="true" value="">@lista.get(q).getEnunciado()</textarea>
+         </div>
 
-	<dl>
-	<dt><label for="alter01">Alternativa 01 - Correta</label></dt>
-	<dd><input type="text"  name="alter01" id="alter01" value="" disabled="true"></dd>
-	</dl>
+		@for(a <- Alternativa.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList()){
+         <div class="form-group" draggable="true">
+              <label class="control-label" for="alter01">Alternativa 01:</label>              
+              <input type="text" class="form-control" name="alter01" id="alter01" value="@a.getAlter01()" disabled="true">
+         </div>
+
+         <div class="form-group" draggable="true">
+              <label class="control-label" for="alter02">Alternativa 02:</label>              
+              <input type="text" class="form-control" name="alter02" id="alter02" value="@a.getAlter02()" disabled="true">
+         </div>
+
+         <div class="form-group" draggable="true">
+              <label class="control-label" for="alter03">Alternativa 03:</label>              
+              <input type="text" class="form-control" name="alter03" id="alter03" value="@a.getAlter03()" disabled="true">
+         </div>
+
+         <div class="form-group" draggable="true">
+              <label class="control-label" for="alter04">Alternativa 04:</label>              
+              <input type="text" class="form-control" name="alter04" id="alter04" value="@a.getAlter04()" disabled="true">
+         </div>
+
+         <div class="form-group" draggable="true">
+              <label class="control-label" for="alter05">Alternativa 05:</label>              
+              <input type="text" class="form-control" name="alter05" id="alter05" value="@a.getAlter05()" disabled="true">
+         </div>
+         }
+
+         <div class="form-group" draggable="true">
+              <label class="control-label" for="obs">Obsevações:</label>              
+              <textarea class="form-control" name="enunciado" id="enunciado" cols="50" rows="5" ></textarea>
+         </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
+        <button type="button" class="btn btn-primary">Salvar</button>
+      </div>
+    </div>
+  </div>
+</div>   	
+}
+</div>
 
 
-	<dl>
-	<dt><label for="alter02">Alternativa 02</label></dt>
-	<dd><input type="text"  name="alter02" id="alter02" value="" disabled="true"></dd>
-	</dl>
-
-
-	<dl>
-	<dt><label for="alter03">Alternativa 03</label></dt>
-	<dd><input type="text"  name="alter03" id="alter03" value="" disabled="true"></dd>
-	</dl>
-
-
-	<dl>
-	<dt><label for="alter04">Alternativa 04</label></dt>
-	<dd><input type="text"  name="alter04" id="alter04" value="" disabled="true"></dd>
-	</dl>
-
-
-	<dl>
-	<dt><label for="alter05">Alternativa 05</label></dt>
-	<dd><input type="text"  name="alter05" id="alter05" value="" disabled="true"></dd>
-	</dl>
-
-	<dl>
-	<dt><label for="">Observações:</label></dt>
-	<dd><textarea name="" id="" cols="50" rows="5"></textarea></dd>
-	</dl>
-
-
+	
 		
-	<div class="control-group">
-		  <label class="control-label" for="singlebutton"></label>
-		  <div class="controls">
-		    <button  id="singlebutton" name="singlebutton" class="btn btn-primary">Gravar</button>
-		    <button  id="singlebutton" name="singlebutton" class="btn btn-primary">Proxima</button>
-		  </div>
-		</div>
-		
-     	</div>
-     	<div class="col-md-7">
+     	
+     	<div class="col-md-5">
      	<legend>Detalhes</legend>
 			<dl>
 				<dt>Disciplina:</dt>
@@ -78,5 +96,22 @@
 			</dl>
      </div>
 </div>
+
+     
+
+	
+
+
+<button class="btn btn-primary">
+  Retornar ao Profesor
+</button>
+
+<button class="btn btn-primary">
+  Prosseguir
+</button>
+
+
+
+
 </div>
 }

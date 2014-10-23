@@ -9,10 +9,11 @@
 		</ul>
 		<h1>Alterar Professor</h1>
 		@form(routes.UsuarioCrud.alterarUsuario(id)){
-		<fieldset>
+		
+			@inputText(userForm("nome"), '_label -> "Nome:")
 			@inputText(userForm("matricula"), '_label -> "Matricula:")
 			@inputPassword(userForm("senha"), '_label -> "Senha:")
-		</fieldset>
+		
         <div class="control-group">
 			<div class="actions">
 				<input type="submit" value="Gravar" class="btn btn-primary">

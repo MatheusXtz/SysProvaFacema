@@ -30,7 +30,7 @@ public class ProfessorCrud extends Controller {
 			return ok(views.html.professor.render(prof, cursos));
 		}
 		String idCurso = Form.form().bindFromRequest().get("idCurso");
-		String tipo = Form.form().bindFromRequest().get("tipo");
+		String tipo = Form.form().bindFromRequest().get("tipoProfe");
 		Professor professor = form.get();
 		professor.setIdCurso(Long.parseLong(idCurso));
 		professor.setTipoProfe(tipo);

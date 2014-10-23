@@ -34,21 +34,18 @@
 		  <dl>
 		  	<dt><label for="email">E-mail:</label></dt>
 		  	<dd><input type="text" id="email" name="email" placeholder=""></dd>
-		  </dl>
-
-		  <dl>
-		  	<dt><label for="senha">Senha:</label></dt>
-		  	<dd><input type="password" id="senha" name="senha" placeholder=""></dd>
 		  </dl>	
 
 		  <dl>
-		  <label>Tipo de Professor</label>
-		  <select name="tipo" id="tipo">
+		  <dt><label for="tipoProfe">Tipo de Professor:</label></dt>
+		  <dd><select name="tipoProfe" id="tipoProfe">
 		  	 
 		  	  <option value="Normal">Normal</option>
 		  	  <option value="Coordenador">Coordenador</option>
-		    </select>
+		    </select></dd>
+		   </dl>
 
+		   <dl>
 		  <dt><label for="idCurso">Cursos:</label></dt>
 		    <select name="idCurso" id="idCurso">
 		  	  @for(curso <- cursos){
@@ -82,7 +79,7 @@ cellpadding="0" cellspacing="0" border="0" width="100%">
 		<td>Matricula</td>
 		<td>CPF</td>
 		<td>E-mail</td>
-		<td>Senha</td>
+		
 		<td>Curso</td>
 		<td>Tipo</td>
 		<td>Remoção</td>
@@ -100,7 +97,6 @@ cellpadding="0" cellspacing="0" border="0" width="100%">
 <td>@prof.getMatricula()</td>
 <td>@prof.getCpf()</td>
 <td>@prof.getEmail()</td>
-<td>@prof.getSenha()</td>
 <td>@Curso.find.byId(prof.getIdCurso()).getNome()</td>
 <td>@prof.getTipoProfe()</td>
 <td>

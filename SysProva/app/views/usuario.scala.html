@@ -8,38 +8,41 @@
           <li class="active"><a href="/">Home</a></li>
         </ul>
       </div>
-      <div>
+      
       @helper.form(action=routes.UsuarioCrud.gravarUsuario()) {
-      <form class="form-horizontal">
-		<fieldset>
+      
+	
 
-		<legend>Novo Usuário</legend>
-
-		<div class="control-group">
-		  <div class="controls">
-		  	<p class="help-block">Informe os dados do usuário</p>
+		<legend>Novo Usuário</legend>		
 		    
-		    
-		    <label for="">Matricula:</label><br>
-		    <input type="text" name="matricula" id="matricula"><br><br>
+		    <dl>
+		    	<dt><label for="nome">Nome:</label>
+		    	</dt>
+		    	<dd><input type="text" name="nome" id="nome"></dd>
+		    </dl>
+		    <dl>
+		    	<dt> <label for="">Matricula:</label></dt>
+		    	<dd><input type="text" name="matricula" id="matricula"></dd>
+		    </dl>
+		   
+		    <dl>
+		    <dt><label for="">Senha:</label></dt>
+		    <dd><input type="password" name="senha" id="senha"></dd>
+		    </dl>
 
-		    <label for="">Senha:</label><br>
-		    <input type="password" name="senha" id="senha">
-
-		  </div>
-		</div>
-		}
+		  
+		
+		
 
 		<div class="control-group">
 		  <label class="control-label" for="singlebutton"></label>
 		  <div class="controls">
 		    <button id="singlebutton" name="singlebutton" class="btn btn-primary">Gravar</button>
-		    <br>
-		    <br>
+		    
 		  </div>
 		</div>
-
-      </div>
+}
+    
   </div>
 
 
@@ -50,6 +53,7 @@ cellpadding="0" cellspacing="0" border="0" width="100%">
 		  		<thead>
 		  			<tr>
 		  				<td>Código</td>
+		  				<td>Nome</td>
 		  				<td>Matricula</td>
 		  				<td>Senha</td>
 		  				<td>Remoção</td>
@@ -60,7 +64,9 @@ cellpadding="0" cellspacing="0" border="0" width="100%">
 		  		@for(user <- usuarios){
 		  			<tr>
 		  				<td><a href="@routes.UsuarioCrud.detalhar(user.getIdUsuario())">@user.getIdUsuario()</a></td>
+		  				<td>@user.getNome()</td>
 		  				<td>@user.getMatricula()</td>
+
 		  				<td>@user.getSenha()</td>
 		  				<td>
 		  					@helper.form(routes.UsuarioCrud.remover(user.getIdUsuario())){

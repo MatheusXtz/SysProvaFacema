@@ -14,36 +14,35 @@ import javax.persistence.TemporalType;
 import play.db.ebean.Model;
 
 @Entity
-public class StatusProva extends Model {
+public class Status extends Model {
 
 	@Id
 	@GeneratedValue
-	private Long idStatusProva;
+	private Long idStatus;
 	
 	private String descricao;
 	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Calendar data;
-	
-	@ManyToOne
-	private Questao questao;
-	
+
+	private String data;
+		
     @OneToOne
 	private Usuario usuario;
-	
+    
+    @ManyToOne
+  	private Questao questao;
 
-	private static Model.Finder<Long, StatusProva> find = new Model.Finder<Long, StatusProva>(
-			Long.class, StatusProva.class);
+	public static Model.Finder<Long, Status> find = new Model.Finder<Long, Status>(
+			Long.class, Status.class);
 
 	/**
 	 * Gets e Sets
 	 */
-	public Long getIdStatusProva() {
-		return idStatusProva;
+	public Long getIdStatus() {
+		return idStatus;
 	}
 
-	public void setIdStatusProva(Long idStatusProva) {
-		this.idStatusProva = idStatusProva;
+	public void setIdStatus(Long idStatus) {
+		this.idStatus = idStatus;
 	}
 
 	public String getDescricao() {
@@ -54,21 +53,15 @@ public class StatusProva extends Model {
 		this.descricao = descricao;
 	}
 
-	public Calendar getData() {
+	public String getData() {
 		return data;
 	}
 
-	public void setData(Calendar data) {
+	public void setData(String data) {
 		this.data = data;
 	}
 
-	public Questao getProva() {
-		return questao;
-	}
 
-	public void setProva(Questao questao) {
-		this.questao = questao;
-	}
 	
 	
 

@@ -15,47 +15,44 @@
 	
 
 	<div class="row">
-		<div class="col-md-5">
-	<dl>
-	
-	<dt><label for="enunciado">Enunciado da Questão:</label></dt>
-	<dd><textarea name="enunciado" id="enunciado" cols="50" rows="5"></textarea></dd>
-	</dl>	
+		<div class="col-md-7">
+	 <div class="form-group" draggable="true">
+              <label class="control-label" for="enunciado">Enunciado da Questão:</label>              
+              <textarea class="form-control" name="enunciado" id="enunciado" cols="50" rows="5"></textarea>
+         </div>
 
-	<dl>
-	<dt><label for="alter01">Alternativa 01 - Correta</label></dt>
-	<dd><input type="text"  name="alter01" id="alter01"></dd>
-	</dl>
+	<div class="form-group" draggable="true">
+              <label class="control-label" for="alter01">Alternativa 01:</label>              
+              <input type="text" class="form-control" name="alter01" id="alter01" >
+         </div>
 
+         <div class="form-group" draggable="true">
+              <label class="control-label" for="alter02">Alternativa 02:</label>              
+              <input type="text" class="form-control" name="alter02" id="alter02" >
+         </div>
 
-	<dl>
-	<dt><label for="alter02">Alternativa 02</label></dt>
-	<dd><input type="text"  name="alter02" id="alter02"></dd>
-	</dl>
+         <div class="form-group" draggable="true">
+              <label class="control-label" for="alter03">Alternativa 03:</label>              
+              <input type="text" class="form-control" name="alter03" id="alter03" >
+         </div>
 
+         <div class="form-group" draggable="true">
+              <label class="control-label" for="alter04">Alternativa 04:</label>              
+              <input type="text" class="form-control" name="alter04" id="alter04">
+         </div>
 
-	<dl>
-	<dt><label for="alter03">Alternativa 03</label></dt>
-	<dd><input type="text"  name="alter03" id="alter03"></dd>
-	</dl>
-
-
-	<dl>
-	<dt><label for="alter04">Alternativa 04</label></dt>
-	<dd><input type="text"  name="alter04" id="alter04"></dd>
-	</dl>
-
-
-	<dl>
-	<dt><label for="alter05">Alternativa 05</label></dt>
-	<dd><input type="text"  name="alter05" id="alter05"></dd>
-	</dl>
+         <div class="form-group" draggable="true">
+              <label class="control-label" for="alter05">Alternativa 05:</label>              
+              <input type="text" class="form-control" name="alter05" id="alter05" >
+         </div>
 
 
 	<input type="text" name="idDiscip" value="@idDiscip"hidden>
 
 	<input type="text" name="idProva" value="@idProva"hidden>
+
 	@if(Questao.returnQtdQuestCadastrada(idDiscip) >= Disciplina.find.byId(idDiscip).getQtdQuestao()){
+
 	<div class="control-group">
 		  <label class="control-label" for="singlebutton"></label>
 		  <div class="controls">
@@ -74,7 +71,7 @@
 		}
 		</div>
 
-		<div class="col-md-7">
+		<div class="col-md-5">
 		<legend>Detalhes</legend>
 			<dl>
 				<dt>Disciplina:</dt>

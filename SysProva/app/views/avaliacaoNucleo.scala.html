@@ -15,16 +15,19 @@
 				<div class="panel-body">
 					@for(turma <- Turma.find.where().eq("curso_id_curso", curso.getIdCurso).findList()){
 
+					@if(Prova.findByIdProva(turma.getIdTurma()) != null){
+
 				<div class="btn-group">
 					<button type="button" class="btn btn-danger"> @turma.getNome()</button>
 					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
 				</button>
 				<ul class="dropdown-menu" role="menu">
 				@for(d <- Disciplina.find.where().eq("turma_id_turma", turma.getIdTurma()).findList()){
-					<li><a href="">@d.getNome()</a></li>
+					<li><a href="@routes.Avaliacao.avaliarQuestao(d.getIdDisciplina)">@d.getNome()</a></li>
 				}
 				</ul>
 				</div>
+				}
 
 					}
 				</div>

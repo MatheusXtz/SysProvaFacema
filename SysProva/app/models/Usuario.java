@@ -13,6 +13,7 @@ public class Usuario extends Model {
 	@Id
 	@GeneratedValue
 	private Long idUsuario;
+	private String nome;
 	@Column(nullable = false)
 	private Integer matricula;
 	@Column(nullable = false)
@@ -24,8 +25,17 @@ public class Usuario extends Model {
 	/**
 	 * Gets e Sets
 	 */	
+	
 	public Long getIdUsuario() {
 		return idUsuario;
+	}
+
+	public String getNome() {
+		return nome;
+	}
+
+	public void setNome(String nome) {
+		this.nome = nome;
 	}
 
 	public void setIdUsuario(Long idUsuario) {

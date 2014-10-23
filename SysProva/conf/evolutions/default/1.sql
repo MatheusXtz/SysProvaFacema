@@ -14,6 +14,11 @@ create table alternativa (
   constraint pk_alternativa primary key (id_alternativa))
 ;
 
+create table colecao_status (
+  id_colecao_s              bigint auto_increment not null,
+  constraint pk_colecao_status primary key (id_colecao_s))
+;
+
 create table curso (
   id_curso                  bigint auto_increment not null,
   nome                      varchar(255),
@@ -40,7 +45,6 @@ create table professor (
   tipo_profe                varchar(255),
   email                     varchar(255),
   matricula                 integer not null,
-  senha                     varchar(255) not null,
   curso_id_curso            bigint,
   constraint pk_professor primary key (id_prof))
 ;
@@ -72,13 +76,13 @@ create table search_disc_prof (
   constraint pk_search_disc_prof primary key (id_search))
 ;
 
-create table status_prova (
-  id_status_prova           bigint auto_increment not null,
+create table status (
+  id_status                 bigint auto_increment not null,
   descricao                 varchar(255),
-  data                      datetime,
-  questao_id_questao        bigint,
+  data                      varchar(255),
   usuario_id_usuario        bigint,
-  constraint pk_status_prova primary key (id_status_prova))
+  questao_id_questao        bigint,
+  constraint pk_status primary key (id_status))
 ;
 
 create table turma (
@@ -91,6 +95,7 @@ create table turma (
 
 create table usuario (
   id_usuario                bigint auto_increment not null,
+  nome                      varchar(255),
   matricula                 integer not null,
   senha                     varchar(255) not null,
   constraint pk_usuario primary key (id_usuario))
@@ -114,10 +119,10 @@ alter table search_disc_prof add constraint fk_search_disc_prof_disciplina_8 for
 create index ix_search_disc_prof_disciplina_8 on search_disc_prof (disciplina_id_disciplina);
 alter table search_disc_prof add constraint fk_search_disc_prof_professor_9 foreign key (professor_id_prof) references professor (id_prof) on delete restrict on update restrict;
 create index ix_search_disc_prof_professor_9 on search_disc_prof (professor_id_prof);
-alter table status_prova add constraint fk_status_prova_questao_10 foreign key (questao_id_questao) references questao (id_questao) on delete restrict on update restrict;
-create index ix_status_prova_questao_10 on status_prova (questao_id_questao);
-alter table status_prova add constraint fk_status_prova_usuario_11 foreign key (usuario_id_usuario) references usuario (id_usuario) on delete restrict on update restrict;
-create index ix_status_prova_usuario_11 on status_prova (usuario_id_usuario);
+alter table status add constraint fk_status_usuario_10 foreign key (usuario_id_usuario) references usuario (id_usuario) on delete restrict on update restrict;
+create index ix_status_usuario_10 on status (usuario_id_usuario);
+alter table status add constraint fk_status_questao_11 foreign key (questao_id_questao) references questao (id_questao) on delete restrict on update restrict;
+create index ix_status_questao_11 on status (questao_id_questao);
 alter table turma add constraint fk_turma_curso_12 foreign key (curso_id_curso) references curso (id_curso) on delete restrict on update restrict;
 create index ix_turma_curso_12 on turma (curso_id_curso);
 
@@ -128,6 +133,8 @@ create index ix_turma_curso_12 on turma (curso_id_curso);
 SET FOREIGN_KEY_CHECKS=0;
 
 drop table alternativa;
+
+drop table colecao_status;
 
 drop table curso;
 
@@ -141,7 +148,7 @@ drop table questao;
 
 drop table search_disc_prof;
 
-drop table status_prova;
+drop table status;
 
 drop table turma;
 

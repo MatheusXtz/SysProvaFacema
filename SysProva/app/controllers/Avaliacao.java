@@ -1,5 +1,8 @@
 package controllers;
 
+import java.util.List;
+
+import models.Questao;
 import play.mvc.Controller;
 import play.mvc.Result;
 
@@ -14,6 +17,8 @@ public class Avaliacao extends Controller{
 	}
 	
 	public static Result avaliarQuestao(Long idDiscip){
-		return ok(views.html.listaQuestao.render(idDiscip));
+		
+		List<Questao> lista = Questao.find.where().eq("disciplina_id_disciplina", idDiscip).findList();
+		return ok(views.html.listaQuestao.render(idDiscip, lista));
 	}
 }

@@ -35,7 +35,7 @@ public class QuestaoCrud extends Controller {
 	public static Result gravarQuestao() {
 		Form<Questao> formQuestao = formQuest.bindFromRequest();
 		Form<Alternativa> formAlternativa = formAlter.bindFromRequest();
-
+	
 		String idDiscip = Form.form().bindFromRequest().get("idDiscip");
 		String idProva = Form.form().bindFromRequest().get("idProva");
 
