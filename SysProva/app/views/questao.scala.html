@@ -2,8 +2,6 @@
 @main("Elaboração das Questões"){
 	
 	
-@helper.form(action=routes.QuestaoCrud.gravarQuestao()){
-
 	<div class="container">
     <div class="header">
         <ul class="nav nav-pills pull-right">
@@ -17,6 +15,10 @@
 	<div class="row">
 		<div class="col-md-7">
 	 <div class="form-group" draggable="true">
+	 
+@helper.form(action=routes.QuestaoCrud.gravarQuestao()){
+
+	
               <label class="control-label" for="enunciado">Enunciado da Questão:</label>              
               <textarea class="form-control" name="enunciado" id="enunciado" cols="50" rows="5"></textarea>
          </div>

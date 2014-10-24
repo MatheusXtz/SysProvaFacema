@@ -1,4 +1,4 @@
-@(idDiscip: Long, lista: List[Questao])
+@(idDiscip: Long, lista: List[Questao], responsavel: String)
 
 
 @main("Avaliação das Questões"){
@@ -62,14 +62,20 @@
          </div>
          }
 
+
+		@helper.form(routes.Avaliacao.registroObservacao(lista.get(q).getIdQuestao())){
          <div class="form-group" draggable="true">
-              <label class="control-label" for="obs">Obsevações:</label>              
-              <textarea class="form-control" name="enunciado" id="enunciado" cols="50" rows="5" ></textarea>
+              <label class="control-label" for="descricao">Obsevações:</label>              
+              <textarea class="form-control" name="descricao" id="descricao" cols="50" rows="5" ></textarea>
+              <input type="text" hidden name="resp" value="@responsavel">
+              <input type="text" hidden name="idD" value="@idDiscip">
          </div>
       </div>
-      <div class="modal-footer">
+      <div class="modal-footer">  
+
+        <button type="submit" class="btn btn-primary">Salvar</button>
+        }
         <button type="button" class="btn btn-default" data-dismiss="modal">Fechar</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
       </div>
     </div>
   </div>
@@ -98,13 +104,6 @@
 </div>
 
      
-
-	
-
-
-<button class="btn btn-primary">
-  Retornar ao Profesor
-</button>
 
 <button class="btn btn-primary">
   Prosseguir

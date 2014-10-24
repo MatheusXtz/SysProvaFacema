@@ -48,6 +48,8 @@ public class QuestaoCrud extends Controller {
 		Questao questao = formQuestao.get();
 		questao.setIdDisciplina(Long.parseLong(idDiscip));
 		questao.setIdProva(Long.parseLong(idProva));
+		questao.setAvalCoord(true);
+		questao.setAvalNucleo(true);
 
 		int mes = LocalDate.now().getMonth().getValue();
 		if (mes <= 6) {
