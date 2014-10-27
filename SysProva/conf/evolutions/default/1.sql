@@ -42,8 +42,8 @@ create table observacao (
   id_obs                    bigint auto_increment not null,
   descricao                 varchar(255),
   questao_id_questao        bigint,
-  coord                     tinyint(1) default 0,
-  nucleo_a                  tinyint(1) default 0,
+  avaliador                 varchar(255),
+  questao_ok                tinyint(1) default 0,
   constraint pk_observacao primary key (id_obs))
 ;
 

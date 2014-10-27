@@ -10,16 +10,38 @@
         </ul>
      </div>
 
-     <legend class="text-center">Avaliação das Questões</legend>
+     <legend class="text-center">Avaliação das Questões - Coordenador</legend>
 
      <div class="row">
      	
 	<div class="col-md-7">
      	<legend>Questões</legend>
      	@for(q <- 0 until lista.size()){
-			<button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>
-     	
-     
+
+     		@if(Observacao.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList().size() > 0){
+
+	     		@for(obs <- Observacao.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList()){
+		     		
+		     		@if(responsavel.equals("co")){
+		     			@if(obs.getAvaliador().equals("coordenador")){
+		     				<button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-success">QUESTÃO - @q</button>		
+		     			}else{
+		     				<button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>	
+		     			}	     			
+
+		     		}else{
+		     			<button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>
+		     		
+		     		}
+
+		     		   			
+     			}
+     			
+				}else{
+				<button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>
+				}
+     			
+
 
      	<div class="modal fade" id="myModal@q" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -70,6 +92,7 @@
               <input type="text" hidden name="resp" value="@responsavel">
               <input type="text" hidden name="idD" value="@idDiscip">
          </div>
+         
       </div>
       <div class="modal-footer">  
 

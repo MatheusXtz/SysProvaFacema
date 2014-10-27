@@ -23,7 +23,7 @@
 				</button>
 				<ul class="dropdown-menu" role="menu">
 				@for(d <- Disciplina.find.where().eq("turma_id_turma", turma.getIdTurma()).findList()){
-					<li><a href='@routes.Avaliacao.avaliarQuestao(d.getIdDisciplina, "na")'>@d.getNome()</a></li>
+					<li><a href='@routes.Avaliacao.avaliarQuestaoNA(d.getIdDisciplina, "na")'>@d.getNome()</a></li>
 				}
 				</ul>
 				</div>

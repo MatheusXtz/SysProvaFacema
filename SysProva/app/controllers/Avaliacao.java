@@ -8,47 +8,65 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-public class Avaliacao extends Controller{
+public class Avaliacao extends Controller {
 
-	public static Result avaliacaoCoord(){
+	public static Result avaliacaoCoord() {
 		return ok(views.html.avaliacaoCoord.render());
 	}
-	
-	public static Result avaliacaoNU(){
+
+	public static Result avaliacaoNU() {
 		return ok(views.html.avaliacaoNucleo.render());
 	}
-	
-	public static Result avaliarQuestao(Long idDiscip, String responsavel){
-		
-		List<Questao> lista = Questao.find.where().eq("disciplina_id_disciplina", idDiscip).findList();
-		return ok(views.html.listaQuestao.render(idDiscip, lista, responsavel));
+
+	public static Result avaliarQuestaoCoord(Long idDiscip, String responsavel) {
+
+		List<Questao> lista = Questao.find.where()
+				.eq("disciplina_id_disciplina", idDiscip).findList();
+		return ok(views.html.listaQuestaoCoord.render(idDiscip, lista, responsavel));
 	}
-	
-	public static Result registroObservacao(Long idQuestao){
-		
-		Observacao obs = new  Observacao();
-		
+
+	public static Result avaliarQuestaoNA(Long idDiscip, String responsavel) {
+
+		List<Questao> lista = Questao.find.where()
+				.eq("disciplina_id_disciplina", idDiscip).findList();
+		return ok(views.html.listaQuestaoNA.render(idDiscip, lista, responsavel));
+	}
+
+	public static Result registroObservacao(Long idQuestao) {
+
+		Observacao obs = new Observacao();
+
 		String responsavel = Form.form().bindFromRequest().get("resp");
-		String idD = Form.form().bindFromRequest().get("resp");
+		String idD = Form.form().bindFromRequest().get("idD");
 		String descricao = Form.form().bindFromRequest().get("descricao");
-		
+
 		obs.setIdQuestao(idQuestao);
-		obs.setDescricao(descricao);
 		
-		if(responsavel.equals("co")){
-			obs.setCoord(true);
+		System.out.println("Descrição - > "+descricao);
+		
+		if(descricao.equals("")){
+			obs.setDescricao("QUESTÃO OK!");
+			obs.setQuestaoOk(true);
 		}else{
-			obs.setCoord(false);
-		}
-		if(responsavel.equals("nu")){
-			obs.setNucleoA(true);
-		}else{
-			obs.setNucleoA(false);
+			obs.setDescricao(descricao);
+			obs.setQuestaoOk(false);			
 		}
 		
+		if (responsavel.equals("co")) {
+			obs.setAvaliador("coordenador");
+		} else if (responsavel.equals("na")) {
+			obs.setAvaliador("nucleo");
+		}
+
 		obs.save();
-		
-		
-		return redirect(routes.Avaliacao.avaliarQuestao(Long.parseLong(idD), responsavel));
+
+		if (responsavel.equals("co")) {
+
+			return redirect(routes.Avaliacao.avaliarQuestaoCoord(
+					Long.parseLong(idD), responsavel));
+		} else {
+			return redirect(routes.Avaliacao.avaliarQuestaoNA(
+					Long.parseLong(idD), responsavel));
+		}
 	}
 }

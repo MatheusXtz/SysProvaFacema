@@ -48,8 +48,10 @@ POST	/prova						controllers.ProvaCrud.gravarProva()
 
 GET		/avCoord					controllers.Avaliacao.avaliacaoCoord()
 GET		/avNucleo					controllers.Avaliacao.avaliacaoNU()
-GET		/avCoord/:idD/:resp				controllers.Avaliacao.avaliarQuestao(idD:Long, resp:String)
+GET		/avCoord/:idD/:resp			controllers.Avaliacao.avaliarQuestaoCoord(idD:Long, resp:String)
+GET		/avNucleo/:idD/:resp		controllers.Avaliacao.avaliarQuestaoNA(idD:Long, resp:String)
 POST	/avCoord/:idQ				controllers.Avaliacao.registroObservacao(idQ:Long)
+POST	/avNucleo/:idQ				controllers.Avaliacao.registroObservacao(idQ:Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
