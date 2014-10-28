@@ -1,13 +1,12 @@
-
 @main("Gerar prova"){
 	
 	<div class="header">
-        <ul class="nav nav-pills pull-right">
+        <ul class="nav nav-pills pull-left">
           <li class="active"><a href="/">Home</a></li>
         </ul>
       </div>
-      
-@helper.form(action=routes.ProvaCrud.gerarProva()){
+    
+@helper.form(action=routes.ProvaCrud.prova()){
 		  				<input type="submit" value="Gerar Prova" class="btn btn-primary btn-block">
 
 }
