@@ -45,6 +45,8 @@ GET		/autenticar				 	controllers.UsuarioCrud.autenticar()
 
 GET		/prova						controllers.ProvaCrud.prova()
 POST	/prova						controllers.ProvaCrud.gravarProva()
+GET  	/gerar						controllers.ProvaCrud.gerar()
+GET  	/gerar/prova		        controllers.ProvaCrud.gerarProva()
 
 GET		/avCoord					controllers.Avaliacao.avaliacaoCoord()
 GET		/avNucleo					controllers.Avaliacao.avaliacaoNU()

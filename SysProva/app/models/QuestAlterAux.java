@@ -10,6 +10,7 @@ public class QuestAlterAux {
 	public String alter05;
 	public String nomeTurma;
 	public String nomeDisci;
+	
 	public String getEnunciado() {
 		return enunciado;
 	}
