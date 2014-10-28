@@ -25,6 +25,7 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
+
 public class ProvaCrud extends Controller {
 
 	public static Result prova() {
@@ -35,7 +36,10 @@ public class ProvaCrud extends Controller {
 	public static Result gerar() {
 		return ok(views.html.gerarProva.render());
 	}
-
+    
+	public static Result listarTurmas() {
+		return ok(views.html.listaTurmas.render());
+	}
 	public static Result gravarProva() {
 
 		List<Turma> turmas = Turma.find.findList();
@@ -58,6 +62,7 @@ public class ProvaCrud extends Controller {
 		return ok(views.html.prova.render(provas));
 	}
 	
+
 
 	public static Result gerarProva() throws JRException {
 		List<QuestAlterAux> lista = new ArrayList<QuestAlterAux>();
@@ -169,12 +174,34 @@ public class ProvaCrud extends Controller {
 				System.out.println("_________________________________");
 			}
 
-		}
-		gerarPdf(prova);
-		flash("sucesso", "Prova do "+ prova.get(0).getNomeTurma()+" gerada com sucesso");
-		return redirect(routes.ProvaCrud.gerar());
+=======
+	
+	public static Result organizarProva(Long idTurma) throws JRException{
+		List<QuestAlterAux>prova= new ArrayList<QuestAlterAux>();
+	    Long idProva=Prova.findByIdProva(idTurma);
+	    List<Questao>enunciado=Questao.find.where().eq("prova_id_prova", idProva).findList();
+	    
+	   for (Questao questao : enunciado) {
+		for (Alternativa alter : Alternativa.find.where()
+				.eq("questao_id_questao", questao.getIdQuestao())
+				.findList()){
+			  QuestAlterAux q= new QuestAlterAux();
+			  q.setEnunciado(questao.getEnunciado());
+			  q.setAlter01(alter.getAlter01());
+			  q.setAlter02(alter.getAlter02());
+			  q.setAlter03(alter.getAlter03());
+			  q.setAlter04(alter.getAlter04());
+			  q.setAlter05(alter.getAlter05());
+			  q.setNomeDisci("AAAA");
+			  prova.add(q);
+			  
 
+		}
 	}
+      gerarPdf(prova);
+      return ok(views.html.gerarProva.render());
+	}
+	
 
 	public static void gerarPdf(List<QuestAlterAux> teste) throws JRException {
 		JasperReport report = JasperCompileManager

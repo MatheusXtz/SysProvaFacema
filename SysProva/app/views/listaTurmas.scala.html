@@ -1,0 +1,33 @@
+@main("Geração de provas"){
+	<div class="container">
+    <div class="header">
+        <ul class="nav nav-pills pull-right">
+          <li class="active"><a href="/">Home</a></li>
+        </ul>
+      </div>  
+
+     <legend>Secretária Acadêmica</legend>
+
+		<div class="row">
+			<div class="panel panel-default">
+				<div class="panel-heading"><h4>Cursos</h4></div>
+				<div class="panel-body">
+
+				    @for(curso <- Curso.find.findList()){
+					
+				<div class="btn-group">
+					<button type="button" class="btn btn-danger"> @curso.getNome()</button>
+					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown"><span class="caret"></span><span class="sr-only">Toggle Dropdown</span>
+				</button>
+					<ul class="dropdown-menu" role="menu">
+				@for(turma <- Turma.find.where().eq("curso_id_curso", curso.getIdCurso).findList()){
+					<li><a href='@routes.ProvaCrud.organizarProva(turma.getIdTurma())'>@turma.getNome()</a></li>
+				}
+				</ul>
+				
+				</div>
+				}
+				</div>
+			</div>
+		</div>
+}
