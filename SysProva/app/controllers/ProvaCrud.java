@@ -85,7 +85,8 @@ public class ProvaCrud extends Controller {
 		}
 	}
       gerarPdf(prova);
-      return ok(views.html.gerarProva.render());
+      flash("sucesso", "Prova gerada com sucesso");
+		return redirect(routes.ProvaCrud.listarTurmas());
 	}
 	
 
