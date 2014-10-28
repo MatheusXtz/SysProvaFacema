@@ -57,6 +57,7 @@ public class ProvaCrud extends Controller {
 
 		return ok(views.html.prova.render(provas));
 	}
+	
 
 	public static Result gerarProva() throws JRException {
 		List<QuestAlterAux> lista = new ArrayList<QuestAlterAux>();
