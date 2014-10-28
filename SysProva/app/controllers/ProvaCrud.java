@@ -1,7 +1,10 @@
 package controllers;
 
+import java.awt.BorderLayout;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.swing.JFrame;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
@@ -10,6 +13,7 @@ import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
 import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.swing.JRViewer;
 
 import com.avaje.ebean.Ebean;
 import com.avaje.ebean.Query;
@@ -64,117 +68,7 @@ public class ProvaCrud extends Controller {
 	
 
 
-	public static Result gerarProva() throws JRException {
-		List<QuestAlterAux> lista = new ArrayList<QuestAlterAux>();
-		for (Turma turma : Turma.find.findList()) {
 
-			for (Disciplina disci : Disciplina.find.where()
-					.eq("turma_id_turma", turma.getIdTurma()).findList()) {
-
-				for (Questao questao : Questao.find
-						.where()
-						.eq("disciplina_id_disciplina", disci.getIdDisciplina())
-						.findList()) {
-
-					for (Alternativa alter : Alternativa.find.where()
-							.eq("questao_id_questao", questao.getIdQuestao())
-							.findList()) {
-
-						QuestAlterAux q = new QuestAlterAux();
-						q.setEnunciado(questao.getEnunciado());
-						q.setAlter01(alter.getAlter01());
-						q.setAlter02(alter.getAlter02());
-						q.setAlter03(alter.getAlter03());
-						q.setAlter04(alter.getAlter04());
-						q.setAlter05(alter.getAlter05());
-						q.setNomeTurma(turma.getNome());
-						q.setNomeDisci(disci.getNome());
-
-						lista.add(q);
-
-					}
-				}
-			}
-		}
-		int cont = 0;
-
-		ArrayList<QuestAlterAux> prova = new ArrayList<QuestAlterAux>();
-		for (int i = 0; i < lista.size(); i++) {
-			if (lista.get(i).getNomeTurma().equals("Bloco 1-ADS")) {
-				System.out.println(lista.get(i).getNomeTurma());
-				System.out.println(lista.get(i).getNomeDisci());
-				System.out.println(lista.get(i).getEnunciado());
-				System.out.println(lista.get(i).getAlter01());
-				System.out.println(lista.get(i).getAlter02());
-				System.out.println(lista.get(i).getAlter03());
-				System.out.println(lista.get(i).getAlter04());
-				System.out.println(lista.get(i).getAlter05());
-				System.out.println("_________________________________");
-			} else if (lista.get(i).getNomeTurma().equals("Bloco 3-ADS")) {
-				QuestAlterAux q = new QuestAlterAux();
-				q.setEnunciado(lista.get(i).getEnunciado());
-				q.setAlter01(lista.get(i).getAlter01());
-				q.setAlter02(lista.get(i).getAlter02());
-				q.setAlter03(lista.get(i).getAlter03());
-				q.setAlter04(lista.get(i).getAlter04());
-				q.setAlter05(lista.get(i).getAlter05());
-				q.setNomeTurma(lista.get(i).getNomeTurma());
-				q.setNomeDisci(lista.get(i).getNomeDisci());
-				prova.add(q);
-
-				System.out.println(lista.get(i).getNomeTurma());
-				System.out.println(lista.get(i).getNomeDisci());
-				System.out.println(lista.get(i).getEnunciado());
-				System.out.println(lista.get(i).getAlter01());
-				System.out.println(lista.get(i).getAlter02());
-				System.out.println(lista.get(i).getAlter03());
-				System.out.println(lista.get(i).getAlter04());
-				System.out.println(lista.get(i).getAlter05());
-				System.out.println("_________________________________");
-			} else if (lista.get(i).getNomeTurma().equals("Bloco 2-ADS")) {
-				System.out.println(lista.get(i).getNomeTurma());
-				System.out.println(lista.get(i).getNomeDisci());
-				System.out.println(lista.get(i).getEnunciado());
-				System.out.println(lista.get(i).getAlter01());
-				System.out.println(lista.get(i).getAlter02());
-				System.out.println(lista.get(i).getAlter03());
-				System.out.println(lista.get(i).getAlter04());
-				System.out.println(lista.get(i).getAlter05());
-				System.out.println("_________________________________");
-			} else if (lista.get(i).getNomeTurma().equals("Bloco 4-ADS")) {
-				System.out.println(lista.get(i).getNomeTurma());
-				System.out.println(lista.get(i).getNomeDisci());
-				System.out.println(lista.get(i).getEnunciado());
-				System.out.println(lista.get(i).getAlter01());
-				System.out.println(lista.get(i).getAlter02());
-				System.out.println(lista.get(i).getAlter03());
-				System.out.println(lista.get(i).getAlter04());
-				System.out.println(lista.get(i).getAlter05());
-				System.out.println("_________________________________");
-			} else if (lista.get(i).getNomeTurma()
-					.equals("Bloco 1-Fisioterapia")) {
-				System.out.println(lista.get(i).getNomeTurma());
-				System.out.println(lista.get(i).getNomeDisci());
-				System.out.println(lista.get(i).getEnunciado());
-				System.out.println(lista.get(i).getAlter01());
-				System.out.println(lista.get(i).getAlter02());
-				System.out.println(lista.get(i).getAlter03());
-				System.out.println(lista.get(i).getAlter04());
-				System.out.println(lista.get(i).getAlter05());
-				System.out.println("_________________________________");
-			} else if (lista.get(i).getNomeTurma().equals("Bloco 1-Enfermagem")) {
-				System.out.println(lista.get(i).getNomeTurma());
-				System.out.println(lista.get(i).getNomeDisci());
-				System.out.println(lista.get(i).getEnunciado());
-				System.out.println(lista.get(i).getAlter01());
-				System.out.println(lista.get(i).getAlter02());
-				System.out.println(lista.get(i).getAlter03());
-				System.out.println(lista.get(i).getAlter04());
-				System.out.println(lista.get(i).getAlter05());
-				System.out.println("_________________________________");
-			}
-
-=======
 	
 	public static Result organizarProva(Long idTurma) throws JRException{
 		List<QuestAlterAux>prova= new ArrayList<QuestAlterAux>();
@@ -199,7 +93,8 @@ public class ProvaCrud extends Controller {
 		}
 	}
       gerarPdf(prova);
-      return ok(views.html.gerarProva.render());
+      flash("sucesso", "Prova gerada com sucesso!");
+      return redirect(routes.ProvaCrud.listarTurmas());
 	}
 	
 
@@ -209,10 +104,24 @@ public class ProvaCrud extends Controller {
 
 		JasperPrint print = JasperFillManager.fillReport(report, null,
 				new JRBeanCollectionDataSource(teste));
+		
+		viewReportFrame(print);
 
-		JasperExportManager.exportReportToPdfFile(print, "ireport/prova.pdf");
+//		JasperExportManager.exportReportToPdfFile(print, "ireport/prova.pdf");
 		System.out.println("Relatorio gerado.");
 
+	}
+	
+	private static void viewReportFrame(JasperPrint print){
+		JRViewer view = new JRViewer(print);
+		
+		JFrame frameReport = new JFrame();
+		
+		frameReport.add(view, BorderLayout.CENTER);
+		frameReport.setSize(500, 500);
+		frameReport.setExtendedState(JFrame.MAXIMIZED_BOTH);
+		frameReport.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		frameReport.setVisible(true);
 	}
 
 }
