@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="questoes" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="a54203d4-f9df-4655-a00f-ac74acc536a4">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString>
+		<![CDATA[SELECT
+     alternativa.`alter01` AS alter01,
+     alternativa.`alter02` AS alter02,
+     alternativa.`alter03` AS alter03,
+     alternativa.`alter04` AS alter04,
+     alternativa.`alter05` AS alter05,
+     questao.`enunciado` AS enunciado
+FROM
+     `questao` questao INNER JOIN `alternativa` alternativa ON questao.`id_questao` = alternativa.`questao_id_questao`]]>
+	</queryString>
+	<field name="alter01" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alter02" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alter03" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alter04" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="alter05" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<field name="enunciado" class="java.lang.String">
+		<fieldDescription><![CDATA[]]></fieldDescription>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="139" splitType="Stretch">
+			<textField>
+				<reportElement x="52" y="10" width="183" height="19" uuid="9ea29dd4-8653-40ca-90d5-d2de2d23052e"/>
+				<textFieldExpression><![CDATA[$F{enunciado}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="29" width="188" height="19" uuid="93c6b125-3b17-4c55-9361-9b71b481ec5c"/>
+				<textFieldExpression><![CDATA[$F{alter01}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="50" width="122" height="19" uuid="4f1314b8-f24e-4d3c-99dc-5bd12b926f21"/>
+				<textFieldExpression><![CDATA[$F{alter02}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="69" width="122" height="19" uuid="873ff7d0-140c-4ec6-a41d-51958350364a"/>
+				<textFieldExpression><![CDATA[$F{alter03}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="90" width="122" height="19" uuid="ba3afa93-8903-43f9-8aca-ddaa91652309"/>
+				<textFieldExpression><![CDATA[$F{alter04}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="117" y="109" width="122" height="19" uuid="5ea3863c-350a-4bab-8054-e766501073ea"/>
+				<textFieldExpression><![CDATA[$F{alter05}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="73" y="30" width="30" height="20" uuid="cefec00c-9c86-4a7e-822a-4323e8ec76c8"/>
+				<text><![CDATA[A:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="50" width="30" height="20" uuid="06c75c21-8cd0-4edd-b43d-29a4934941b4"/>
+				<text><![CDATA[B:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="70" width="30" height="20" uuid="99393da8-88ea-4e28-b8ce-f5fd63b35156"/>
+				<text><![CDATA[C:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="90" width="30" height="20" uuid="2e69a557-bfda-48f1-b13b-25adcc0bbfea"/>
+				<text><![CDATA[D:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="73" y="110" width="30" height="20" uuid="1c910c3f-d174-4d0e-a377-e107611b4678"/>
+				<text><![CDATA[E:]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>
