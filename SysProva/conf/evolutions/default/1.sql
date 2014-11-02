@@ -90,7 +90,8 @@ create table status (
   descricao                 varchar(255),
   data                      varchar(255),
   usuario_id_usuario        bigint,
-  questao_id_questao        bigint,
+  motivo                    varchar(255),
+  ordem                     integer,
   constraint pk_status primary key (id_status))
 ;
 
@@ -132,10 +133,8 @@ alter table search_disc_prof add constraint fk_search_disc_prof_professor_10 for
 create index ix_search_disc_prof_professor_10 on search_disc_prof (professor_id_prof);
 alter table status add constraint fk_status_usuario_11 foreign key (usuario_id_usuario) references usuario (id_usuario) on delete restrict on update restrict;
 create index ix_status_usuario_11 on status (usuario_id_usuario);
-alter table status add constraint fk_status_questao_12 foreign key (questao_id_questao) references questao (id_questao) on delete restrict on update restrict;
-create index ix_status_questao_12 on status (questao_id_questao);
-alter table turma add constraint fk_turma_curso_13 foreign key (curso_id_curso) references curso (id_curso) on delete restrict on update restrict;
-create index ix_turma_curso_13 on turma (curso_id_curso);
+alter table turma add constraint fk_turma_curso_12 foreign key (curso_id_curso) references curso (id_curso) on delete restrict on update restrict;
+create index ix_turma_curso_12 on turma (curso_id_curso);
 
 
 

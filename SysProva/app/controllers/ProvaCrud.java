@@ -2,7 +2,9 @@ package controllers;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.swing.JFrame;
 
@@ -29,7 +31,6 @@ import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
 
-
 public class ProvaCrud extends Controller {
 
 	public static Result prova() {
@@ -40,10 +41,11 @@ public class ProvaCrud extends Controller {
 	public static Result gerar() {
 		return ok(views.html.gerarProva.render());
 	}
-    
+
 	public static Result listarTurmas() {
 		return ok(views.html.listaTurmas.render());
 	}
+
 	public static Result gravarProva() {
 
 		List<Turma> turmas = Turma.find.findList();
@@ -65,58 +67,57 @@ public class ProvaCrud extends Controller {
 
 		return ok(views.html.prova.render(provas));
 	}
-	
 
+	public static Result organizarProva(Long idTurma) throws JRException {
+		List<QuestAlterAux> prova = new ArrayList<QuestAlterAux>();
+		Long idProva = Prova.findByIdProva(idTurma);
+		List<Questao> enunciado = Questao.find.where()
+				.eq("prova_id_prova", idProva).findList();
 
+		for (Questao questao : enunciado) {
+			for (Alternativa alter : Alternativa.find.where()
+					.eq("questao_id_questao", questao.getIdQuestao())
+					.findList()) {
+				QuestAlterAux q = new QuestAlterAux();
+				q.setEnunciado(questao.getEnunciado());
+				q.setAlter01(alter.getAlter01());
+				q.setAlter02(alter.getAlter02());
+				q.setAlter03(alter.getAlter03());
+				q.setAlter04(alter.getAlter04());
+				q.setAlter05(alter.getAlter05());
+				q.setNomeDisci("AAAA");
+				prova.add(q);
 
-	
-	public static Result organizarProva(Long idTurma) throws JRException{
-		List<QuestAlterAux>prova= new ArrayList<QuestAlterAux>();
-	    Long idProva=Prova.findByIdProva(idTurma);
-	    List<Questao>enunciado=Questao.find.where().eq("prova_id_prova", idProva).findList();
-	    
-	   for (Questao questao : enunciado) {
-		for (Alternativa alter : Alternativa.find.where()
-				.eq("questao_id_questao", questao.getIdQuestao())
-				.findList()){
-			  QuestAlterAux q= new QuestAlterAux();
-			  q.setEnunciado(questao.getEnunciado());
-			  q.setAlter01(alter.getAlter01());
-			  q.setAlter02(alter.getAlter02());
-			  q.setAlter03(alter.getAlter03());
-			  q.setAlter04(alter.getAlter04());
-			  q.setAlter05(alter.getAlter05());
-			  q.setNomeDisci("AAAA");
-			  prova.add(q);
-			  
-
+			}
 		}
+		gerarPdf(prova);
+		flash("sucesso", "Prova gerada com sucesso!");
+		return redirect(routes.ProvaCrud.listarTurmas());
 	}
-      gerarPdf(prova);
-      flash("sucesso", "Prova gerada com sucesso!");
-      return redirect(routes.ProvaCrud.listarTurmas());
-	}
-	
 
 	public static void gerarPdf(List<QuestAlterAux> teste) throws JRException {
 		JasperReport report = JasperCompileManager
 				.compileReport("ireport/Relatorio.jrxml");
 
-		JasperPrint print = JasperFillManager.fillReport(report, null,
+		Map<String, Object> parament = new HashMap<String, Object>();
+		parament.put("SUBREPORT_DIR", "ireport/questoes.jasper");
+
+		JasperPrint print = JasperFillManager.fillReport(report, parament,
 				new JRBeanCollectionDataSource(teste));
-		
+
 		viewReportFrame(print);
 
-//		JasperExportManager.exportReportToPdfFile(print, "ireport/prova.pdf");
+		// JasperExportManager.exportReportToPdfFile(print,
+		// "ireport/prova.pdf");
 		System.out.println("Relatorio gerado.");
 
 	}
-	
-	private static void viewReportFrame(JasperPrint print){
+
+	private static void viewReportFrame(JasperPrint print) {
 		JRViewer view = new JRViewer(print);
-		
+
 		JFrame frameReport = new JFrame();
-		
+
 		frameReport.add(view, BorderLayout.CENTER);
 		frameReport.setSize(500, 500);
 		frameReport.setExtendedState(JFrame.MAXIMIZED_BOTH);

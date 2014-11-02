@@ -28,8 +28,8 @@ public class Status extends Model {
     @OneToOne
 	private Usuario usuario;
     
-    @ManyToOne
-  	private Questao questao;
+    private String motivo;
+    private Integer ordem;
 
 	public static Model.Finder<Long, Status> find = new Model.Finder<Long, Status>(
 			Long.class, Status.class);
@@ -61,7 +61,32 @@ public class Status extends Model {
 		this.data = data;
 	}
 
+	public Usuario getUsuario() {
+		return usuario;
+	}
 
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+
+	public String getMotivo() {
+		return motivo;
+	}
+
+	public void setMotivo(String motivo) {
+		this.motivo = motivo;
+	}
+
+	public Integer getOrdem() {
+		return ordem;
+	}
+
+	public void setOrdem(Integer ordem) {
+		this.ordem = ordem;
+	}
+
+
+	
 	
 	
 

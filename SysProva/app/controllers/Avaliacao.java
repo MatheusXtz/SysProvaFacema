@@ -17,6 +17,14 @@ public class Avaliacao extends Controller {
 	public static Result avaliacaoNU() {
 		return ok(views.html.avaliacaoNucleo.render());
 	}
+	
+	public static Result funcaoProf() {
+		return ok(views.html.funcaoProfessor.render());
+	}
+	
+	public static Result listagemCorrecao(){
+		return ok(views.html.listagemCorrecao.render());
+	}
 
 	public static Result avaliarQuestaoCoord(Long idDiscip, String responsavel) {
 
@@ -30,6 +38,13 @@ public class Avaliacao extends Controller {
 		List<Questao> lista = Questao.find.where()
 				.eq("disciplina_id_disciplina", idDiscip).findList();
 		return ok(views.html.listaQuestaoNA.render(idDiscip, lista, responsavel));
+	}
+	
+	public static Result corrigirQuestao(Long idDiscip){
+		
+		List<Questao> lista = Questao.find.where()
+				.eq("disciplina_id_disciplina", idDiscip).findList();
+		return ok(views.html.correcaoQuestao.render(idDiscip, lista));
 	}
 
 	public static Result registroObservacao(Long idQuestao) {

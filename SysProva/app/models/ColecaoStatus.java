@@ -22,16 +22,24 @@ public class ColecaoStatus  extends Model{
 	@GeneratedValue
 	private Long idColecaoS;
 
-	
+	private List<Status> status = new ArrayList<Status>();
 	/**
 	 * 
 	 * Gets e Sets
 	 */
+	
+	
 	public Long getIdColecaoS() {
 		return idColecaoS;
 	}
 	public void setIdColecaoS(Long idColecaoS) {
 		this.idColecaoS = idColecaoS;
+	}
+	public List<Status> getStatus() {
+		return status;
+	}
+	public void setStatus(List<Status> status) {
+		this.status = status;
 	}
 
 	
