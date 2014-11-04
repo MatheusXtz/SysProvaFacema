@@ -100,10 +100,10 @@ public class ProvaCrud extends Controller {
 		JasperReport report = JasperCompileManager
 				.compileReport("ireport/Relatorio.jrxml");
 
-		Map<String, Object> parament = new HashMap<String, Object>();
-		parament.put("SUBREPORT_DIR", "ireport/questoes.jasper");
+//		Map<String, Object> parament = new HashMap<String, Object>();
+//		parament.put("SUBREPORT_DIR", "ireport/questoes.jasper");
 
-		JasperPrint print = JasperFillManager.fillReport(report, parament,
+		JasperPrint print = JasperFillManager.fillReport(report, null,
 				new JRBeanCollectionDataSource(teste));
 
 		viewReportFrame(print);

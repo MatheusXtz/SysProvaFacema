@@ -20,9 +20,11 @@ public class ColecaoStatus  extends Model{
 	
 	@Id
 	@GeneratedValue
-	private Long idColecaoS;
+	private Long idColecao;
 
-	private List<Status> status = new ArrayList<Status>();
+	@ManyToOne
+	private Status status;
+	private List<Status> listStatus;
 	/**
 	 * 
 	 * Gets e Sets
@@ -30,17 +32,12 @@ public class ColecaoStatus  extends Model{
 	
 	
 	public Long getIdColecaoS() {
-		return idColecaoS;
+		return idColecao;
 	}
 	public void setIdColecaoS(Long idColecaoS) {
-		this.idColecaoS = idColecaoS;
+		this.idColecao = idColecaoS;
 	}
-	public List<Status> getStatus() {
-		return status;
-	}
-	public void setStatus(List<Status> status) {
-		this.status = status;
-	}
+	
 
 	
 	
