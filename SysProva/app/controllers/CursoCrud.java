@@ -2,7 +2,6 @@ package controllers;
 
 import java.util.List;
 
-import net.sf.jasperreports.engine.JRException;
 import models.Curso;
 import models.Disciplina;
 import play.data.Form;
@@ -14,8 +13,7 @@ public class CursoCrud extends Controller {
 	private static final Form<Curso> cursoForm = Form.form(Curso.class);
 
 	// Listar os cursos
-	public static Result listaCurso() throws JRException {
-		ProvaCrud.organizarProva(new Long(3));
+	public static Result listaCurso() {
 		List<Curso> cursos = Curso.find.findList();
 		return ok(views.html.curso.render(cursos));
 	}
@@ -58,7 +56,7 @@ public class CursoCrud extends Controller {
 	}
 
 	// remover o curso pelo id
-	public static Result remover(Long id) throws JRException {
+	public static Result remover(Long id){
 		Curso.find.ref(id).delete();
 		flash("sucesso", "Curso removido com sucesso");
 		return listaCurso();

@@ -11,7 +11,6 @@ import javax.swing.JFrame;
 
 import net.sf.jasperreports.engine.JRException;
 import net.sf.jasperreports.engine.JasperCompileManager;
-import net.sf.jasperreports.engine.JasperExportManager;
 import net.sf.jasperreports.engine.JasperFillManager;
 import net.sf.jasperreports.engine.JasperPrint;
 import net.sf.jasperreports.engine.JasperReport;
@@ -92,10 +91,11 @@ public class ProvaCrud extends Controller {
 			}
 		}
 		gerarPdf(prova);
+	
 		flash("sucesso", "Prova gerada com sucesso!");
 		return redirect(routes.ProvaCrud.listarTurmas());
 	}
-
+	
 	public static void gerarPdf(List<QuestAlterAux> teste) throws JRException {
 		JasperReport report = JasperCompileManager
 				.compileReport("ireport/Relatorio.jrxml");
@@ -125,6 +125,10 @@ public class ProvaCrud extends Controller {
 		frameReport.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		frameReport.setVisible(true);
 	}
+	
+	
+
+
 
 }
 
