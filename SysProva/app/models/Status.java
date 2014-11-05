@@ -2,6 +2,7 @@
 package models;
 
 import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,8 +24,8 @@ public class Status extends Model {
 	private String descricao;
 	
 
-	private String data;
-		
+	private Date data;
+	
     @OneToOne
 	private Usuario usuario;
     
@@ -53,11 +54,11 @@ public class Status extends Model {
 		this.descricao = descricao;
 	}
 
-	public String getData() {
+	public Date getData() {
 		return data;
 	}
 
-	public void setData(String data) {
+	public void setData(Date data) {
 		this.data = data;
 	}
 

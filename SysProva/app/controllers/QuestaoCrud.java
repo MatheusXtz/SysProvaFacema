@@ -23,7 +23,7 @@ public class QuestaoCrud extends Controller {
 			.form(Alternativa.class);
 
 	public static Result listagem() {
-
+		
 		return ok(views.html.listagem.render());
 	}
 
@@ -67,6 +67,39 @@ public class QuestaoCrud extends Controller {
 		alternativa.save();
 		flash("sucesso", "Dados Gravados com sucesso");
 		return redirect(routes.QuestaoCrud.listagem());
+	}
+	
+	public static Result alterarQuestao(Long idQ, Long idA){
+		
+		Form<Questao> questao = formQuest.bindFromRequest();
+		Form<Alternativa> alternatica = formAlter.bindFromRequest(); 
+		
+		String id = Form.form().bindFromRequest().get("idD");
+		if(questao.hasErrors() && alternatica.hasErrors()){
+			List<Questao> lista = Questao.find.where()
+					.eq("disciplina_id_disciplina", Long.parseLong(id)).findList();
+			return badRequest(views.html.correcaoQuestao.render(Long.parseLong(id), lista));
+		}
+		
+		Questao q = questao.get();
+		Alternativa a = alternatica.get();
+		
+		System.out.println("Cod. Questao:"+ idQ);
+		System.out.println("Cod. Alternativa:"+ idA);
+		System.out.println();
+		System.out.println("ENUNCIADO:");
+		System.out.println(q.getEnunciado());
+		System.out.println();
+		System.out.println("A) "+a.getAlter01());
+		System.out.println("B) "+a.getAlter02());
+		System.out.println("C) "+a.getAlter03());
+		System.out.println("D) "+a.getAlter04());
+		System.out.println("E) "+a.getAlter05());
+		
+//		q.update(idQ);
+//		a.update(idA);
+		
+		return redirect(routes.Avaliacao.corrigirQuestao(Long.parseLong(id)));
 	}
 
 }
