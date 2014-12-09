@@ -3,6 +3,7 @@ package controllers;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -93,6 +94,7 @@ public class ProvaCrud extends Controller {
 		gerarPdf(prova);
 	
 		flash("sucesso", "Prova gerada com sucesso!");
+//		teste();
 		return redirect(routes.ProvaCrud.listarTurmas());
 	}
 	
@@ -108,8 +110,8 @@ public class ProvaCrud extends Controller {
 
 		viewReportFrame(print);
 
-		// JasperExportManager.exportReportToPdfFile(print,
-		// "ireport/prova.pdf");
+//		 JasperExportManager.exportReportToPdfFile(print,
+//		 "ireport/prova.pdf");
 		System.out.println("Relatorio gerado.");
 
 	}
@@ -130,5 +132,27 @@ public class ProvaCrud extends Controller {
 
 
 
+//	private static void teste(){
+//		
+//		
+//		List<Object> ids = Disciplina.find.where().eq("turma_id_turma", 1).findIds();
+//		
+//		List<Questao> a = null;
+//		for (Object object : ids) {
+//			System.out.println("Disciplina: "+object);
+//			List<Questao> q = Questao.find.where().eq("disciplina_id_disciplina", object).findList();			
+//			a = new ArrayList<Questao>();
+//			for (Questao questao : q) {
+//				a.add(questao);
+//				Collections.shuffle(a);
+//			}			
+//		}
+//		for (Questao questao : a) {
+//			System.out.println("Cod: "+questao.getIdQuestao());
+//			System.out.println("Enunciado: "+questao.getEnunciado());
+//			System.out.println("====================================");
+//		}
+//	}
+	
 }
 

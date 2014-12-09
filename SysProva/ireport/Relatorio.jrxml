@@ -110,11 +110,6 @@
 				<reportElement x="4" y="-22" width="64" height="20" uuid="c2658637-29c2-4001-b2f1-297c447ad318"/>
 				<text><![CDATA[Disciplina:]]></text>
 			</staticText>
-			<subreport>
-				<reportElement x="337" y="101" width="200" height="100" uuid="063d10c1-426a-4193-91df-2e7729367e92"/>
-				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
-				<subreportExpression><![CDATA[$P{SUBREPORT_DIR}]]></subreportExpression>
-			</subreport>
 		</band>
 	</detail>
 	<columnFooter>

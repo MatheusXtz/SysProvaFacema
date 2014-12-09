@@ -8,6 +8,7 @@ import com.avaje.ebean.Ebean;
 import models.Alternativa;
 import models.Curso;
 import models.Disciplina;
+import models.Observacao;
 import models.Professor;
 import models.Prova;
 import models.Questao;
@@ -23,7 +24,7 @@ public class QuestaoCrud extends Controller {
 			.form(Alternativa.class);
 
 	public static Result listagem() {
-		
+
 		return ok(views.html.listagem.render());
 	}
 
@@ -35,7 +36,7 @@ public class QuestaoCrud extends Controller {
 	public static Result gravarQuestao() {
 		Form<Questao> formQuestao = formQuest.bindFromRequest();
 		Form<Alternativa> formAlternativa = formAlter.bindFromRequest();
-	
+
 		String idDiscip = Form.form().bindFromRequest().get("idDiscip");
 		String idProva = Form.form().bindFromRequest().get("idProva");
 
@@ -68,37 +69,51 @@ public class QuestaoCrud extends Controller {
 		flash("sucesso", "Dados Gravados com sucesso");
 		return redirect(routes.QuestaoCrud.listagem());
 	}
-	
-	public static Result alterarQuestao(Long idQ, Long idA){
-		
+
+	public static Result alterarQuestao(Long idQ, Long idA) {
+
 		Form<Questao> questao = formQuest.bindFromRequest();
-		Form<Alternativa> alternatica = formAlter.bindFromRequest(); 
-		
+		Form<Alternativa> alternatica = formAlter.bindFromRequest();
+
 		String id = Form.form().bindFromRequest().get("idD");
-		if(questao.hasErrors() && alternatica.hasErrors()){
+		if (questao.hasErrors() && alternatica.hasErrors()) {
 			List<Questao> lista = Questao.find.where()
-					.eq("disciplina_id_disciplina", Long.parseLong(id)).findList();
-			return badRequest(views.html.correcaoQuestao.render(Long.parseLong(id), lista));
+					.eq("disciplina_id_disciplina", Long.parseLong(id))
+					.findList();
+			return badRequest(views.html.correcaoQuestao.render(
+					Long.parseLong(id), lista));
 		}
-		
+
 		Questao q = questao.get();
-		Alternativa a = alternatica.get();
+
+		List<Observacao> obs = Observacao.find.where()
+				.eq("questao_id_questao", q.getIdQuestao()).findList();
 		
-		System.out.println("Cod. Questao:"+ idQ);
-		System.out.println("Cod. Alternativa:"+ idA);
+		for(int i = 0; i < obs.size(); i++){
+			Observacao o = new Observacao();
+			o = obs.get(i);
+			o.setQuestaoOk(true);
+			o.update();
+		}
+
+		Alternativa a = alternatica.get();
+
+		System.out.println("Cod. Questao:" + idQ);
+		System.out.println("Cod. Alternativa:" + idA);
 		System.out.println();
 		System.out.println("ENUNCIADO:");
 		System.out.println(q.getEnunciado());
 		System.out.println();
-		System.out.println("A) "+a.getAlter01());
-		System.out.println("B) "+a.getAlter02());
-		System.out.println("C) "+a.getAlter03());
-		System.out.println("D) "+a.getAlter04());
-		System.out.println("E) "+a.getAlter05());
+		System.out.println("A) " + a.getAlter01());
+		System.out.println("B) " + a.getAlter02());
+		System.out.println("C) " + a.getAlter03());
+		System.out.println("D) " + a.getAlter04());
+		System.out.println("E) " + a.getAlter05());
 		
-//		q.update(idQ);
-//		a.update(idA);
 		
+		// q.update(idQ);
+		// a.update(idA);
+
 		return redirect(routes.Avaliacao.corrigirQuestao(Long.parseLong(id)));
 	}
 

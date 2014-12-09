@@ -10,16 +10,24 @@
      <legend class="text-center">Correção das Questões</legend>
 
      <div class="row">
-     	
+  
 	<div class="col-md-7">
      	<legend>Questões</legend>
      	@for(q <- 0 until lista.size()){
  
-     		
-				<button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>
-				
+     		@if(Observacao.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList().size() > 0){
+          @for(obs <- Observacao.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList()){
+            @if(obs.isQuestaoOk()){
+				      <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-success">QUESTÃO - @q</button>
+            }
+          }
+
+				}else{
+            <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>
+        }
      			
         @helper.form(action=routes.QuestaoCrud.alterarQuestao(lista.get(q).getIdQuestao(), Alternativa.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList().get(0).getIdAlternativa())){
+        
 
      	<div class="modal fade" id="myModal@q" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">

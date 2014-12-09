@@ -24,11 +24,13 @@
 		     		
 		     	
 		     		@if(responsavel.equals("na")){
-		     			@if(obs.getAvaliador().equals("nucleo")){
-		     				<button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-success">QUESTÃO - @q</button>		
-		     			}else{
-                <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>
-              }
+		     			@if(obs.getAvaliador().equals("nucleo") && !obs.isQuestaoOk()){
+		     				<button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-success disabled">QUESTÃO - @q</button>		
+		     			}
+
+              @if( obs.getAvaliador().equals("nucleo") && obs.isQuestaoOk()){
+                <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-info disabled">QUESTÃO - @q</button>    
+              }  
 		     				
               }else{
                 <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>

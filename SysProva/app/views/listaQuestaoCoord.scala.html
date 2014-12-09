@@ -23,11 +23,13 @@
 	     		@for(obs <- Observacao.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList()){
 		     		
 		     		@if(responsavel.equals("co")){
-		     			@if(obs.getAvaliador().equals("coordenador")){
-		     				<button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-success">QUESTÃO - @q</button>		
-		     			}else{
-		     				<button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>	
-		     			}	     			
+		     			@if(obs.getAvaliador().equals("coordenador") && !obs.isQuestaoOk()){
+		     				<button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-success disabled">QUESTÃO - @q</button>		
+		     			} 
+
+              @if(obs.getAvaliador().equals("coordenador") && obs.isQuestaoOk()){
+                <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-info disabled">QUESTÃO - @q</button>    
+              }  			
 
 		     		}else{
 		     			<button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>
