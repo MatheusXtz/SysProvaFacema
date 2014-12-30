@@ -51,6 +51,7 @@ public class QuestaoCrud extends Controller {
 		questao.setIdProva(Long.parseLong(idProva));
 		questao.setAvalCoord(true);
 		questao.setAvalNucleo(true);
+		questao.setQuestao_ok(false);
 
 		int mes = LocalDate.now().getMonth().getValue();
 		if (mes <= 6) {
@@ -85,6 +86,9 @@ public class QuestaoCrud extends Controller {
 		}
 
 		Questao q = questao.get();
+		q.setAvalCoord(false);
+		q.setAvalNucleo(false);
+		q.setQuestao_ok(true);
 
 		List<Observacao> obs = Observacao.find.where()
 				.eq("questao_id_questao", q.getIdQuestao()).findList();
@@ -95,6 +99,8 @@ public class QuestaoCrud extends Controller {
 			o.setQuestaoOk(true);
 			o.update();
 		}
+		
+//		Questao j = Questao.find.byId(idQ);
 
 		Alternativa a = alternatica.get();
 
@@ -109,6 +115,10 @@ public class QuestaoCrud extends Controller {
 		System.out.println("C) " + a.getAlter03());
 		System.out.println("D) " + a.getAlter04());
 		System.out.println("E) " + a.getAlter05());
+		System.out.println("--------------------------");
+		System.out.println(id);
+		System.out.println("N.A: "+ q.isAvalNucleo());
+		System.out.println("COOR: "+ q.isAvalCoord());
 		
 		
 		// q.update(idQ);

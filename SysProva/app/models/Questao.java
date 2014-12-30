@@ -38,13 +38,24 @@ public class Questao extends Model implements ObjetoRastreavel {
 
 	private boolean avalCoord;
 	private boolean avalNucleo;
-
+	
+	private boolean questao_ok;
+	
 	public static Model.Finder<Long, Questao> find = new Model.Finder<Long, Questao>(
 			Long.class, Questao.class);
 
 	/**
 	 * Gets e Sets
 	 */
+	
+	public boolean isQuestao_ok() {
+		return questao_ok;
+	}
+
+	public void setQuestao_ok(boolean questao_ok) {
+		this.questao_ok = questao_ok;
+	}
+	
 	public boolean isAvalCoord() {
 		return avalCoord;
 	}

@@ -75,6 +75,7 @@ create table questao (
   periodo                   varchar(255),
   aval_coord                tinyint(1) default 0,
   aval_nucleo               tinyint(1) default 0,
+  questao_ok                tinyint(1) default 0,
   constraint pk_questao primary key (id_questao))
 ;
 
