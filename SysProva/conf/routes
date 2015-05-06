@@ -41,6 +41,7 @@ GET		/usuario/:id			    controllers.UsuarioCrud.detalhar(id:Long)
 POST	/usuario/:id				controllers.UsuarioCrud.alterarUsuario(id:Long)
 POST 	/usuario/:id/remover		controllers.UsuarioCrud.remover(id:Long)
 GET		/login					    controllers.UsuarioCrud.login()
+GET		/logar					    controllers.UsuarioCrud.logar()
 GET		/autenticar				 	controllers.UsuarioCrud.autenticar()
 
 GET		/prova						controllers.ProvaCrud.prova()

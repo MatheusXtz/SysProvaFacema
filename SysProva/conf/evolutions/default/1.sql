@@ -48,6 +48,12 @@ create table observacao (
   constraint pk_observacao primary key (id_obs))
 ;
 
+create table perfil_user (
+  id_perfil_user            bigint auto_increment not null,
+  descricao                 varchar(255) not null,
+  constraint pk_perfil_user primary key (id_perfil_user))
+;
+
 create table professor (
   id_prof                   bigint auto_increment not null,
   nome                      varchar(255),
@@ -55,6 +61,7 @@ create table professor (
   tipo_profe                varchar(255),
   email                     varchar(255),
   matricula                 integer not null,
+  ativo                     integer,
   curso_id_curso            bigint,
   constraint pk_professor primary key (id_prof))
 ;
@@ -107,9 +114,10 @@ create table turma (
 
 create table usuario (
   id_usuario                bigint auto_increment not null,
-  nome                      varchar(255),
   matricula                 integer not null,
   senha                     varchar(255) not null,
+  ativo                     integer,
+  perfil_id_perfil_user     bigint,
   constraint pk_usuario primary key (id_usuario))
 ;
 
@@ -139,6 +147,8 @@ alter table status add constraint fk_status_usuario_12 foreign key (usuario_id_u
 create index ix_status_usuario_12 on status (usuario_id_usuario);
 alter table turma add constraint fk_turma_curso_13 foreign key (curso_id_curso) references curso (id_curso) on delete restrict on update restrict;
 create index ix_turma_curso_13 on turma (curso_id_curso);
+alter table usuario add constraint fk_usuario_perfil_14 foreign key (perfil_id_perfil_user) references perfil_user (id_perfil_user) on delete restrict on update restrict;
+create index ix_usuario_perfil_14 on usuario (perfil_id_perfil_user);
 
 
 
@@ -155,6 +165,8 @@ drop table curso;
 drop table disciplina;
 
 drop table observacao;
+
+drop table perfil_user;
 
 drop table professor;
 

@@ -33,11 +33,11 @@ public class Professor extends Model {
 	@Column(unique = false, nullable = false)
 	private Integer cpf;
     private String tipoProfe;
-	
 	private String email;
 	@Column(nullable = false)
 	private Integer matricula;
 
+	private int ativo;
 	
 
 
@@ -54,8 +54,26 @@ public class Professor extends Model {
 	/**
 	 * Gets e Sets
 	 */
+	
+	
 	public String getTipoProfe() {
 		return tipoProfe;
+	}
+
+	public int getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(int ativo) {
+		this.ativo = ativo;
+	}
+
+	public Curso getCurso() {
+		return curso;
+	}
+
+	public void setCurso(Curso curso) {
+		this.curso = curso;
 	}
 
 	public void setTipoProfe(String tipoProfe) {

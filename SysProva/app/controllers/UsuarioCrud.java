@@ -3,6 +3,7 @@ package controllers;
 import java.util.List;
 
 import models.Curso;
+import models.PerfilUser;
 import models.Usuario;
 import play.data.Form;
 import play.mvc.Controller;
@@ -13,18 +14,28 @@ public class UsuarioCrud extends Controller {
 	
 	private static Form<Usuario> userForm = Form.form(Usuario.class);
 
+	public static Result logar() {
+		List<Usuario> logar = Usuario.find.findList();
+		return ok(views.html.login.render(userForm));
+	}
+     
 	public static Result listarUsuario() {
 		List<Usuario> usuarios = Usuario.find.findList();
-		return ok(views.html.usuario.render(usuarios, userForm));
+		List<PerfilUser>perfis= PerfilUser.find.findList();
+		return ok(views.html.usuario.render(usuarios, userForm,perfis));
 	}
-
 	public static Result gravarUsuario() {
 		Form<Usuario> form = userForm.bindFromRequest();
+		
+		String idPerfil = Form.form().bindFromRequest().get("idperfil");
+		System.out.println(PerfilUser.find.byId(Long.parseLong(idPerfil)).getDescricao());
 		if (form.hasErrors()) {
 			flash("erro", "Erro ao cadastrar usuário");
 			return redirect(routes.UsuarioCrud.listarUsuario());
 		}
 		Usuario user = form.get();
+		user.setPerfil(Long.parseLong(idPerfil));
+		
 		user.save();
 		flash("sucesso", "usuario cadastrado com sucesso");
 		return redirect(routes.UsuarioCrud.listarUsuario());
