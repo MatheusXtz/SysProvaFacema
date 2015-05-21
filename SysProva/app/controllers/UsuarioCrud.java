@@ -1,9 +1,11 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import models.Curso;
 import models.PerfilUser;
+import models.Professor;
 import models.Usuario;
 import play.data.Form;
 import play.mvc.Controller;
@@ -76,8 +78,21 @@ public class UsuarioCrud extends Controller {
 		String matricula = Form.form().bindFromRequest().get("matricula");
 		Integer matri = Integer.parseInt(matricula);
 		String senha = Form.form().bindFromRequest().get("senha");
-
-		List<Usuario> user = Usuario.find.findList();
+		
+        List<Professor>professores= Professor.find.findList();
+        List<Integer>matriculas= new ArrayList<Integer>();
+        List<Usuario> user = Usuario.find.findList();
+        for (int i = 0; i <4; i++) {
+//			matriculas.add(i, professores.get(i).getMatricula());
+//			System.out.println(matriculas.get(i));
+			if(user.get(i).getMatricula().equals(matri)){
+				System.out.println("Professor e usuario com matricula: "+ user.get(i).getMatricula());
+			}
+		}
+       
+        
+        
+		
 		//Verificar a autenticidade
 		for (Usuario usuario : user) {
 			if (usuario.getMatricula().equals(matri)

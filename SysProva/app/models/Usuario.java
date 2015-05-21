@@ -25,7 +25,7 @@ public class Usuario extends Model {
 	private String senha;
 	
 	private int ativo;
-	
+
 	@ManyToOne
 	private PerfilUser perfil=new PerfilUser();
 
