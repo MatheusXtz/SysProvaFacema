@@ -5,7 +5,7 @@
 <!-- Inicio Menu Horizontal -->
 	<div class="navbar navbar-inverse" role="navigation">
 		<div class="navbar-header">
-			<a class="navbar-brand" href="#"><img src="images/logo.png" alt="Sysprova"></a>
+			<a class="navbar-brand" href="#"><img src="@routes.Assets.at("images/logo.png")" alt="Sysprova"></a>
 			<a class="sidebar-toggle"><i class="icon-paragraph-justify2"></i></a>
 		</div>
 
@@ -14,10 +14,12 @@
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-address-book"></i> <span>Professor</span> <b class="caret"></b></a>
 				<ul class="dropdown-menu dropdown-menu-right">
-					<li><a href="cadastro_professor.html">Cadastrar</a></li>
+					<li><a href="/professor">Cadastrar</a></li>
 					<li><a href="#">Alterar</a></li>
 					<li><a href="#">Consultar</a></li>
 					<li><a href="#">Excluir</a></li>
+					<li><a href="/listagem">Criar Questão</a></li>
+					<li><a href="/listagemCorrecao">Corrigir Questao</a></li>
 					
 				</ul>
 			</li>
@@ -33,7 +35,7 @@
 			<li class="dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-file6"></i> <span>Avaliação</span>  <b class="caret"></b></a>
 					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a href="cadastro_questao.html">Cadastrar</a></li>
+						<li><a href="/prova">Cadastrar</a></li>
 					    <li><a href="#">Alterar</a></li>
 					    <li><a href="#">Consultar</a></li>
 					    <li><a href="#">Excluir</a></li>
@@ -45,14 +47,14 @@
 		<ul class="nav navbar-nav navbar-right collapse" id="navbar-icons">
 			<li class="user dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown">
-					<img src="images/icone-usuario.png" alt="">
+					<img src="@routes.Assets.at("images/icone-usuario.png")" alt="">
 					<span>Fulano Facema</span>
 					<i class="caret"></i>
 				</a>
 				<ul class="dropdown-menu dropdown-menu-right icons-right">
 					<li><a href="#"><i class="icon-user"></i> Perfil</a></li>
 					<li><a href="#"><i class="icon-cog"></i> Configurações</a></li>
-					<li><a href="login.html"><i class="icon-exit"></i> Sair</a></li>
+					<li><a href="/logar"><i class="icon-exit"></i> Sair</a></li>
 				</ul>
 			</li>
 		</ul>
@@ -71,7 +73,7 @@
 				<!-- dropdown Usuario -->
 				<div class="user-menu dropdown">
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-						<img src="images/icone-usuario.png" alt="">
+						<img src="@routes.Assets.at("images/icone-usuario.png")" alt="">
 						<div class="user-info">
 							Fulano Facema <span>Pofessor ADS</span>
 						</div>
@@ -107,39 +109,41 @@
 					<li>
 						<a href="#"><span>Professor</span> <i class="icon-address-book"></i></a>
 						<ul>
-							<li><a href="cadastro_professor.html">Cadastrar</a></li>
-					        <li><a href="#">Alterar</a></li>
-					        <li><a href="#">Consultar</a></li>
-					        <li><a href="#">Excluir</a></li>
+							<li><a href="/professor">Cadastrar</a></li>
+					<li><a href="#">Alterar</a></li>
+					<li><a href="#">Consultar</a></li>
+					<li><a href="#">Excluir</a></li>
+					<li><a href="/listagem">Criar Questão</a></li>
+					<li><a href="/listagemCorrecao">Corrigir Questao</a></li>
 						</ul>
 					</li>
 					<li>
 						<a href="#"><span>Cadastro</span> <i class="icon-file-plus"></i></a>
 						<ul>
 							<li><a href="/curso">Cadastrar Curso</a></li>
-					        <li><a href="/turma">Cadastrar Turma</a></li>
-					        <li><a href="/professor">Cadastrar Professor</a></li>
-					        <li><a href="/disciplina">Cadastrar Disciplina</a></li>
+					<li><a href="/turma">Cadastrar Turma</a></li>
+					<li><a href="/professor">Cadastrar Professor</a></li>
+					<li><a href="/disciplina">Cadastrar Disciplina</a></li>
 						</ul>
 					</li>
 					<li>
-						<a href="#"><span>Avaliação</span> <i class="icon-file6"></i></a>
+						<a href="#"><span>Liberar Periodo de prova</span> <i class="icon-file6"></i></a>
 						<ul>
-							<li><a href="cadastro_questao.html">Cadastrar</a></li>
-					        <li><a href="#">Alterar</a></li>
-					        <li><a href="#">Consultar</a></li>
-					       <li><a href="#">Excluir</a></li>
+							<li><a href="/prova">Cadastrar</a></li>
+					    <li><a href="#">Alterar</a></li>
+					    <li><a href="#">Consultar</a></li>
+					    <li><a href="#">Excluir</a></li>
 							
 						</ul>
 					</li>
 					<li>
-						<a href="#"><span>Gerar Prova</span> <i class="icon-file-upload"></i></a>
+					<a href="/gerar"><span>Gerar Prova</span> <i class="icon-file-upload"></i></a>
 						
 					</li>
 					
 					
 					<li>
-						<a href="login.html"><i class="icon-exit"></i> Sair</a>
+						<a href="/logar"><i class="icon-exit"></i> Sair</a>
 					</li>
 				</ul>
 				<!-- /Fim Sidbar Menu Vertical -->
@@ -174,7 +178,7 @@
 				<ul class="breadcrumb">
 					<li><a href="index.html">Home</a></li>
 					<li><a href="#">Cadastro</a></li>
-					<li class="active">Cadastro de Curso</li>
+					<li class="active">Cadastro de Usuário</li>
 				</ul>
 
 				<div class="visible-xs breadcrumb-toggle">
