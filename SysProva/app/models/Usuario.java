@@ -24,6 +24,7 @@ public class Usuario extends Model {
 	@Column(nullable = false)
 	private String senha;
 	
+    String papel;
 	private int ativo;
 
 	@ManyToOne

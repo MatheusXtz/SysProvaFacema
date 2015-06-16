@@ -54,22 +54,33 @@ public class Avaliacao extends Controller {
 		String responsavel = Form.form().bindFromRequest().get("resp");
 		String idD = Form.form().bindFromRequest().get("idD");
 		String descricao = Form.form().bindFromRequest().get("descricao");
-
+        
 		obs.setIdQuestao(idQuestao);
 		
 		System.out.println("Descrição - > "+descricao);
 		
-		if(descricao.equals("")){
-			obs.setDescricao("QUESTÃO OK!");
-			obs.setQuestaoOk(true);
-		}else{
-			obs.setDescricao(descricao);
-			obs.setQuestaoOk(false);			
-		}
+	
+		
 		
 		if (responsavel.equals("co")) {
+
+			if(descricao.equals("")){
+				obs.setDescricao("QUESTÃO OK!");
+				obs.setQuestaoOkCoord(true);
+			}else{
+				obs.setDescricao(descricao);
+				obs.setQuestaoOkCoord(true);			
+			}
 			obs.setAvaliador("coordenador");
 		} else if (responsavel.equals("na")) {
+
+			if(descricao.equals("")){
+				obs.setDescricao("QUESTÃO OK!");
+				obs.setQuestaoOkNucleo(true);
+			}else{
+				obs.setDescricao(descricao);
+				obs.setQuestaoOkNucleo(true);			
+			}
 			obs.setAvaliador("nucleo");
 		}
 

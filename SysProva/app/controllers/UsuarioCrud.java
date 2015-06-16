@@ -82,26 +82,17 @@ public class UsuarioCrud extends Controller {
         List<Professor>professores= Professor.find.findList();
         List<Integer>matriculas= new ArrayList<Integer>();
         List<Usuario> user = Usuario.find.findList();
-        for (int i = 0; i <4; i++) {
+        List<PerfilUser> perfil = PerfilUser.find.findList();
+        for (int i = 0; i <user.size(); i++) {
 //			matriculas.add(i, professores.get(i).getMatricula());
 //			System.out.println(matriculas.get(i));
-			if(user.get(i).getMatricula().equals(matri)){
-				System.out.println("Professor e usuario com matricula: "+ user.get(i).getMatricula());
-			}
-		}
-       
-        
-        
-		
-		//Verificar a autenticidade
-		for (Usuario usuario : user) {
-			if (usuario.getMatricula().equals(matri)
-					&& usuario.getSenha().equals(senha)) {
-//				flash("sucesso", "Login efetuado com sucesso");
+			if(user.get(i).getMatricula().equals(matri) && user.get(i).getSenha().equals(senha)){
+				System.out.println("Professor e usuario com matricula: "+ user.get(i).getMatricula()+ " e senha= "+ user.get(i).getSenha() 
+						+ " ele é um usuario do tipo " + perfil.get(i).getDescricao() );
 				return redirect(routes.Application.inicio());
 			}
 		}
-
+       
 		flash("erro", "Login ou senha errados");
 		return redirect(routes.UsuarioCrud.autenticar());
 

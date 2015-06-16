@@ -25,6 +25,7 @@ public class Questao extends Model implements ObjetoRastreavel {
 	private Long idQuestao;
 
 	private String enunciado;
+	public Integer auxiliar;
 
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "questao")
 	private List<Alternativa> alternativas;
@@ -48,8 +49,33 @@ public class Questao extends Model implements ObjetoRastreavel {
 	 * Gets e Sets
 	 */
 	
+	
 	public boolean isQuestao_ok() {
 		return questao_ok;
+	}
+
+	public Integer getAuxiliar() {
+		return auxiliar;
+	}
+
+	public void setAuxiliar(Integer auxiliar) {
+		this.auxiliar = auxiliar;
+	}
+
+	public Disciplina getDisciplina() {
+		return disciplina;
+	}
+
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
+	}
+
+	public Prova getProva() {
+		return prova;
+	}
+
+	public void setProva(Prova prova) {
+		this.prova = prova;
 	}
 
 	public void setQuestao_ok(boolean questao_ok) {
@@ -167,6 +193,10 @@ public class Questao extends Model implements ObjetoRastreavel {
 			Usuario usuario) {
 		// TODO Auto-generated method stub
 
+	}
+	@Override
+	public String toString() {
+		return getEnunciado();
 	}
 
 }

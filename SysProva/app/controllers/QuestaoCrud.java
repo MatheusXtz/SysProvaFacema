@@ -49,8 +49,8 @@ public class QuestaoCrud extends Controller {
 		Questao questao = formQuestao.get();
 		questao.setIdDisciplina(Long.parseLong(idDiscip));
 		questao.setIdProva(Long.parseLong(idProva));
-		questao.setAvalCoord(true);
-		questao.setAvalNucleo(true);
+		questao.setAvalCoord(false);
+		questao.setAvalNucleo(false);
 		questao.setQuestao_ok(false);
 
 		int mes = LocalDate.now().getMonth().getValue();
@@ -71,7 +71,8 @@ public class QuestaoCrud extends Controller {
 		return redirect(routes.QuestaoCrud.listagem());
 	}
 
-	public static Result alterarQuestao(Long idQ, Long idA) {
+	//coordenador
+	public static Result alterarQuestaoCoord(Long idQ, Long idA) {
 
 		Form<Questao> questao = formQuest.bindFromRequest();
 		Form<Alternativa> alternatica = formAlter.bindFromRequest();
@@ -86,8 +87,67 @@ public class QuestaoCrud extends Controller {
 		}
 
 		Questao q = questao.get();
-		q.setAvalCoord(false);
-		q.setAvalNucleo(false);
+		q.setAvalCoord(true);
+		q.setQuestao_ok(false);
+
+		List<Observacao> obs = Observacao.find.where()
+				.eq("questao_id_questao", q.getIdQuestao()).findList();
+		
+		for(int i = 0; i < obs.size(); i++){
+			Observacao o = new Observacao();
+			o = obs.get(i);
+			o.setQuestaoOkCoord(true);
+			o.update();
+		}
+		
+//		Questao j = Questao.find.byId(idQ);
+
+		Alternativa a = alternatica.get();
+
+//		System.out.println("Cod. Questao:" + idQ);
+//		System.out.println("Cod. Alternativa:" + idA);
+//		System.out.println();
+//		System.out.println("ENUNCIADO:");
+//		System.out.println(q.getEnunciado());
+//		System.out.println();
+//		System.out.println("A) " + a.getAlter01());
+//		System.out.println("B) " + a.getAlter02());
+//		System.out.println("C) " + a.getAlter03());
+//		System.out.println("D) " + a.getAlter04());
+//		System.out.println("E) " + a.getAlter05());
+//		System.out.println("--------------------------");
+//		System.out.println(id);
+//		System.out.println("N.A: "+ q.isAvalNucleo());
+//		System.out.println("COOR: "+ q.isAvalCoord());
+		
+		
+		q.update(idQ);
+		a.update(idA);
+
+		return redirect(routes.Avaliacao.corrigirQuestao(Long.parseLong(id)));
+	}
+	
+	
+	//nucleo
+	public static Result alterarQuestaNucleo(Long idQ, Long idA) {
+
+		Form<Questao> questao = formQuest.bindFromRequest();
+		Form<Alternativa> alternatica = formAlter.bindFromRequest();
+
+		String id = Form.form().bindFromRequest().get("idD");
+		if (questao.hasErrors() && alternatica.hasErrors()) {
+			List<Questao> lista = Questao.find.where()
+					.eq("disciplina_id_disciplina", Long.parseLong(id))
+					.findList();
+			return badRequest(views.html.correcaoQuestao.render(
+					Long.parseLong(id), lista));
+		}
+
+		Questao q = questao.get();
+		Alternativa a = alternatica.get();
+
+		q.setAvalCoord(true);
+		
 		q.setQuestao_ok(true);
 
 		List<Observacao> obs = Observacao.find.where()
@@ -96,33 +156,33 @@ public class QuestaoCrud extends Controller {
 		for(int i = 0; i < obs.size(); i++){
 			Observacao o = new Observacao();
 			o = obs.get(i);
-			o.setQuestaoOk(true);
+			o.setQuestaoOkNucleo(true);
 			o.update();
 		}
 		
-//		Questao j = Questao.find.byId(idQ);
+Questao j = Questao.find.byId(idQ);
 
-		Alternativa a = alternatica.get();
-
-		System.out.println("Cod. Questao:" + idQ);
-		System.out.println("Cod. Alternativa:" + idA);
-		System.out.println();
-		System.out.println("ENUNCIADO:");
-		System.out.println(q.getEnunciado());
-		System.out.println();
-		System.out.println("A) " + a.getAlter01());
-		System.out.println("B) " + a.getAlter02());
-		System.out.println("C) " + a.getAlter03());
-		System.out.println("D) " + a.getAlter04());
-		System.out.println("E) " + a.getAlter05());
-		System.out.println("--------------------------");
-		System.out.println(id);
-		System.out.println("N.A: "+ q.isAvalNucleo());
-		System.out.println("COOR: "+ q.isAvalCoord());
+//		Alternativa a = alternatica.get();
+//
+//		System.out.println("Cod. Questao:" + idQ);
+//		System.out.println("Cod. Alternativa:" + idA);
+//		System.out.println();
+//		System.out.println("ENUNCIADO:");
+//		System.out.println(q.getEnunciado());
+//		System.out.println();
+//		System.out.println("A) " + a.getAlter01());
+//		System.out.println("B) " + a.getAlter02());
+//		System.out.println("C) " + a.getAlter03());
+//		System.out.println("D) " + a.getAlter04());
+//		System.out.println("E) " + a.getAlter05());
+//		System.out.println("--------------------------");
+//		System.out.println(id);
+//		System.out.println("N.A: "+ q.isAvalNucleo());
+//		System.out.println("COOR: "+ q.isAvalCoord());
 		
 		
-		// q.update(idQ);
-		// a.update(idA);
+		 q.update(idQ);
+		 a.update(idA);
 
 		return redirect(routes.Avaliacao.corrigirQuestao(Long.parseLong(id)));
 	}

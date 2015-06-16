@@ -15,7 +15,6 @@ public class PerfilUser extends Model {
 	@Column(nullable = false)
 	private String descricao;
 	
-	
 	public static Model.Finder<Long, PerfilUser> find = new Model.Finder<Long, PerfilUser>(
 			Long.class,PerfilUser.class);
 
