@@ -26,7 +26,7 @@
            h4{NO MOMENTO NÃO POSSUI QUESTÕES PARA CORREÇÃO!!!}
         }
      			
-        @helper.form(action=routes.QuestaoCrud.alterarQuestao(lista.get(q).getIdQuestao(), Alternativa.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList().get(0).getIdAlternativa())){
+        @helper.form(action=routes.QuestaoCrud.alterarQuestaoCoord(lista.get(q).getIdQuestao(), Alternativa.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList().get(0).getIdAlternativa())){
         
 
      	<div class="modal fade" id="myModal@q" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

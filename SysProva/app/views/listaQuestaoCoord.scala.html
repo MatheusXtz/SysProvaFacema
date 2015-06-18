@@ -13,36 +13,34 @@
      <legend class="text-center">Avaliação das Questões - Coordenador</legend>
 
      <div class="row">
-     	
-	<div class="col-md-7">
-     	<legend>Questões</legend>
-     	@for(q <- 0 until lista.size()){
+      
+  <div class="col-md-7">
+      <legend>Questões</legend>
+      @for(q <- 0 until lista.size()){
 
-     		@if(Observacao.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList().size() > 0){
+        @if(Observacao.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList().size() > 0){
 
-	     		@for(obs <- Observacao.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList()){
-		     		
-		     		@if(responsavel.equals("co")){
-		     			@if(obs.getAvaliador().equals("coordenador") && !obs.isQuestaoOk()){
-		     				<button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-success disabled">QUESTÃO - @q</button>		
-		     			}             			
+          @for(obs <- Observacao.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList()){
+            
+            @if(responsavel.equals("co")){
+              
+                <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger ">QUESTÃO - @q</button>   
+                               
 
-		     		}else{
-		     			<button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>		     		
-		     		}		     		   			
-     			}
+            }else{
+              <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>           
+            }                   
+          }
 
-           @if(lista.get(q).isQuestao_ok()){
-                <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-info disabled">QUESTÃO - @q</button>    
-              } 
-     			
-				}else{
-				<button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>
-				}
-     			
+         
+          
+        }else{
+        <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>
+        }
+          
 
 
-     	<div class="modal fade" id="myModal@q" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal fade" id="myModal@q" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -50,13 +48,13 @@
         <h4 class="modal-title" id="myModalLabel">QUESTÃO - @q</h4>
       </div>
       <div class="modal-body">
-	
+  
         <div class="form-group" draggable="true">
               <label class="control-label" for="enunciado">Enunciado da Questão:</label>              
               <textarea class="form-control" name="enunciado" id="enunciado" cols="50" rows="5"  disabled="true" value="">@lista.get(q).getEnunciado()</textarea>
          </div>
 
-		@for(a <- Alternativa.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList()){
+    @for(a <- Alternativa.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList()){
          <div class="form-group" draggable="true">
               <label class="control-label" for="alter01">Alternativa 01:</label>              
               <input type="text" class="form-control" name="alter01" id="alter01" value="@a.getAlter01()" disabled="true">
@@ -84,7 +82,7 @@
          }
 
 
-		@helper.form(routes.Avaliacao.registroObservacao(lista.get(q).getIdQuestao())){
+    @helper.form(routes.Avaliacao.registroObservacao(lista.get(q).getIdQuestao())){
          <div class="form-group" draggable="true">
               <label class="control-label" for="descricao">Obsevações:</label>              
               <textarea class="form-control" name="descricao" id="descricao" cols="50" rows="5" ></textarea>
@@ -101,27 +99,27 @@
       </div>
     </div>
   </div>
-</div>   	
+</div>    
 }
 </div>
 
 
-	
-		
-     	
-     	<div class="col-md-5">
-     	<legend>Detalhes</legend>
-			<dl>
-				<dt>Disciplina:</dt>
-				@Disciplina.find.byId(idDiscip).getNome()
-				<dt>Quantidade de Questões:</dt>
-				@Disciplina.find.byId(idDiscip).getQtdQuestao()
-				<dt>Professor:</dt>
-				@Professor.find.byId(Disciplina.find.byId(idDiscip).getIdProfessor()).getNome()
-				<dt>Questões Cadastradas:</dt>
-				@Questao.returnQtdQuestCadastrada(idDiscip)
+  
+    
+      
+      <div class="col-md-5">
+      <legend>Detalhes</legend>
+      <dl>
+        <dt>Disciplina:</dt>
+        @Disciplina.find.byId(idDiscip).getNome()
+        <dt>Quantidade de Questões:</dt>
+        @Disciplina.find.byId(idDiscip).getQtdQuestao()
+        <dt>Professor:</dt>
+        @Professor.find.byId(Disciplina.find.byId(idDiscip).getIdProfessor()).getNome()
+        <dt>Questões Cadastradas:</dt>
+        @Questao.returnQtdQuestCadastrada(idDiscip)
 
-			</dl>
+      </dl>
      </div>
 </div>
 

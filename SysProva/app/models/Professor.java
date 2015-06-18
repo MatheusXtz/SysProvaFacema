@@ -44,8 +44,12 @@ public class Professor extends Model {
 	@OneToMany(cascade = CascadeType.ALL, mappedBy = "professor")
 	private List<Disciplina> disciplinas;
 	
+	
 	@ManyToOne 
 	private Curso curso = new Curso();
+	
+	@OneToOne 
+	private Usuario usuario = new Usuario();
 	
 	public static Model.Finder<Long, Professor> find = new Model.Finder<Long, Professor>(
 			Long.class, Professor.class);

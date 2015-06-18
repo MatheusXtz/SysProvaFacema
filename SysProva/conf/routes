@@ -59,7 +59,7 @@ POST	/avNucleo/:idQ				controllers.Avaliacao.registroObservacao(idQ:Long)
 GET		/funProf					controllers.Avaliacao.funcaoProf()
 GET		/corrigirQuest/:idD			controllers.Avaliacao.corrigirQuestao(idD: Long)
 GET		/listagemCorrecao			controllers.Avaliacao.listagemCorrecao()
-POST	/corrigirQuest/:idQ/:idA	controllers.QuestaoCrud.alterarQuestao(idQ:Long, idA: Long)
+POST	/corrigirQuest/:idQ/:idA	controllers.QuestaoCrud.alterarQuestaoCoord(idQ:Long, idA: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

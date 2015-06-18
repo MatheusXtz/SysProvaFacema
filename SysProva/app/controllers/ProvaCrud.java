@@ -74,8 +74,15 @@ public class ProvaCrud extends Controller {
 		Long idProva = Prova.findByIdProva(idTurma);
 		List<Questao> enunciado = Questao.find.where()
 				.eq("prova_id_prova", idProva).findList();
-
-		for (Questao questao : enunciado) {
+		
+		List<Disciplina> d = Disciplina.find.where()
+				.eq("turma_id_turma", idTurma).findList();
+		int cont=0;
+		
+for(Disciplina dis: d){
+	
+		for (Questao questao : Questao.find.where().eq("disciplina_id_disciplina",dis.getIdDisciplina()).findList()) {
+			
 			for (Alternativa alter : Alternativa.find.where()
 					.eq("questao_id_questao", questao.getIdQuestao())
 					.findList()) {
@@ -86,15 +93,17 @@ public class ProvaCrud extends Controller {
 				q.setAlter03(alter.getAlter03());
 				q.setAlter04(alter.getAlter04());
 				q.setAlter05(alter.getAlter05());
-				q.setNomeDisci("AAAA");
+				q.setNomeDisci(d.get(cont).getNome());
 				prova.add(q);
 
 			}
 		}
+		cont ++;
+}
 		gerarPdf(prova);
 	
 		flash("sucesso", "Prova gerada com sucesso!");
-		teste();
+		
 		return redirect(routes.ProvaCrud.listarTurmas());
 	}
 	
@@ -102,16 +111,15 @@ public class ProvaCrud extends Controller {
 		JasperReport report = JasperCompileManager
 				.compileReport("ireport/Relatorio.jrxml");
 
-//		Map<String, Object> parament = new HashMap<String, Object>();
-//		parament.put("SUBREPORT_DIR", "ireport/questoes.jasper");
+
+
 
 		JasperPrint print = JasperFillManager.fillReport(report, null,
 				new JRBeanCollectionDataSource(teste));
 
 		viewReportFrame(print);
 
-//		 JasperExportManager.exportReportToPdfFile(print,
-//		 "ireport/prova.pdf");
+
 		System.out.println("Relatorio gerado.");
 
 	}
@@ -132,27 +140,27 @@ public class ProvaCrud extends Controller {
 
 
 
-	private static void teste(){
-		
-		
-		List<Object> ids = Disciplina.find.where().eq("turma_id_turma", 1).findIds();
-		
-		List<Questao> a = null;
-		for (Object object : ids) {
-			System.out.println("Disciplina: "+object);
-			List<Questao> q = Questao.find.where().eq("disciplina_id_disciplina", object).findList();			
-			a = new ArrayList<Questao>();
-			for (Questao questao : q) {
-				a.add(questao);
-				Collections.shuffle(a);
-			}			
-		}
-		for (Questao questao : a) {
-			System.out.println("Cod: "+questao.getIdQuestao());
-			System.out.println("Enunciado: "+questao.getEnunciado());
-			System.out.println("====================================");
-		}
-	}
+//	private static void teste(){
+//		
+//		
+//		List<Object> ids = Disciplina.find.where().eq("turma_id_turma", 1).findIds();
+//		
+//		List<Questao> a = null;
+//		for (Object object : ids) {
+//			System.out.println("Disciplina: "+object);
+//			List<Questao> q = Questao.find.where().eq("disciplina_id_disciplina", object).findList();			
+//			a = new ArrayList<Questao>();
+//			for (Questao questao : q) {
+//				a.add(questao);
+//				Collections.shuffle(a);
+//			}			
+//		}
+//		for (Questao questao : a) {
+//			System.out.println("Cod: "+questao.getIdQuestao());
+//			System.out.println("Enunciado: "+questao.getEnunciado());
+//			System.out.println("====================================");
+//		}
+//	}
 	
 }
 

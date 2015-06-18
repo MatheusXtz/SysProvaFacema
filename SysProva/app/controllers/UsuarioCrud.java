@@ -1,9 +1,11 @@
 package controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import models.Curso;
 import models.PerfilUser;
+import models.Professor;
 import models.Usuario;
 import play.data.Form;
 import play.mvc.Controller;
@@ -76,17 +78,21 @@ public class UsuarioCrud extends Controller {
 		String matricula = Form.form().bindFromRequest().get("matricula");
 		Integer matri = Integer.parseInt(matricula);
 		String senha = Form.form().bindFromRequest().get("senha");
-
-		List<Usuario> user = Usuario.find.findList();
-		//Verificar a autenticidade
-		for (Usuario usuario : user) {
-			if (usuario.getMatricula().equals(matri)
-					&& usuario.getSenha().equals(senha)) {
-//				flash("sucesso", "Login efetuado com sucesso");
+		
+        List<Professor>professores= Professor.find.findList();
+        List<Integer>matriculas= new ArrayList<Integer>();
+        List<Usuario> user = Usuario.find.findList();
+        List<PerfilUser> perfil = PerfilUser.find.findList();
+        for (int i = 0; i <user.size(); i++) {
+//			matriculas.add(i, professores.get(i).getMatricula());
+//			System.out.println(matriculas.get(i));
+			if(user.get(i).getMatricula().equals(matri) && user.get(i).getSenha().equals(senha)){
+				System.out.println("Professor e usuario com matricula: "+ user.get(i).getMatricula()+ " e senha= "+ user.get(i).getSenha() 
+						+ " ele é um usuario do tipo " + perfil.get(i).getDescricao() );
 				return redirect(routes.Application.inicio());
 			}
 		}
-
+       
 		flash("erro", "Login ou senha errados");
 		return redirect(routes.UsuarioCrud.autenticar());
 
