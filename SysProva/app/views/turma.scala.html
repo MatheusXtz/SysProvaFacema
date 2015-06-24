@@ -275,19 +275,25 @@ cellpadding="0" cellspacing="0" border="0" width="100%">
 		  				<td>Descrição</td>
 		  				<td>Quant. Questões</td>
 		  				<td>Curso</td>
+		  				<td>Ação Editar</td>
 		  				<td>Ação Remover</td>
 		  			</tr>
 		  		</thead>
 		  		<tbody>
 		  		@for(turma <- turmas){
 		  			<tr>
-		  				<td><a href="@routes.TurmaCrud.detalharTurma(turma.getIdTurma())">@turma.getIdTurma()</a></td>
+		  				<td>@turma.getIdTurma()</td>
 		  				<td>@turma.getNome()</td>
 		  				<td>@turma.getQtdQuestao()</td>
 		  				<td>@Curso.find.byId(turma.getIdCurso()).getNome()</td>
 		  				<td>
+		  				@helper.form(routes.TurmaCrud.detalharTurma(turma.getIdTurma())){
+		  				<input type="submit" value="Editar" class="btn btn-info">
+		  				}
+		  				</td>
+		  				<td>
 		  				@helper.form(routes.TurmaCrud.removerTurma(turma.getIdTurma())){
-		  				<input type="submit" value="Remover" class="btn danger">
+		  				<input type="submit" value="Remover" class="btn btn-danger">
 		  				}
 		  				</td>
 		  			</tr>
