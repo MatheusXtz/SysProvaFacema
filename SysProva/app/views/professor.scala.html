@@ -311,30 +311,31 @@ cellpadding="0" cellspacing="0" border="0" width="100%">
 		<td>Nome</td>
 		<td>Matricula</td>
 		<td>CPF</td>
-		<td>E-mail</td>
-		
+		<td>E-mail</td>		
 		<td>Curso</td>
 		<td>Tipo</td>
-		<td>Remoção</td>
+		<td>Ação Editar</td>
+		<td>Ação Remover</td>
 	</tr>
 </thead>
 <tbody>
 @for(prof <- professores){
 <tr>
 
-<td>
-<a href="@routes.ProfessorCrud.detalhar(prof.getIdProf())">
-@prof.getNome()
-</a>
-</td>
+<td>@prof.getNome()</td>
 <td>@prof.getMatricula()</td>
 <td>@prof.getCpf()</td>
 <td>@prof.getEmail()</td>
 <td>@Curso.find.byId(prof.getIdCurso()).getNome()</td>
 <td>@prof.getTipoProfe()</td>
 <td>
+	@helper.form(routes.ProfessorCrud.detalhar(prof.getIdProf())){
+	<input type="submit" value="Editar" class="btn btn-info">
+}
+</td>
+<td>
 	@helper.form(routes.ProfessorCrud.removerProfessor(prof.getIdProf())){
-	<input type="submit" value="Remover" class="btn danger">
+	<input type="submit" value="Remover" class="btn btn-danger">
 }
 </td>
 </tr>

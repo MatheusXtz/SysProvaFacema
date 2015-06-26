@@ -103,7 +103,7 @@
 
 				<!-- Inicio Sidebar Menu Verical-->
 				<ul class="navigation">
-					<li><a href="index.html"><span>Home</span> <i class="icon-home"></i></a></li>
+					<li><a href="/"><span>Home</span> <i class="icon-home"></i></a></li>
 					<li>
 						<a href="#"><span>Professor</span> <i class="icon-address-book"></i></a>
 						<ul>
@@ -116,9 +116,10 @@
 					<li>
 						<a href="#"><span>Cadastro</span> <i class="icon-file-plus"></i></a>
 						<ul>
-							<li><a href="cadastro_curso.html">Cadastrar Curso</a></li>
-					        <li><a href="cadastro_turma.html">Cadastrar Turma</a></li>
-					        <li class="active"><a href="cadastro_disciplina.html">Cadastrar Disciplina</a></li>
+							<li><a href="/curso">Cadastrar Curso</a></li>
+					        <li><a href="/turma">Cadastrar Turma</a></li>
+					        <li><a href="/professor">Cadastrar Professor</a></li>
+					        <li class="active"><a href="/disciplina">Cadastrar Disciplina</a></li>
 						</ul>
 					</li>
 					<li>
@@ -278,21 +279,27 @@ cellpadding="0" cellspacing="0" border="0" width="100%">
 		  				<td>Carga Horaria</td>
 		  				<td>Professor</td>
 		  				<td>Turma</td>
+		  				<td>Ação Editar</td>
 		  				<td>Ação Remover</td>
 		  			</tr>
 		  		</thead>
 		  		<tbody>
 		  		@for(discip <- disciplinas){
 		  			<tr>
-		  				<td><a href="@routes.DisciplinaCrud.detalharDisciplina(discip.getIdDisciplina)">@discip.getIdDisciplina()</a></td>
+		  				<td>@discip.getIdDisciplina()</td>
 		  				<td>@discip.getNome()</td>
 		  				<td>@discip.getQtdQuestao()</td>
 		  				<td>@discip.getCargaHoraria()</td>
 		  				<td>@Professor.find.byId(discip.getIdProfessor()).getNome()</td>
 		  				<td>@Turma.find.byId(discip.getIdTurma()).getNome()</td>
 		  				<td>
+		  				@helper.form(routes.DisciplinaCrud.detalharDisciplina(discip.getIdDisciplina())){
+		  				<input type="submit" value="Editar" class="btn btn-info">
+		  				}
+		  				</td>
+		  				<td>
 		  				@helper.form(routes.DisciplinaCrud.removerDisciplina(discip.getIdDisciplina())){
-		  				<input type="submit" value="Remover" class="btn danger">
+		  				<input type="submit" value="Remover" class="btn btn-danger">
 		  				}
 		  				</td>
 		  			</tr>

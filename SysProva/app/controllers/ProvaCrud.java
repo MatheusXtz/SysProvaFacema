@@ -71,7 +71,7 @@ public class ProvaCrud extends Controller {
 
 		}
 
-		return ok(views.html.prova.render(provas));
+		return redirect(routes.ProvaCrud.prova());
 	}
 
 	public static Result organizarProva(Long idTurma) throws JRException {

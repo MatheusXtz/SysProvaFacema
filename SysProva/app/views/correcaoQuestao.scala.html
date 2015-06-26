@@ -23,7 +23,7 @@
           }
 
 				}else{
-            <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>
+           h4{NO MOMENTO NÃO POSSUI QUESTÕES PARA CORREÇÃO!!!}
         }
      			
         @helper.form(action=routes.QuestaoCrud.alterarQuestaoCoord(lista.get(q).getIdQuestao(), Alternativa.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList().get(0).getIdAlternativa())){
