@@ -1,4 +1,3 @@
- 
 @main("Pagina Incial") {
 
  <!-- Inicio Menu Horizontal -->
@@ -10,38 +9,25 @@
 
 		<ul class="nav navbar-nav collapse" id="navbar-menu">
 			<li><a href="/"><i class="icon-home"></i> <span>Home</span></a></li>
+			
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-address-book"></i> <span>Professor</span> <b class="caret"></b></a>
-				<ul class="dropdown-menu dropdown-menu-right">
-					<li><a href="/professor">Cadastrar</a></li>
-					<li><a href="#">Alterar</a></li>
-					<li><a href="#">Consultar</a></li>
-					<li><a href="#">Excluir</a></li>
-					<li><a href="/listagem">Criar Questão</a></li>
-					<li><a href="/listagemCorrecao">Corrigir Questao</a></li>
-					
-					
-				</ul>
-			</li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-file-plus"></i> <span>Cadastro</span> <b class="caret"></b></a>
-				<ul class="dropdown-menu dropdown-menu-right">
-					<li><a href="/curso">Cadastrar Curso</a></li>
-					<li><a href="/turma">Cadastrar Turma</a></li>
-					<li><a href="/professor">Cadastrar Professor</a></li>
-					<li><a href="/disciplina">Cadastrar Disciplina</a></li>
-				</ul>
-			</li>
-			<li class="dropdown">
-					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-file6"></i> <span> Liberar Periodo de prova</span>  <b class="caret"></b></a>
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-file6"></i> <span> Coordenador</span>  <b class="caret"></b></a>
 					<ul class="dropdown-menu dropdown-menu-right">
-						<li><a href="/prova">Cadastrar</a></li>
-					    <li><a href="#">Alterar</a></li>
+						<li><a href="/prova">Corrigir</a></li>
 					    <li><a href="#">Consultar</a></li>
-					    <li><a href="#">Excluir</a></li>
+					   
 					</ul>
 			</li>
-			<li><a href="/gerar"><i class="icon-file-upload"></i> <span>Gerar Prova</span></a></li>
+
+			<li class="dropdown">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-file6"></i> <span> Professor</span>  <b class="caret"></b></a>
+					<ul class="dropdown-menu dropdown-menu-right">
+						<li><a href="/prova">Criar Questão</a></li>
+					    <li><a href="#">Corrgir Questão</a></li>
+					   
+					</ul>
+			</li>
+			
 		</ul>
 
 		<ul class="nav navbar-nav navbar-right collapse" id="navbar-icons">
@@ -107,41 +93,22 @@
 				<ul class="navigation">
 					<li><a href="/"><span>Home</span> <i class="icon-home"></i></a></li>
 					<li>
-						<a href="#"><span>Professor</span> <i class="icon-address-book"></i></a>
+						<a href="#"><span>Coordenador</span> <i class="icon-address-book"></i></a>
 						<ul>
-							<li><a href="/professor">Cadastrar</a></li>
-					<li><a href="#">Alterar</a></li>
+							<li><a href="/professor">Corrigir</a></li>
 					<li><a href="#">Consultar</a></li>
-					<li><a href="#">Excluir</a></li>
-					<li><a href="/listagem">Criar Questão</a></li>
-					<li><a href="/listagemCorrecao">Corrigir Questao</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="#"><span>Cadastro</span> <i class="icon-file-plus"></i></a>
-						<ul>
-				    <li><a href="/curso">Cadastrar Curso</a></li>
-					<li><a href="/turma">Cadastrar Turma</a></li>
-					<li><a href="/professor">Cadastrar Professor</a></li>
-					<li><a href="/disciplina">Cadastrar Disciplina</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="#"><span>Liberar Periodo de prova</span> <i class="icon-file6"></i></a>
-						<ul>
-							<li><a href="/prova">Cadastrar</a></li>
-					    <li><a href="#">Alterar</a></li>
-					    <li><a href="#">Consultar</a></li>
-					    <li><a href="#">Excluir</a></li>
-							
-						</ul>
-					</li>
-					<li>
-						<a href="/gerar"><span>Gerar Prova</span> <i class="icon-file-upload"></i></a>
-						
-					</li>
 					
+						</ul>
+					</li>
+					<li>
+						<a href="#"><span>Professor</span> <i class="icon-file-plus"></i></a>
+						<ul>
+				    <li><a href="/curso">Criar Questão</a></li>
+					<li><a href="/turma">Corrigir Questão</a></li>
 					
+						</ul>
+					</li>
+		
 					<li>
 						<a href="/logar"><i class="icon-exit"></i> Sair</a>
 					</li>

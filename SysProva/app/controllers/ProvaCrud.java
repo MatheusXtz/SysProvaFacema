@@ -3,10 +3,14 @@ package controllers;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Random;
 
 import javax.swing.JFrame;
 
@@ -27,6 +31,7 @@ import models.Disciplina;
 import models.Prova;
 import models.QuestAlterAux;
 import models.Questao;
+import models.QuestaoGerada;
 import models.Turma;
 import play.data.Form;
 import play.mvc.Controller;
@@ -100,6 +105,7 @@ for(Disciplina dis: d){
 		}
 		cont ++;
 }
+List<QuestAlterAux> newLis=aleatorio(prova);
 		gerarPdf(prova);
 	
 		flash("sucesso", "Prova gerada com sucesso!");
@@ -162,5 +168,53 @@ for(Disciplina dis: d){
 //		}
 //	}
 	
-}
+	
+	
+	public static List<QuestAlterAux> aleatorio(List<QuestAlterAux> lis){
+		List<QuestAlterAux> listEmba;
+		 for(int i=0; i<lis.size()-1;i++){
+			 System.out.println(lis.get(i).getEnunciado());
+			 System.out.println(lis.get(i).getAuxiliar());
+			 System.out.println(lis.get(i).getNomeDisci());
+		 }
+		
+		System.out.println(embaralharQuestoes(lis));
+		
+		return lis;
+	}
+
+	public static Collection<QuestAlterAux> embaralharQuestoes(List<QuestAlterAux> questoes) {
+		Random r = new Random();
+		for (QuestAlterAux q : questoes) {
+			q.setAuxiliar(r.nextInt()); 
+		}
+		
+		Comparator<QuestAlterAux> comp = new Comparator<QuestAlterAux>() {
+			@Override
+			public int compare(QuestAlterAux q1, QuestAlterAux q2) {
+				return q1.getAuxiliar().compareTo(q2.getAuxiliar());
+			}
+		};
+		
+		Collections.sort(questoes, comp);
+		
+		Collection<QuestAlterAux> questoesGeradas = new LinkedList<QuestAlterAux>();
+		int i = 1;
+		 for(int j=0; i<questoesGeradas.size()-1;i++){
+			 questoesGeradas.add(questoes.get(j));
+		 }
+		
+		
+//		for (QuestAlterAux q : questoes) {
+//			
+//			QuestAlterAux qA= new QuestAlterAux();
+//			
+//			questoesGeradas.add(qA.ge);
+//		}
+		
+		
+		return questoesGeradas;
+	}
+	}
+
 

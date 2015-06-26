@@ -9,11 +9,11 @@
 		</div>
 
 		<ul class="nav navbar-nav collapse" id="navbar-menu">
-			<li><a href="index.html"><i class="icon-home"></i> <span>Home</span></a></li>
+			<li><a href="/"><i class="icon-home"></i> <span>Home</span></a></li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-address-book"></i> <span>Professor</span> <b class="caret"></b></a>
 				<ul class="dropdown-menu dropdown-menu-right">
-					<li><a href="cadastro_professor.html">Cadastrar</a></li>
+					<li><a href="#">Cadastrar</a></li>
 					<li><a href="#">Alterar</a></li>
 					<li><a href="#">Consultar</a></li>
 					<li><a href="#">Excluir</a></li>
@@ -23,9 +23,9 @@
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-file-plus"></i> <span>Cadastro</span> <b class="caret"></b></a>
 				<ul class="dropdown-menu dropdown-menu-right">
-					<li class="active"><a href="cadastro_curso.html">Cadastrar Curso</a></li>
-					<li><a href="cadastro_turma.html">Cadastrar Turma</a></li>
-					<li><a href="cadastro_disciplina.html">Cadastrar Disciplina</a></li>
+					<li class="active"><a href="/curso">Cadastrar Curso</a></li>
+					<li><a href="/turma">Cadastrar Turma</a></li>
+					<li><a href="/disciplina">Cadastrar Disciplina</a></li>
 				</ul>
 			</li>
 			<li class="dropdown">
@@ -44,7 +44,7 @@
 			<li class="user dropdown">
 				<a class="dropdown-toggle" data-toggle="dropdown">
 					<img src="@routes.Assets.at("images/icone-usuario.png")" alt="">
-					<span>Fulano Facema</span>
+					<span>@session().get("matricula")</span>
 					<i class="caret"></i>
 				</a>
 				<ul class="dropdown-menu dropdown-menu-right icons-right">
@@ -71,7 +71,7 @@
 					<a href="#" class="dropdown-toggle" data-toggle="dropdown">
 						<img src="@routes.Assets.at("images/icone-usuario.png")" alt="">
 						<div class="user-info">
-							Fulano Facema <span>Pofessor ADS</span>
+							@session().get("matricula") <span>Pofessor ADS</span>
 						</div>
 					</a>
 					<div class="popup dropdown-menu dropdown-menu-right">

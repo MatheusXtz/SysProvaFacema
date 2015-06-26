@@ -16,27 +16,30 @@
       
   <div class="col-md-7">
       <legend>Questões</legend>
-      @for(q <- 0 until lista.size()){
+       @for(q <- 0 until lista.size()){
 
         @if(Observacao.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList().size() > 0){
 
           @for(obs <- Observacao.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList()){
             
+          
             @if(responsavel.equals("co")){
               
-                <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger ">QUESTÃO - @q</button>   
-                               
+                <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>   
+                            
+                
+              }else{
+                <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>
+              }
 
-            }else{
-              <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>           
-            }                   
-          }
+            }
 
-         
+           
           
         }else{
         <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>
         }
+          
           
 
 

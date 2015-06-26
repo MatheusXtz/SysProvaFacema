@@ -11,6 +11,15 @@ public class QuestAlterAux {
 	public String nomeTurma;
 	public String nomeDisci;
 	
+	public Integer auxiliar;
+	
+	
+	public Integer getAuxiliar() {
+		return auxiliar;
+	}
+	public void setAuxiliar(Integer auxiliar) {
+		this.auxiliar = auxiliar;
+	}
 	public String getEnunciado() {
 		return enunciado;
 	}

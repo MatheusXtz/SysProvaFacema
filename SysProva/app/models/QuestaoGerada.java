@@ -6,9 +6,9 @@ import models.Questao;
 public class QuestaoGerada implements Comparable<QuestaoGerada> {
 
 	public Integer ordem; 
-	public Questao questao;
+	public QuestAlterAux questao;
 	
-	public QuestaoGerada(Questao questao) {
+	public QuestaoGerada(QuestAlterAux questao) {
 		this.questao = questao;
 		this.ordem = 0;
 	}

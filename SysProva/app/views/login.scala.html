@@ -1,7 +1,6 @@
 @(form: Form[Usuario])
-
+@import javax.servlet.http.HttpSession;
 @main("Login"){
-	
 
 	<!-- Inicio Menu Horizontal -->
 	<div class="navbar navbar-inverse" role="navigation">
@@ -27,9 +26,10 @@
 	<!-- Fim Menu Horizontal -->
 
 @helper.form(action=routes.UsuarioCrud.login()){
+@session().clear();
 <!-- Login wrapper -->
 	<div class="login-wrapper">
-    	<form action="index.html" role="form">
+    	<form action="" role="form" method="post">
 			<div class="popup-header">
 				<a href="#" class="pull-left"><i class="icon-user-plus"></i></a>
 				<span class="text-semibold">Login de Usúario</span>

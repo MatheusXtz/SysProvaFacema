@@ -5,6 +5,11 @@
 # Home page
 GET     /test	                     controllers.Application.index()
 GET    /                   			controllers.Application.inicio()
+GET    /indexSecre                  controllers.Application.inicioSecretaria()
+GET    /indexProfe                  controllers.Application.inicioProfessor()
+GET    /indexCoord                  controllers.Application.inicioCoordenador()
+GET    /indexNucleo                  controllers.Application.inicioNucleo()
+
 
 GET    /curso                       controllers.CursoCrud.listaCurso()
 POST  /curso					    controllers.CursoCrud.gravar()
@@ -42,6 +47,7 @@ POST	/usuario/:id				controllers.UsuarioCrud.alterarUsuario(id:Long)
 POST 	/usuario/:id/remover		controllers.UsuarioCrud.remover(id:Long)
 GET		/login					    controllers.UsuarioCrud.login()
 GET		/logar					    controllers.UsuarioCrud.logar()
+GET     /logout                     controllers.UsuarioCrud.logout()
 GET		/autenticar				 	controllers.UsuarioCrud.autenticar()
 
 GET		/prova						controllers.ProvaCrud.prova()
