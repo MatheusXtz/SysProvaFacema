@@ -1,3 +1,2 @@
-web target/universal/stage/bin/sysprova -Dhttp.port=${PORT} -DapplyEvolutions.default=true -
-Ddb.default.driver=org.postgresql.Driver -Ddb.default.url=${DATABASE_URL}  -Djpa.default=postgrePersistenceUnit
- 
+target/universal/stage/bin/SysProva -Dhttp.port=${PORT} -DapplyEvolutions.default=true -Ddb.default.driver=org.postgresql.Driver -Ddb.default.url=${DATABASE_URL} -Djpa.default=postgrePersistenceUnit
+
