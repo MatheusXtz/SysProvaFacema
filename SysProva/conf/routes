@@ -4,7 +4,8 @@
 
 # Home page
 GET     /test	                     controllers.Application.index()
-GET    /                   			controllers.Application.inicio()
+GET    /index                       controllers.Application.inicio()
+GET    /                   			 controllers.UsuarioCrud.logar()
 GET    /indexSecre                  controllers.Application.inicioSecretaria()
 GET    /indexProfe                  controllers.Application.inicioProfessor()
 GET    /indexCoord                  controllers.Application.inicioCoordenador()
