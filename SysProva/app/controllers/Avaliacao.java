@@ -72,18 +72,21 @@ public class Avaliacao extends Controller {
 				obs.setQuestaoOkCoord(true);			
 			}
 			obs.setAvaliador("coordenador");
-		} else if (responsavel.equals("na")) {
+		} else if (responsavel.equals("nu")) {
 
 			if(descricao.equals("")){
 				obs.setDescricao("QUESTÃO OK!");
 				obs.setQuestaoOkNucleo(true);
+				obs.setAvaliador("nucleo");
+			
 			}else{
 				obs.setDescricao(descricao);
-				obs.setQuestaoOkNucleo(true);			
+				obs.setQuestaoOkNucleo(true);
+				obs.setAvaliador("nucleo");
 			}
-			obs.setAvaliador("nucleo");
+			
 		}
-
+       
 		obs.save();
 
 		if (responsavel.equals("co")) {

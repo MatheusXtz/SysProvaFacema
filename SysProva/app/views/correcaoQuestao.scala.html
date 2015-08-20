@@ -16,14 +16,19 @@
      	@for(q <- 0 until lista.size()){
  
      		@if(Observacao.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList().size() > 0){
-          @for(obs <- Observacao.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList()){
-            @if(obs.isQuestaoOk()){
-				      <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-success">QUESTÃO - @q</button>
-            }
-          }
+         
+           
+         
+           <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>
+         
+				      
+         
+
+            
+          
 
 				}else{
-           h4{NO MOMENTO NÃO POSSUI QUESTÕES PARA CORREÇÃO!!!}
+          <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>
         }
      			
         @helper.form(action=routes.QuestaoCrud.alterarQuestaoCoord(lista.get(q).getIdQuestao(), Alternativa.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList().get(0).getIdAlternativa())){

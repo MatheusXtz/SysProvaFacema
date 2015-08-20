@@ -121,8 +121,8 @@ public class QuestaoCrud extends Controller {
 //		System.out.println("COOR: "+ q.isAvalCoord());
 		
 		
-		q.update(idQ);
-		a.update(idA);
+		//q.update(idQ);
+		//a.update(idA);
 
 		return redirect(routes.Avaliacao.corrigirQuestao(Long.parseLong(id)));
 	}

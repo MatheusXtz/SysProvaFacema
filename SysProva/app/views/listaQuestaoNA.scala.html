@@ -20,19 +20,19 @@
 
         @if(Observacao.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList().size() > 0){
 
-          @for(obs <- Observacao.find.where().eq("questao_id_questao", lista.get(q).getIdQuestao()).findList()){
+        
             
           
-            @if(responsavel.equals("na")){
+            @if(responsavel.equals("nu")){
               
-                <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>   
+                 <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-success">QUESTÃO - @q</button>   
                             
                 
               }else{
                 <button type="button" data-target="#myModal@q" data-toggle="modal" class="btn btn-danger">QUESTÃO - @q</button>
               }
 
-            }
+           
 
            
           
