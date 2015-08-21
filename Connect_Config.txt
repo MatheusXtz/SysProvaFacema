@@ -1,0 +1,12 @@
+Link:
+
+web: target/universal/stage/bin/sysprova -Dhttp.port=${PORT} -DapplyEvolutions.default=true -Ddb.default.driver=com.mysql.jdbc.Driver -Ddb.default.url=${CLEARDB_DATABASE_URL}
+
+DATABASE_URL:
+mysql://be280f4376babe:01f95234@us-cdbr-iron-east-01.cleardb.net/heroku_2879df2a905433a?reconnect=true
+
+USER:
+be280f4376babe
+
+PASSWORD:
+01f95234
