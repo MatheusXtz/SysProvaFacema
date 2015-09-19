@@ -31,7 +31,7 @@ public class Professor extends Model {
 	private String nome;
 
 	@Column(unique = false, nullable = false)
-	private Integer cpf;
+	private String cpf;
     private String tipoProfe;
 	private String email;
 	@Column(nullable = false)
@@ -108,11 +108,11 @@ public class Professor extends Model {
 		this.nome = nome;
 	}
 
-	public Integer getCpf() {
+	public String getCpf() {
 		return cpf;
 	}
 
-	public void setCpf(Integer cpf) {
+	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
 

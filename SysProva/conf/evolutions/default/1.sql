@@ -10,6 +10,7 @@ create table alternativa (
   alter03                   varchar(255) not null,
   alter04                   varchar(255) not null,
   alter05                   varchar(255) not null,
+  correta                   varchar(255),
   questao_id_questao        bigint,
   constraint pk_alternativa primary key (id_alternativa))
 ;
@@ -59,7 +60,7 @@ create table perfil_user (
 create table professor (
   id_prof                   bigint auto_increment not null,
   nome                      varchar(255),
-  cpf                       integer not null,
+  cpf                       varchar(255) not null,
   tipo_profe                varchar(255),
   email                     varchar(255),
   matricula                 integer not null,

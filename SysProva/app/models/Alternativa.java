@@ -28,10 +28,13 @@ public class Alternativa extends Model {
 	private String alter04;
 	@Column(nullable = false)
 	private String alter05;
+	private String correta;
 	
 	public static Model.Finder<Long, Alternativa> find = new Model.Finder<Long, Alternativa>(
 			Long.class, Alternativa.class);
 
+	
+	
 	@ManyToOne
 	@Column(nullable = false)
 	private Questao questao = new Questao();
@@ -39,8 +42,18 @@ public class Alternativa extends Model {
 	/**
 	 * Gets e Sets
 	 */
+	
+	
 	public Long getIdAlternativa() {
 		return idAlternativa;
+	}
+
+	public String getCorreta() {
+		return correta;
+	}
+
+	public void setCorreta(String correta) {
+		this.correta = correta;
 	}
 
 	public void setIdAlternativa(Long idAlternativa) {

@@ -10,10 +10,18 @@ public class QuestAlterAux {
 	public String alter05;
 	public String nomeTurma;
 	public String nomeDisci;
+	public String correta;
 	
 	public Integer auxiliar;
 	
 	
+	
+	public String getCorreta() {
+		return correta;
+	}
+	public void setCorreta(String correta) {
+		this.correta = correta;
+	}
 	public Integer getAuxiliar() {
 		return auxiliar;
 	}

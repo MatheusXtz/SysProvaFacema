@@ -59,6 +59,7 @@ public class ProvaCrud extends Controller {
 
 		String dInicio = Form.form().bindFromRequest().get("dataInicial");
 		String dFinal = Form.form().bindFromRequest().get("dataFinal");
+	
 
 		for (Turma turma : turmas) {
 			if (turma != null) {
@@ -99,6 +100,7 @@ for(Disciplina dis: d){
 				q.setAlter04(alter.getAlter04());
 				q.setAlter05(alter.getAlter05());
 				q.setNomeDisci(d.get(cont).getNome());
+				q.setCorreta(alter.getCorreta());
 				prova.add(q);
 
 			}
@@ -144,41 +146,17 @@ List<QuestAlterAux> newLis=aleatorio(prova);
 	
 	
 
-
-
-//	private static void teste(){
-//		
-//		
-//		List<Object> ids = Disciplina.find.where().eq("turma_id_turma", 1).findIds();
-//		
-//		List<Questao> a = null;
-//		for (Object object : ids) {
-//			System.out.println("Disciplina: "+object);
-//			List<Questao> q = Questao.find.where().eq("disciplina_id_disciplina", object).findList();			
-//			a = new ArrayList<Questao>();
-//			for (Questao questao : q) {
-//				a.add(questao);
-//				Collections.shuffle(a);
-//			}			
-//		}
-//		for (Questao questao : a) {
-//			System.out.println("Cod: "+questao.getIdQuestao());
-//			System.out.println("Enunciado: "+questao.getEnunciado());
-//			System.out.println("====================================");
-//		}
-//	}
-	
 	
 	
 	public static List<QuestAlterAux> aleatorio(List<QuestAlterAux> lis){
 		List<QuestAlterAux> listEmba;
-		 for(int i=0; i<lis.size()-1;i++){
-			 System.out.println(lis.get(i).getEnunciado());
-			 System.out.println(lis.get(i).getAuxiliar());
-			 System.out.println(lis.get(i).getNomeDisci());
-		 }
+		 
 		
-		System.out.println(embaralharQuestoes(lis));
+		
+		embaralharQuestoes(lis);
+		for(int i=0; i<lis.size();i++){
+			 System.out.println("correta"+ lis.get(i).correta);
+		 }
 		
 		return lis;
 	}

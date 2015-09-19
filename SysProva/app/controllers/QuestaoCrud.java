@@ -39,7 +39,7 @@ public class QuestaoCrud extends Controller {
 
 		String idDiscip = Form.form().bindFromRequest().get("idDiscip");
 		String idProva = Form.form().bindFromRequest().get("idProva");
-
+		String correta = Form.form().bindFromRequest().get("correta");
 		if (formQuestao.hasErrors() && formAlternativa.hasErrors()) {
 			flash("erro", "Erro ao gravar dados");
 			return ok(views.html.questao.render(Long.parseLong(idDiscip),
@@ -65,7 +65,9 @@ public class QuestaoCrud extends Controller {
 		long idQuest = listQuest.get(listQuest.size() - 1).getIdQuestao();
 
 		Alternativa alternativa = formAlternativa.get();
+		alternativa.setCorreta(correta);
 		alternativa.setIdQuestao(idQuest);
+		
 		alternativa.save();
 		flash("sucesso", "Dados Gravados com sucesso");
 		return redirect(routes.QuestaoCrud.listagem());
@@ -103,6 +105,7 @@ public class QuestaoCrud extends Controller {
 //		Questao j = Questao.find.byId(idQ);
 
 		Alternativa a = alternatica.get();
+	
 
 //		System.out.println("Cod. Questao:" + idQ);
 //		System.out.println("Cod. Alternativa:" + idA);
