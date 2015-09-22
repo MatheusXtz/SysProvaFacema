@@ -16,6 +16,7 @@
 	<field name="alter04" class="java.lang.String"/>
 	<field name="alter05" class="java.lang.String"/>
 	<field name="nomeDisci" class="java.lang.String"/>
+	<field name="correta" class="java.lang.String"/>
 	<group name="Group1"/>
 	<group name="Group2"/>
 	<group name="Group3"/>
@@ -86,6 +87,11 @@
 				<reportElement x="78" y="107" width="122" height="19" uuid="3870cb89-dbe9-4d34-9b60-65a6bdf1b693"/>
 				<textFieldExpression><![CDATA[$F{alter05}]]></textFieldExpression>
 			</textField>
+	<textField>
+<reportElement x="78" y="127" width="122" height="19" uuid="3870cb89-dbe9-4d34-9b60-65a6bdf1b693"/>
+				<textFieldExpression><![CDATA[$F{correta}]]></textFieldExpression>
+			</textField>
+
 			<staticText>
 				<reportElement x="48" y="27" width="30" height="20" uuid="9c940ba5-a3d8-4810-8480-c4f8c54b7a7b"/>
 				<text><![CDATA[A:]]></text>
